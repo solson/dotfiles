@@ -26,8 +26,9 @@ error() {
 
 [ -z "$1" ] && error "no path"
 
-source_path="$HOME/$1"
-dest_path="$PWD/$1"
+rel_path="$1"
+source_path="$HOME/$rel_path"
+dest_path="$PWD/$rel_path"
 
 [ -f "$dest_path" ] && error "$dest_path already exists"
 [ -f "$source_path" ] || error "$source_path does not exist"
@@ -35,3 +36,4 @@ dest_path="$PWD/$1"
 mkdir -p "$(dirname "$dest_path")"
 mv "$source_path" "$dest_path"
 ln -s "$dest_path" "$source_path"
+echo "symlink $rel_path" >> install.sh
