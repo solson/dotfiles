@@ -41,6 +41,8 @@ symlink .gitconfig
 symlink .gitignore.global
 symlink .vimrc
 symlink .vim/UltiSnips
-symlink .vim/autoload/plug.vim && echo "  - remember to run :PlugInstall"
+symlink .vim/autoload/plug.vim &&
+  echo "  - remember to run :PlugInstall"
 mkdir -p ~/.vim/backup
-symlink .config/fish/config.fish
+symlink .config/fish/config.fish &&
+  echo "  - you may want to fish_update_completions"
