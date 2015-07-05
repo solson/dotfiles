@@ -1,0 +1,152 @@
+# i3 config file (v4)
+# See http://i3wm.org/docs/userguide.html for a complete reference.
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Source Code Pro for Powerline 9
+
+# Use Mouse+$mod to drag floating windows to their wanted position.
+floating_modifier $mod
+
+# Start a terminal.
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Kill focused window.
+bindsym $mod+Shift+q kill
+
+# Start the application launcher.
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Change focus.
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window.
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal orientation.
+bindsym $mod+Shift+v split h
+
+# Split in vertical orientation.
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container.
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split).
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating.
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows.
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container.
+bindsym $mod+a focus parent
+
+# Focus the child container.
+#bindsym $mod+d focus child
+
+# Switch to workspace.
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused container to workspace.
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Reload the configuration file.
+bindsym $mod+Shift+c reload
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
+bindsym $mod+Shift+r restart
+# Exit i3 (logs you out of your X session).
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# PulseAudio controls.
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5% && killall -SIGUSR1 i3status"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5% && killall -SIGUSR1 i3status"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle && killall -SIGUSR1 i3status"
+
+# Extra laptop keys.
+bindsym XF86TouchpadToggle exec ~/bin/toggle-touchpad
+
+mode "resize" {
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+
+  # Same bindings, but for the arrow keys.
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # Back to normal: Enter or Escape.
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Manually lock the screen without sleeping.
+bindsym $mod+ctrl+l exec "xautolock -locknow"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available).
+bar {
+  status_command i3status
+  position top
+}
+
+# Always float these applications.
+for_window [class="(?i)pavucontrol"] floating enable
+
+# Startup systray applications.
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift-gtk
+
+# Startup background applications.
+exec --no-startup-id "xautolock -time 10 -locker 'i3lock -c 000000' -notify 15 -notifier 'notify-send \"Locking in 15 seconds.\" -t 15000'"
+
+# Startup applications which quit immediately.
+exec --no-startup-id "setxkbmap -layout us -option -option caps:escape -option compose:menu"
+exec --no-startup-id "xsetroot -solid '#0d0d0d'"
