@@ -50,3 +50,4 @@ symlink .vim/autoload/plug.vim &&
 mkdir -p ~/.vim/backup
 symlink .config/fish/config.fish &&
   note "you may want to run fish_update_completions"
+symlink .gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
