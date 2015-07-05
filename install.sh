@@ -43,3 +43,4 @@ symlink .vimrc
 symlink .vim/UltiSnips
 symlink .vim/autoload/plug.vim && echo "  - remember to run :PlugInstall"
 mkdir -p ~/.vim/backup
+symlink .config/fish/config.fish
