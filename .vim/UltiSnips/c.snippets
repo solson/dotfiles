@@ -1,0 +1,20 @@
+snippet main "main function"
+int main(int argc, char** argv) {
+	$0
+	return 0;
+}
+endsnippet
+
+snippet once "Header include guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import string
+	snip.rv = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper() + '_'
+else:
+	snip.rv = snip.c`}
+#define $1
+
+${VISUAL}$0
+
+#endif /* $1 */
+endsnippet
