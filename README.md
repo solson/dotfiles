@@ -1,7 +1,7 @@
 # Dotfiles
 
-My configuration files. `install.sh` and `import.sh` adapted from [programble](https://github.com/programble)'s
-dotfiles repo.
+My configuration files. `install.sh` and `import.sh` adapted from [programble's
+dotfiles repo](https://github.com/programble/dotfiles).
 
 ## Install
 
@@ -17,8 +17,8 @@ dotfiles repo.
 
 ## License
 
-Copyright © 2015, Scott Olson <scott@scott-olson.org>  
-Copyright © 2015, Curtis McEnroe <curtis@cmcenroe.me>
+Copyright © 2015, Scott Olson \<scott@scott-olson.org>  
+Copyright © 2015, Curtis McEnroe \<curtis@cmcenroe.me>
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
