@@ -17,8 +17,7 @@ dotfiles repo](https://github.com/programble/dotfiles).
 
 ## License
 
-Copyright © 2015, Scott Olson \<scott@scott-olson.org>  
-Copyright © 2015, Curtis McEnroe \<curtis@cmcenroe.me>
+Copyright © 2015, Scott Olson \<scott@scott-olson.org>
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
