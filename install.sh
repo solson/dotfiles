@@ -17,6 +17,10 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
+note() {
+  echo "  - $1"
+}
+
 symlink() {
   rel_path="$1"
   source_path="$PWD/$rel_path"
@@ -42,7 +46,7 @@ symlink .gitignore.global
 symlink .vimrc
 symlink .vim/UltiSnips
 symlink .vim/autoload/plug.vim &&
-  echo "  - remember to run :PlugInstall"
+  note "remember to run :PlugInstall and build YCM"
 mkdir -p ~/.vim/backup
 symlink .config/fish/config.fish &&
-  echo "  - you may want to fish_update_completions"
+  note "you may want to run fish_update_completions"
