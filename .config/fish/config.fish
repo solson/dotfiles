@@ -9,10 +9,16 @@ set -x R4 "/media/$USER/R4"
 
 ## Basics
 
+set fish_prompt_first 1
 function fish_prompt
   set -l last_status $status
 
-  echo
+  if [ $fish_prompt_first = 0 ]
+    echo
+  else
+    set fish_prompt_first 0
+  end
+
   set_color $fish_color_cwd
   echo -n (prompt_pwd)
 
