@@ -41,7 +41,7 @@ symlink() {
   echo "symlinked $dest_path"
 }
 
-echo "setting gnome-terminal colourscheme"
+echo "setting gnome-terminal settings"
 ./gnome-terminal-jellybeans.sh
 symlink .gitconfig
 symlink .gitignore.global
