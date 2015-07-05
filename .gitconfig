@@ -1,0 +1,13 @@
+[user]
+	name = Scott Olson
+	email = scott@scott-olson.org
+[core]
+	excludesfile = /home/scott/.gitignore.global
+[alias]
+	cm = commit
+	co = checkout
+	st = status -s
+	br = branch
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[push]
+	default = simple
