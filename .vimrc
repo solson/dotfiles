@@ -137,6 +137,7 @@ set smartindent
 set smarttab
 set textwidth=80
 set title
+set ttimeoutlen=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
 
