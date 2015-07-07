@@ -80,9 +80,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+ctrl+l exec "xset s activate"
 
 # PulseAudio controls.
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse set Master 5%+ && killall -SIGUSR1 i3status"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse set Master 5%- && killall -SIGUSR1 i3status"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle && killall -SIGUSR1 i3status"
+bindsym XF86AudioRaiseVolume exec "amixer -q -D pulse set Master 5%+ && killall -SIGUSR1 i3status"
+bindsym XF86AudioLowerVolume exec "amixer -q -D pulse set Master 5%- && killall -SIGUSR1 i3status"
+bindsym XF86AudioMute exec "amixer -q -D pulse set Master toggle && killall -SIGUSR1 i3status"
 
 # Extra laptop keys.
 bindsym XF86TouchpadToggle exec ~/bin/toggle-touchpad
