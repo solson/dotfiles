@@ -95,7 +95,6 @@ bar {
 }
 
 # Always float these applications.
-for_window [class="(?i)pavucontrol"] floating enable, border normal
 for_window [window_role="^bubble$"] floating enable
 
 # Startup applications.
