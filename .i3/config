@@ -95,7 +95,7 @@ bar {
 }
 
 # Always float these applications.
-for_window [window_role="^bubble$"] floating enable
+for_window [window_role="^(bubble|pop-up)$"] floating enable
 
 # Startup applications.
 exec --no-startup-id nm-applet
