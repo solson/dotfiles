@@ -80,6 +80,14 @@ function aptbins
 end
 
 
+## Autojump
+
+set -l autojump_script ~/.autojump/share/autojump/autojump.fish
+if [ -f $autojump_script ]
+  source $autojump_script
+end
+
+
 ## TTY casting commands
 
 function start-ttycast
