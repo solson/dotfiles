@@ -6,7 +6,7 @@ profile_path="$dconfdir/$profile_id"
 
 # Font.
 dconf write "$profile_path/use-system-font" "false"
-dconf write "$profile_path/font" "'Source Code Pro for Powerline Regular 9'"
+dconf write "$profile_path/font" "'Terminess Powerline 10'"
 
 # Custom startup command.
 dconf write "$profile_path/use-custom-command" "true"

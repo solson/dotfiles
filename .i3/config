@@ -3,7 +3,7 @@
 
 set $mod Mod4
 
-font pango:Source Code Pro for Powerline 9
+font pango:Terminess Powerline 10
 floating_modifier $mod
 new_window pixel 2
 new_float normal

@@ -27,7 +27,7 @@ function fish_prompt
   else
     set_color normal
   end
-  echo -n '$ '
+  echo -n '> '
   set_color normal
 end
 
