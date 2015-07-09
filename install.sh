@@ -32,6 +32,11 @@ symlink() {
   local source_path="$PWD/$rel_source_path"
   local dest_path="$HOME/$rel_dest_path"
 
+  if [ ! -e "$source_path" ]; then
+    echo "error: $source_path doesn't exist"
+    return 1
+  fi
+
   if [ -L "$dest_path" ]; then
     echo "ignoring $dest_path (already symlinked)"
     return 1
