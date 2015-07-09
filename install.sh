@@ -53,17 +53,24 @@ symlink() {
   echo "symlinked $dest_path -> $source_path"
 }
 
-echo "setting gnome-terminal settings"
-./gnome-terminal-jellybeans.sh
+# Git
 symlink .gitconfig
 symlink .gitignore.global
+
+# Vim
+mkdir -p ~/.vim/backup
 symlink .vimrc
 symlink .vim/UltiSnips
 symlink .vim/autoload/plug.vim &&
   note "remember to run :PlugInstall and build YCM"
-mkdir -p ~/.vim/backup
-symlink .config/fish/config.fish &&
-  note "you may want to run fish_update_completions"
+
+# i3
 symlink .i3/config
 symlink .config/i3status/config ".$(hostname -s)"
+
+# Misc.
+echo "setting gnome-terminal settings"
+./gnome-terminal-jellybeans.sh
 symlink .config/fontconfig/fonts.conf
+symlink .config/fish/config.fish &&
+  note "you may want to run fish_update_completions"
