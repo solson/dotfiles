@@ -22,15 +22,16 @@ note() {
 }
 
 symlink() {
-  local rel_dest_path="$1"
-  local rel_source_path="$2"
+  # The path to the config file in ~, e.g. ".config/foo.conf".
+  local rel_path="$1"
 
-  if [ "$rel_source_path" = "" ]; then
-    rel_source_path="$rel_dest_path"
-  fi
+  # The extra suffix on the source file compared to the target, e.g. ".foobar"
+  # if you want to link ".config/foo.conf.foobar" to ".config/foo.conf". This is
+  # often useful for hostname-specific configuration files.
+  local source_suffix="$2"
 
-  local source_path="$PWD/$rel_source_path"
-  local dest_path="$HOME/$rel_dest_path"
+  local source_path="$PWD/$rel_path$source_suffix"
+  local dest_path="$HOME/$rel_path"
 
   if [ ! -e "$source_path" ]; then
     echo "error: $source_path doesn't exist"
@@ -64,5 +65,5 @@ mkdir -p ~/.vim/backup
 symlink .config/fish/config.fish &&
   note "you may want to run fish_update_completions"
 symlink .i3/config
-symlink .config/i3status/config .config/i3status/config.$(hostname -s)
+symlink .config/i3status/config ".$(hostname -s)"
 symlink .config/fontconfig/fonts.conf
