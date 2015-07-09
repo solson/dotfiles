@@ -59,5 +59,5 @@ mkdir -p ~/.vim/backup
 symlink .config/fish/config.fish &&
   note "you may want to run fish_update_completions"
 symlink .i3/config
-symlink .config/i3status/config
+symlink .config/i3status/config .config/i3status/config.$(hostname -s)
 symlink .config/fontconfig/fonts.conf
