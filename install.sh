@@ -22,9 +22,15 @@ note() {
 }
 
 symlink() {
-  rel_path="$1"
-  source_path="$PWD/$rel_path"
-  dest_path="$HOME/$rel_path"
+  local rel_dest_path="$1"
+  local rel_source_path="$2"
+
+  if [ "$rel_source_path" = "" ]; then
+    rel_source_path="$rel_dest_path"
+  fi
+
+  local source_path="$PWD/$rel_source_path"
+  local dest_path="$HOME/$rel_dest_path"
 
   if [ -L "$dest_path" ]; then
     echo "ignoring $dest_path (already symlinked)"
@@ -38,7 +44,7 @@ symlink() {
 
   mkdir -p "$(dirname "$dest_path")"
   ln -s "$source_path" "$dest_path"
-  echo "symlinked $dest_path"
+  echo "symlinked $dest_path -> $source_path"
 }
 
 echo "setting gnome-terminal settings"
