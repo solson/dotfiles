@@ -66,6 +66,7 @@ symlink .vim/autoload/plug.vim &&
 
 # i3
 symlink .i3/config
+symlink .i3/autostart.sh ".$(hostname -s)"
 symlink .config/i3status/config ".$(hostname -s)"
 
 # Misc.

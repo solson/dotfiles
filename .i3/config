@@ -101,13 +101,4 @@ bar {
 for_window [window_role="^(bubble|pop-up)$"] floating enable
 
 # Startup applications.
-exec --no-startup-id nm-applet
-exec --no-startup-id redshift-gtk
-exec --no-startup-id "xss-lock -- i3lock -n -d -I 10 -c 0d0d0d"
-exec --no-startup-id "compton --backend glx --vsync opengl-swc --xrender-sync --xrender-sync-fence"
-
-# Startup applications which quit immediately.
-exec --no-startup-id "setxkbmap -layout us -option -option caps:escape -option compose:menu"
-exec --no-startup-id "hsetroot -solid '#0d0d0d'"
-exec --no-startup-id "xset dpms 600"
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id ~/.i3/autostart.sh

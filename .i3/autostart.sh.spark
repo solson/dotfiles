@@ -1,0 +1,28 @@
+#!/bin/sh
+
+## Long-running background/tray programs.
+
+# NetworkManager system tray icon.
+nm-applet &
+
+# Screen colour temperature controller.
+redshift-gtk &
+
+# Screen locker.
+xss-lock -- i3lock -n -d -I 10 -c 0d0d0d &
+
+
+## Run-once programs.
+
+# Set keyboard layout.
+setxkbmap -layout us -option -option caps:escape -option compose:menu &
+
+# Set desktop background colour.
+hsetroot -solid '#0d0d0d' &
+
+# Shut off screen (and lock, thanks to xss-lock) after 10 minutes.
+xset dpms 600 &
+
+# Start PolicyKit GNOME Authentication Agent so applications like synaptic and
+# ubuntu-software-center can get root access.
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
