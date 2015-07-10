@@ -93,7 +93,6 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'idris-hackers/idris-vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
-Plug 'programble/jellybeans.vim'
 Plug 'sickill/vim-pasta'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
@@ -104,6 +103,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn'
+Plug 'tsion/jellybeans.vim'
 Plug 'richo/rust.vim', { 'branch': 'playpen-support' }
 
 call plug#end()
