@@ -7,8 +7,6 @@ noremap \ ,
 let mapleader = ","
 
 " Plugins
-
-filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'
@@ -33,29 +31,8 @@ nmap <leader>l :CtrlPLine<CR>
 Plug 'junegunn/vim-easy-align'
 vnoremap <silent> <Enter> :EasyAlign<Enter>
 
-Plug 'tpope/vim-fugitive'
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gp :Git push<CR>
-
-Plug 'gerw/vim-latex-suite'
-let g:tex_flavor='latex' " Use latex-suite for .tex files.
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats = 'pdf, aux'
-let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
-" Make grep always display file name, even for a single file, so as not to
-" confuse latex-suite. Only difference from vim default is -H
-set grepprg=grep\ -nH\ $*
-
-Plug 'bitc/vim-hdevtools'
-au FileType haskell nnoremap <buffer> <silent> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
-
 " Custom text objects library plugin
 Plug 'kana/vim-textobj-user'
-" `ai/ii/aI/iI` for a block of indented lines
-Plug 'kana/vim-textobj-indent'
 " `ac/ic` for a comment
 Plug 'glts/vim-textobj-comment'
 " `a,/i,` for a function parameter
@@ -75,8 +52,6 @@ let g:ycm_always_populate_location_list = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_extra_conf_globlist = ["~/code/*"]
-" let g:ycm_min_num_of_chars_for_completion = 99
-nnoremap <silent> <leader>f :YcmCompleter GoTo<CR>
 " Close preview window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
@@ -89,16 +64,13 @@ let g:syntastic_rust_rustc_args = '--no-trans'
 
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
-Plug 'elixir-lang/vim-elixir'
 Plug 'idris-hackers/idris-vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'sickill/vim-pasta'
-Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -107,7 +79,6 @@ Plug 'tsion/jellybeans.vim'
 Plug 'richo/rust.vim', { 'branch': 'playpen-support' }
 
 call plug#end()
-filetype plugin indent on
 
 " Place all backup files in ~/.vim/backup
 set backup
