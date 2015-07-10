@@ -14,7 +14,7 @@ fi
 filename_without_asc="$(basename "$filename" .asc)"
 extension="${filename_without_asc##*.}"
 
-tmp="$(mktemp -t "tmp.XXXXXXXXXX.$extension")" || exit 1
+tmp="$(mktemp --suffix=".$extension")" || exit 1
 
 if [ ! -f "$filename" ]; then
   echo "$filename doesn't exist. Starting from empty file."
