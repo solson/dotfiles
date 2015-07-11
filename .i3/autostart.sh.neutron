@@ -24,7 +24,7 @@ dropbox start &
 insync start &
 
 # Udiskie volume mounting tray icon.
-udiskie --tray &
+udiskie --smart-tray &
 
 
 ## Run-once programs.
