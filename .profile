@@ -14,3 +14,8 @@ fi
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
+
+# Set the GPG_AGENT_INFO and SSH_AUTH_SOCK environment variables in i3.
+if [ "$0" = "/usr/sbin/lightdm-session" -a "$DESKTOP_SESSION" = "i3" ]; then
+  export $(gnome-keyring-daemon -s)
+fi
