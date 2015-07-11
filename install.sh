@@ -69,12 +69,15 @@ symlink .i3/config
 symlink .i3/autostart.sh ".$(hostname -s)"
 symlink .config/i3status/config ".$(hostname -s)"
 
-# Binaries.
+# Shell
+symlink .profile
+symlink .config/fish/config.fish &&
+  note "you may want to run fish_update_completions"
+
+# Binaries
 symlink bin/vigpg
 
 # Misc.
 echo "setting gnome-terminal settings"
 ./gnome-terminal-jellybeans.sh
 symlink .config/fontconfig/fonts.conf
-symlink .config/fish/config.fish &&
-  note "you may want to run fish_update_completions"
