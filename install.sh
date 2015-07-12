@@ -2,7 +2,7 @@
 
 # Create symlinks in ~ for files in the current directory.
 
-# Copyright © 2015, Scott Olson <scott@scott-olson.org>
+# Copyright © 2015, Scott Olson <scott@solson.me>
 # Copyright © 2015, Curtis McEnroe <curtis@cmcenroe.me>
 #
 # Permission to use, copy, modify, and/or distribute this software for any
