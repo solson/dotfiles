@@ -1,6 +1,6 @@
 [user]
 	name = Scott Olson
-	email = scott@scott-olson.org
+	email = scott@solson.me
 [core]
 	excludesfile = /home/scott/.gitignore.global
 [alias]
