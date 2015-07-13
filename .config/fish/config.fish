@@ -66,6 +66,16 @@ function mkcd
   cd $argv[1]
 end
 
+function mkproj
+  if [ (count $argv) -ne 1 ]
+    echo "usage: mkproj <name>"
+    return 1
+  end
+
+  mkcd ~/code/$argv[1]
+  hub init -g
+end
+
 alias apti  'sudo apt-get install'
 alias aptr  'sudo apt-get remove'
 alias aptrr 'sudo apt-get purge'
