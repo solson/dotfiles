@@ -59,14 +59,14 @@ Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp set commentstring=//\ %s
 autocmd FileType idris set commentstring=--\ %s
 
-Plug 'scrooloose/syntastic'
-let g:syntastic_rust_rustc_args = '--no-trans'
 
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
 Plug 'idris-hackers/idris-vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/syntastic'
 Plug 'sickill/vim-pasta'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
@@ -76,7 +76,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn'
 Plug 'tsion/jellybeans.vim'
-Plug 'richo/rust.vim', { 'branch': 'playpen-support' }
 
 call plug#end()
 
