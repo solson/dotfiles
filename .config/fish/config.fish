@@ -61,6 +61,7 @@ alias ls 'ls --color=auto'
 alias ll 'ls -l'
 alias la 'ls -A'
 alias lh 'ls -lh'
+alias lrustc 'multirust run local rustc'
 
 function mkcd
   mkdir -p $argv[1]
