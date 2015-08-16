@@ -17,14 +17,10 @@ order += "tztime local"
 
 disk "/" {
   format = "/ %avail"
-  threshold_type = "percentage_avail"
-  low_threshold = 10
 }
 
 disk "/data" {
   format = "/data %avail"
-  threshold_type = "percentage_avail"
-  low_threshold = 10
 }
 
 wireless wlan0 {
@@ -35,11 +31,6 @@ wireless wlan0 {
 ethernet eth0 {
   format_up = "ethernet up"
   format_down = "ethernet down"
-}
-
-cpu_temperature cpu0 {
-  format = "%degrees°C"
-  path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input"
 }
 
 load {
