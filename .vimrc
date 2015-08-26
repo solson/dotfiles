@@ -146,6 +146,7 @@ set browsedir=buffer " GUI open starts in dir of buffer's file
 " Indentation exceptions
 autocmd FileType go setlocal noet
 autocmd FileType asm setlocal sw=8 ts=8 nosmartindent
+autocmd FileType c,cpp setlocal sw=4 ts=4
 
 " Disable annoying as-you-type trailing whitespace highlighting
 let go_highlight_trailing_whitespace_error = 0
