@@ -1,3 +1,11 @@
+snippet d "Derive attribute"
+#[derive(${1:Clone, Copy, Debug, Eq, Ord, PartialEq, PartialOrd})]$0
+endsnippet
+
 snippet p "Debug print"
 println!("{:?}", ${VISUAL}$1);$0
+endsnippet
+
+snippet u "unimplemented! macro"
+unimplemented!()$0
 endsnippet
