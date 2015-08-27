@@ -14,6 +14,10 @@ order += "load"
 order += "volume master"
 order += "tztime local"
 
+disk "/" {
+  format = "%avail"
+}
+
 wireless wlan0 {
   format_up = "%essid %quality %bitrate"
   format_down = "wifi down"
@@ -33,18 +37,8 @@ battery 0 {
   low_threshold = 30
 }
 
-tztime local {
-  format = "%a %d %h %I:%M %p"
-}
-
 load {
   format = "%1min"
-}
-
-disk "/" {
-  format = "%avail"
-  threshold_type = "percentage_avail"
-  low_threshold = 10
 }
 
 volume master {
@@ -53,4 +47,8 @@ volume master {
   device = "default"
   mixer = "Master"
   mixer_idx = 0
+}
+
+tztime local {
+  format = "%a %d %h %I:%M %p"
 }
