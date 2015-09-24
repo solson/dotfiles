@@ -57,9 +57,9 @@ nnoremap <leader>u :UltiSnipsEdit<CR>
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 Plug 'tpope/vim-commentary'
-autocmd FileType c,cpp set commentstring=//\ %s
-autocmd FileType idris set commentstring=--\ %s
-
+autocmd FileType c,cpp  set commentstring=//\ %s
+autocmd FileType idris  set commentstring=--\ %s
+autocmd FileType racket set commentstring=;\ %s
 
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
@@ -78,6 +78,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn'
 Plug 'tsion/jellybeans.vim'
+Plug 'wlangstroth/vim-racket'
 
 call plug#end()
 
