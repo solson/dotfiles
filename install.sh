@@ -69,6 +69,9 @@ symlink .i3/config
 symlink .i3/autostart.sh ".$(hostname -s)"
 symlink .config/i3status/config ".$(hostname -s)"
 
+# tmux
+symlink .tmux.conf
+
 # Shell
 symlink .profile
 symlink .config/fish/config.fish &&
