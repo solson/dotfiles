@@ -12,7 +12,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'asenac/vim-airline-loclist'
 set noshowmode
-let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#loclist#enabled = 1
