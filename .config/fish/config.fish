@@ -100,6 +100,11 @@ if [ -f $autojump_script ]
   source $autojump_script
 end
 
+set -l autojump_script /usr/share/autojump/autojump.fish
+if [ -f $autojump_script ]
+  source $autojump_script
+end
+
 
 ## TTY casting commands
 
