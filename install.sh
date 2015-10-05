@@ -108,6 +108,10 @@ case "$(hostname -s)" in
     setup-common-gui
     ;;
 
+  scott-ubuntu-hci)
+    setup-common-gui
+    ;;
+
   *)
     msg "Error" "unknown machine '$(hostname -s)'"
     ;;
