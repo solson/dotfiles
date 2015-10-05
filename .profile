@@ -10,9 +10,14 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
-# Set PATH so it includes user's private bin if it exists.
+# Include user's private bin in PATH if it exists.
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
+fi
+
+# Include ccache symlinks directory in PATH if it exists.
+if [ -d "/usr/lib/ccache" ]; then
+  PATH="/usr/lib/ccache:$PATH"
 fi
 
 # Set the GPG_AGENT_INFO and SSH_AUTH_SOCK environment variables in i3.
