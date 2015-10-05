@@ -17,8 +17,8 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-note() {
-  echo "  - $1"
+msg() {
+  printf "%10s %s\n" "$1" "$2"
 }
 
 symlink() {
@@ -34,53 +34,81 @@ symlink() {
   local dest_path="$HOME/$rel_path"
 
   if [ ! -e "$source_path" ]; then
-    echo "error: $source_path doesn't exist"
+    msg "Error" "$source_path doesn't exist"
     return 1
   fi
 
   if [ -L "$dest_path" ]; then
-    echo "ignoring $dest_path (already symlinked)"
+    msg "Up-to-date" "$dest_path"
     return 1
   fi
 
   if [ -e "$dest_path" ]; then
-    echo "ignoring $dest_path (destination exists)"
+    msg "Error" "$dest_path exists and isn't a symlink"
     return 1
   fi
 
   mkdir -p "$(dirname "$dest_path")"
   ln -s "$source_path" "$dest_path"
-  echo "symlinked $dest_path -> $source_path"
+  msg "Linking" "$dest_path -> $source_path"
 }
 
-# Git
-symlink .gitconfig
-symlink .gitignore.global
+################################################################################
 
-# Vim
-mkdir -p ~/.vim/backup
-symlink .vimrc
-symlink .vim/UltiSnips
-symlink .vim/autoload/plug.vim &&
-  note "remember to run :PlugInstall and build YCM"
+setup-git() {
+  symlink .gitconfig
+  symlink .gitignore.global
+}
 
-# i3
-symlink .i3/config
-symlink .i3/autostart.sh ".$(hostname -s)"
-symlink .config/i3status/config ".$(hostname -s)"
+setup-vim() {
+  mkdir -p ~/.vim/backup
+  symlink .vimrc
+  symlink .vim/UltiSnips
+  symlink .vim/autoload/plug.vim &&
+    msg "Note" "remember to run :PlugInstall and build YCM"
+}
 
-# tmux
-symlink .tmux.conf
+setup-fish() {
+  symlink .config/fish/config.fish &&
+    msg "Note" "you may want to run fish_update_completions"
+}
 
-# Shell
-symlink .profile
-symlink .config/fish/config.fish &&
-  note "you may want to run fish_update_completions"
+setup-common() {
+  setup-git
+  setup-vim
+  setup-fish
+  symlink .profile
+  symlink .config/fontconfig/fonts.conf
+  symlink bin/vigpg
+}
 
-# Binaries
-symlink bin/vigpg
+setup-i3() {
+  symlink .i3/config
+  symlink .i3/autostart.sh ".$(hostname -s)"
+  symlink .config/i3status/config ".$(hostname -s)"
+}
 
-# Misc.
-echo "setting gnome-terminal settings"
-./gnome-terminal-jellybeans.sh
-symlink .config/fontconfig/fonts.conf
+setup-gnome-terminal() {
+  msg "Note" "run ./gnome-terminal-jellybeans.sh to set gnome-terminal settings"
+}
+
+setup-common-gui() {
+  setup-common
+  setup-i3
+  setup-gnome-terminal
+}
+
+case "$(hostname -s)" in
+  neutron)
+    setup-common-gui
+    symlink .tmux.conf
+    ;;
+
+  spark)
+    setup-common-gui
+    ;;
+
+  *)
+    msg "Error" "unknown machine '$(hostname -s)'"
+    ;;
+esac
