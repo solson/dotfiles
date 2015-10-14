@@ -56,6 +56,10 @@ nnoremap <leader>u :UltiSnipsEdit<CR>
 " " Close preview window when leaving insert mode
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+Plug 'racer-rust/vim-racer'
+let g:racer_cmd = "/home/scott/code/y/racer/target/release/racer"
+let $RUST_SRC_PATH = "/home/scott/code/y/rust-for-racer/src"
+
 Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp  set commentstring=//\ %s
 autocmd FileType idris  set commentstring=--\ %s
