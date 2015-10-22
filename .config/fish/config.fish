@@ -6,6 +6,9 @@ set -x DEVKITPRO "$HOME/code/nds/devkitpro"
 set -x DEVKITARM "$DEVKITPRO/devkitARM"
 set -x R4 "/media/$USER/R4"
 
+# Silence warnings from Gtk applications about the accessibility bus.
+set -x NO_AT_BRIDGE 1
+
 
 ## Basics
 
