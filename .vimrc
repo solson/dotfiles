@@ -168,8 +168,24 @@ runtime macros/matchit.vim
 
 " Scroll up and down, keeping the cursor in the same place on the screen, as if
 " the lines are scrolling past and the cursor is stationary.
-nnoremap <C-j> j<C-e>
-nnoremap <C-k> k<C-y>
+nnoremap <silent> <C-j> :call <SID>ScrollDown()<CR>
+nnoremap <silent> <C-k> :call <SID>ScrollUp()<CR>
+
+function! s:ScrollDown()
+  if winline() == winheight(0)
+    normal! j
+  else
+    exec "normal! j\<C-e>"
+  endif
+endfunction
+
+function! s:ScrollUp()
+  if winline() == 1
+    normal! k
+  else
+    exec "normal! k\<C-y>"
+  endif
+endfunction
 
 " Clear search highlights
 nmap <silent> <leader>n :silent :nohlsearch<CR>
