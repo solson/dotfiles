@@ -166,6 +166,11 @@ autocmd BufRead,BufNewFile SConstruct,SConscript set filetype=python
 " Smarter %
 runtime macros/matchit.vim
 
+" Scroll up and down, keeping the cursor in the same place on the screen, as if
+" the lines are scrolling past and the cursor is stationary.
+nnoremap <C-j> j<C-e>
+nnoremap <C-k> k<C-y>
+
 " Clear search highlights
 nmap <silent> <leader>n :silent :nohlsearch<CR>
 
