@@ -24,6 +24,7 @@ let g:signify_vcs_list = ['git', 'svn']
 let g:signify_sign_change = '~'
 
 Plug 'kien/ctrlp.vim'
+Plug 'd11wtq/ctrlp_bdelete.vim'
 let g:ctrlp_switch_buffer = ''
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>e :CtrlP<CR>
@@ -88,6 +89,7 @@ Plug 'tsion/jellybeans.vim'
 Plug 'wlangstroth/vim-racket'
 
 call plug#end()
+call ctrlp_bdelete#init()
 
 " Place all backup files in ~/.vim/backup
 set backup
