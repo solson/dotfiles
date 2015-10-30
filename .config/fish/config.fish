@@ -64,8 +64,9 @@ alias ls 'ls --color=auto'
 alias ll 'ls -l'
 alias la 'ls -A'
 alias lh 'ls -lh'
-alias lrustc 'multirust run local rustc'
 alias racket 'rlwrap racket'
+alias rustc1 'multirust run stage1 rustc'
+alias rustc2 'multirust run stage2 rustc'
 
 function mkcd
   mkdir -p $argv[1]
