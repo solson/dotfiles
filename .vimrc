@@ -24,6 +24,7 @@ let g:signify_vcs_list = ['git', 'svn']
 let g:signify_sign_change = '~'
 
 Plug 'kien/ctrlp.vim'
+let g:ctrlp_switch_buffer = ''
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>e :CtrlP<CR>
 nmap <leader>t :CtrlPTag<CR>
