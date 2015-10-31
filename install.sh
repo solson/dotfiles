@@ -80,6 +80,7 @@ setup-common() {
   symlink .profile
   symlink .config/fontconfig/fonts.conf
   symlink bin/vigpg
+  symlink bin/ansifilter
 }
 
 setup-i3() {
