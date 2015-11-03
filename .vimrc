@@ -41,6 +41,12 @@ Plug 'glts/vim-textobj-comment'
 " `a,/i,` for a function parameter
 Plug 'sgur/vim-textobj-parameter'
 
+Plug 'lervag/vimtex'
+let g:vimtex_syntax_minted = [
+  \ { 'lang': 'c' },
+  \ { 'lang': 'rust' },
+\ ]
+
 " Snippets engine
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsEditSplit="horizontal"
@@ -100,6 +106,7 @@ set autoindent
 set backspace=indent,eol,start
 set colorcolumn=+1
 set display+=lastline
+set fillchars=vert:\|,fold:\ 
 set formatoptions+=cqtrol
 set gdefault
 set hidden
