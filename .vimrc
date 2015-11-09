@@ -42,6 +42,8 @@ Plug 'glts/vim-textobj-comment'
 Plug 'sgur/vim-textobj-parameter'
 
 Plug 'lervag/vimtex'
+let g:tex_flavor = 'latex' " Never use the plaintex filetype.
+let g:vimtex_latexmk_build_dir = 'out'
 let g:vimtex_syntax_minted = [
   \ { 'lang': 'c' },
   \ { 'lang': 'rust' },
