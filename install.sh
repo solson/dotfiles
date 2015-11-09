@@ -34,23 +34,23 @@ symlink() {
   local dest_path="$HOME/$rel_path"
 
   if [ ! -e "$source_path" ]; then
-    msg "Error" "$source_path doesn't exist"
+    msg Error "$source_path doesn't exist"
     return 1
   fi
 
   if [ -L "$dest_path" ]; then
-    msg "Up-to-date" "$dest_path"
+    msg Up-to-date "$dest_path"
     return 1
   fi
 
   if [ -e "$dest_path" ]; then
-    msg "Error" "$dest_path exists and isn't a symlink"
+    msg Error "$dest_path exists and isn't a symlink"
     return 1
   fi
 
   mkdir -p "$(dirname "$dest_path")"
   ln -s "$source_path" "$dest_path"
-  msg "Linking" "$dest_path -> $source_path"
+  msg Linking "$dest_path -> $source_path"
 }
 
 ################################################################################
@@ -65,12 +65,12 @@ setup-vim() {
   symlink .vimrc
   symlink .vim/UltiSnips
   symlink .vim/autoload/plug.vim &&
-    msg "Note" "remember to run :PlugInstall and build YCM"
+    msg Note "remember to run :PlugInstall and build YCM"
 }
 
 setup-fish() {
   symlink .config/fish/config.fish &&
-    msg "Note" "you may want to run fish_update_completions"
+    msg Note "you may want to run fish_update_completions"
 }
 
 setup-common() {
@@ -90,7 +90,7 @@ setup-i3() {
 }
 
 setup-gnome-terminal() {
-  msg "Note" "run ./gnome-terminal-jellybeans.sh to set gnome-terminal settings"
+  msg Note "run ./gnome-terminal-jellybeans.sh to set gnome-terminal settings"
 }
 
 setup-common-gui() {
@@ -114,6 +114,6 @@ case "$(hostname -s)" in
     ;;
 
   *)
-    msg "Error" "unknown machine '$(hostname -s)'"
+    msg Error "unknown machine '$(hostname -s)'"
     ;;
 esac
