@@ -73,9 +73,9 @@ if isdirectory($RUST_SRC_PATH) && filereadable(g:racer_cmd)
 endif
 
 Plug 'tpope/vim-commentary'
-autocmd FileType c,cpp  set commentstring=//\ %s
-autocmd FileType idris  set commentstring=--\ %s
-autocmd FileType racket set commentstring=;\ %s
+autocmd FileType c,cpp  setlocal commentstring=//\ %s
+autocmd FileType idris  setlocal commentstring=--\ %s
+autocmd FileType racket setlocal commentstring=;\ %s
 
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
