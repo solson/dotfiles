@@ -132,6 +132,11 @@ set ttimeoutlen=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
 
+" Spell checking
+set spelllang=en_ca
+set complete+=kspell
+autocmd FileType markdown,tex setlocal spell
+
 " Visuall bell must be disabled after the GUI starts.
 set visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
