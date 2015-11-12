@@ -136,6 +136,8 @@ set wildmode=longest,list:longest
 set spelllang=en_ca
 set complete+=kspell
 autocmd FileType markdown,tex setlocal spell
+
+" Correct the nearest previous spelling error.
 inoremap <C-s> <Esc>[s1z=`]a
 
 " Visuall bell must be disabled after the GUI starts.
@@ -234,3 +236,11 @@ endif
 if &t_Co == 256 || has("gui_running")
   colorscheme jellybeans
 endif
+
+" Adjust spelling error syntax highlighting. Must come after `colorscheme`.
+highlight clear SpellBad
+highlight clear SpellCap
+highlight clear SpellLocal
+highlight SpellBad   cterm=bold,undercurl ctermfg=red
+highlight SpellCap   cterm=bold,undercurl ctermfg=blue
+highlight SpellLocal cterm=bold,undercurl ctermfg=cyan
