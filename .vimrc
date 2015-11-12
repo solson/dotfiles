@@ -136,6 +136,7 @@ set wildmode=longest,list:longest
 set spelllang=en_ca
 set complete+=kspell
 autocmd FileType markdown,tex setlocal spell
+inoremap <C-s> <Esc>[s1z=`]a
 
 " Visuall bell must be disabled after the GUI starts.
 set visualbell t_vb=
