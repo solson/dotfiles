@@ -37,6 +37,11 @@ function fish_prompt
   set_color normal
 end
 
+function fish_right_prompt
+  set_color yellow
+  __fish_git_prompt '%s'
+end
+
 function fish_title
   echo $_ (prompt_pwd)
 end
