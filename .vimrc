@@ -57,14 +57,9 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 nnoremap <leader>u :UltiSnipsEdit<CR>
 
-" Plug 'Valloric/YouCompleteMe'
-" let g:ycm_add_preview_to_completeopt = 1
-" let g:ycm_always_populate_location_list = 1
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_enable_diagnostic_signs = 0
-" let g:ycm_extra_conf_globlist = ["~/code/*"]
-" " Close preview window when leaving insert mode
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+let g:ycm_extra_conf_globlist = ["~/code/*"]
 
 let g:racer_cmd = "/home/scott/code/y/racer/target/release/racer"
 let $RUST_SRC_PATH = "/home/scott/code/y/rust-for-racer/src"
