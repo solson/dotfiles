@@ -159,6 +159,10 @@ endif
 " Enable mouse in terminals
 if has('mouse')
   set mouse=a
+
+  if !has('nvim')
+    set ttymouse=xterm2
+  endif
 endif
 
 " GUI options
