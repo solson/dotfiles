@@ -83,6 +83,9 @@ setup-vim() {
     msg Note "remember to run :PlugInstall and build YCM"
   symlink .gtkrc-2.0.mine &&
     msg Note "make sure .gtkrc-2.0 includes .gtkrc-2.0.mine (run LXAppearance)"
+
+  symlink-absolute "$HOME/.config/nvim" "$HOME/.vim"
+  symlink-absolute "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
 }
 
 setup-fish() {
