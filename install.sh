@@ -22,16 +22,31 @@ msg() {
 }
 
 symlink() {
-  # The path to the config file in ~, e.g. ".config/foo.conf".
-  local rel_path="$1"
+  local dest_path
+  local source_path
 
-  # The extra suffix on the source file compared to the target, e.g. ".foobar"
-  # if you want to link ".config/foo.conf.foobar" to ".config/foo.conf". This is
-  # often useful for hostname-specific configuration files.
-  local source_suffix="$2"
+  case $# in
+    1)
+      dest_path="$HOME/$1"
+      source_path="$PWD/$1"
+      ;;
+    2)
+      dest_path="$HOME/$1"
+      source_path="$PWD/$2"
+      ;;
+    *)
+      msg Error "Expected 1 or 2 arguments to symlink, got $#"
+      msg Error "Arguments were: $*"
+      exit 1
+      ;;
+  esac
 
-  local source_path="$PWD/$rel_path$source_suffix"
-  local dest_path="$HOME/$rel_path"
+  symlink-absolute "$dest_path" "$source_path"
+}
+
+symlink-absolute() {
+  local dest_path="$1"
+  local source_path="$2"
 
   if [ ! -e "$source_path" ]; then
     msg Error "$source_path doesn't exist"
@@ -87,8 +102,8 @@ setup-common() {
 
 setup-i3() {
   symlink .i3/config
-  symlink .i3/autostart.sh ".$(hostname -s)"
-  symlink .config/i3status/config ".$(hostname -s)"
+  symlink .i3/autostart.sh        ".i3/autostart.sh.$(hostname -s)"
+  symlink .config/i3status/config ".config/i3status/config.$(hostname -s)"
 }
 
 setup-gnome-terminal() {
