@@ -12,6 +12,9 @@ set fish_user_paths $fish_user_paths ~/bin /usr/lib/ccache
 # Silence warnings from Gtk applications about the accessibility bus.
 set -x NO_AT_BRIDGE 1
 
+# Use a custom man page viewer.
+set -x MANPAGER manpager
+
 
 ## Basics
 

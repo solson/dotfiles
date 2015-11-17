@@ -101,6 +101,7 @@ setup-common() {
   symlink .config/fontconfig/fonts.conf
   symlink bin/vigpg
   symlink bin/ansifilter
+  symlink bin/manpager
 }
 
 setup-i3() {
