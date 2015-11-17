@@ -236,6 +236,15 @@ if &t_Co == 256 || has("gui_running")
   colorscheme jellybeans
 endif
 
+" Fix handling of Ctrl-arrowkeys inside tmux, which provides xterm-style keys
+" but has a screen-256color TERM variable.
+if &term =~ '^screen'
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
+
 " Adjust spelling error syntax highlighting. Must come after `colorscheme`.
 highlight clear SpellBad
 highlight clear SpellCap
