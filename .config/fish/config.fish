@@ -67,6 +67,7 @@ set fish_color_valid_path
 
 ## Aliases
 
+alias bash 'env DONT_EXEC_FISH=1 bash'
 alias alert 'notify-send -u critical "Command completed: $_"'
 alias node 'env NODE_NO_READLINE=1 rlwrap -pGreen node'
 alias cr 'cargo run'
