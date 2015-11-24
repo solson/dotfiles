@@ -7,7 +7,8 @@ set -x DEVKITARM "$DEVKITPRO/devkitARM"
 set -x R4 "/media/$USER/R4"
 
 # PATH
-set fish_user_paths $fish_user_paths ~/bin /usr/lib/ccache
+set fish_user_paths $fish_user_paths \
+  ~/bin /usr/lib/ccache ~/.multirust/toolchains/nightly/cargo/bin
 
 # Silence warnings from Gtk applications about the accessibility bus.
 set -x NO_AT_BRIDGE 1
