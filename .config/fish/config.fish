@@ -97,6 +97,11 @@ function mkcd
   cd $argv[1]
 end
 
+function miri
+  multirust run nightly cargo run -- \
+    --sysroot $HOME/.multirust/toolchains/nightly $argv
+end
+
 alias apti  'sudo apt-get install'
 alias aptr  'sudo apt-get remove'
 alias aptrr 'sudo apt-get purge'
