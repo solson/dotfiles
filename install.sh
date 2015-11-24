@@ -102,6 +102,7 @@ setup-common() {
   symlink bin/vigpg
   symlink bin/ansifilter
   symlink bin/manpager
+  symlink bin/format-duration
 }
 
 setup-i3() {

@@ -28,6 +28,13 @@ function fish_prompt
     set fish_prompt_first 0
   end
 
+  # If the last command took longer than 5 seconds, print its execution time.
+  if [ "$CMD_DURATION" -gt 5000 ]
+    set_color yellow
+    echo -n "Execution time: "
+    format-duration $CMD_DURATION
+  end
+
   set_color $fish_color_cwd
   echo -n (prompt_pwd)
 
