@@ -92,14 +92,26 @@ function rag-def
   ag "^\s*(pub\s*)?(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$argv[1]\b"
 end
 
-function mkcd
-  mkdir -p $argv[1]
-  cd $argv[1]
-end
-
 function miri
   multirust run nightly cargo run -- \
     --sysroot $HOME/.multirust/toolchains/nightly $argv
+end
+
+function notify-run
+  set -l title
+
+  if eval $argv
+    set title 'Command succeeded'
+  else
+    set title 'Command failed'
+  end
+
+  push-notify $title "$argv"
+end
+
+function mkcd
+  mkdir -p $argv[1]
+  cd $argv[1]
 end
 
 alias apti  'sudo apt-get install'
