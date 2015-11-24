@@ -89,7 +89,7 @@ alias rustc1 'multirust run stage1 rustc'
 alias rustc2 'multirust run stage2 rustc'
 
 function rag-def
-  ag "^\s*(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$argv[1]\b"
+  ag "^\s*(pub\s*)?(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$argv[1]\b"
 end
 
 function mkcd
