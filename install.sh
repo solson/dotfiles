@@ -100,7 +100,6 @@ setup-common() {
   symlink .profile
   symlink .config/fontconfig/fonts.conf
   symlink bin/vigpg
-  symlink bin/ansifilter
   symlink bin/manpager
   symlink bin/format-duration
 }
