@@ -102,6 +102,7 @@ setup-common() {
   symlink bin/vigpg
   symlink bin/manpager
   symlink bin/format-duration
+  symlink bin/notify-run
 }
 
 setup-i3() {

@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'shellwords'
+
+start_time = Time.now
+title = system(*ARGV) ? 'Command succeeded' : 'Command failed'
+end_time = Time.now
+
+seconds = end_time - start_time
+millis = (seconds * 1000).to_i
+elapsed = `format-duration #{millis}`
+title += " after #{elapsed}"
+
+system('push-notify', title, ARGV.join(' '))
