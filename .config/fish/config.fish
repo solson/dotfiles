@@ -20,6 +20,7 @@ set -x MANPAGER manpager
 ## Basics
 
 set fish_prompt_first 1
+set hostname (hostname -s)
 function fish_prompt
   set -l last_status $status
 
@@ -34,6 +35,13 @@ function fish_prompt
     set_color yellow
     echo -n "Execution time: "
     format-duration $CMD_DURATION
+  end
+
+  if [ $hostname != "neutron" ]
+    set_color green
+    echo -n $hostname
+    set_color normal
+    echo -n :
   end
 
   set_color $fish_color_cwd
