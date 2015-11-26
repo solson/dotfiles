@@ -98,7 +98,6 @@ setup-common() {
   setup-vim
   setup-fish
   symlink .profile
-  symlink .config/fontconfig/fonts.conf
   symlink bin/vigpg
   symlink bin/manpager
   symlink bin/format-duration
@@ -117,6 +116,7 @@ setup-gnome-terminal() {
 
 setup-common-gui() {
   setup-common
+  symlink .config/fontconfig/fonts.conf
   setup-i3
   setup-gnome-terminal
 }
@@ -133,6 +133,10 @@ case "$(hostname -s)" in
 
   scott-ubuntu-hci)
     setup-common-gui
+    ;;
+
+  quark)
+    setup-common
     ;;
 
   *)
