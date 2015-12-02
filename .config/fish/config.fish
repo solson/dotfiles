@@ -1,6 +1,6 @@
-# Main fish configuration
-
-## Environment
+################################################################################
+# Environment
+################################################################################
 
 set -x DEVKITPRO "$HOME/code/nds/devkitpro"
 set -x DEVKITARM "$DEVKITPRO/devkitARM"
@@ -20,8 +20,60 @@ set -x NO_AT_BRIDGE 1
 # Use a custom man page viewer.
 set -x MANPAGER manpager
 
+################################################################################
+# Misc Aliases
+################################################################################
 
-## Basics
+alias bash 'env DONT_EXEC_FISH=1 bash'
+alias node 'env NODE_NO_READLINE=1 rlwrap -pGreen node'
+alias racket 'rlwrap racket'
+alias o 'xdg-open'
+alias ls 'ls --color=auto'
+alias ll 'ls -l'
+alias la 'ls -A'
+alias lh 'ls -lh'
+
+function mkcd
+  mkdir -p $argv[1]
+  cd $argv[1]
+end
+
+################################################################################
+# Rust aliases
+################################################################################
+
+alias rustc1 'multirust run stage1 rustc'
+alias rustc2 'multirust run stage2 rustc'
+
+function rag-def
+  ag "^\s*(pub\s*)?(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$argv[1]\b"
+end
+
+function miri
+  multirust run nightly cargo run -- \
+    --sysroot $HOME/.multirust/toolchains/nightly $argv
+end
+
+################################################################################
+# Apt aliases
+################################################################################
+
+alias apti  'sudo apt-get install'
+alias aptr  'sudo apt-get remove'
+alias aptrr 'sudo apt-get purge'
+alias aptar 'sudo apt-get autoremove'
+alias aptu  'sudo apt-get update'
+alias aptg  'sudo apt-get upgrade'
+alias apts  'apt-cache search'
+alias aptw  'apt-cache show'
+
+function aptbins
+  dpkg -L $argv[1] | grep --color=none bin/
+end
+
+################################################################################
+# Prompt and title
+################################################################################
 
 set fish_prompt_first 1
 set hostname (hostname -s)
@@ -69,11 +121,16 @@ function fish_title
   echo $_ (prompt_pwd)
 end
 
+################################################################################
+# Misc
+################################################################################
+
 # Disable startup message.
 set -e fish_greeting
 
-
-## Colours
+################################################################################
+# Colours
+################################################################################
 
 set fish_color_command yellow
 set fish_color_cwd blue
@@ -84,94 +141,16 @@ set fish_color_redirection green
 set fish_color_search_match
 set fish_color_valid_path
 
+################################################################################
+# Autojump
+################################################################################
 
-## Aliases
+set -l autojump_scripts \
+  ~/.autojump/share/autojump/autojump.fish \
+  /usr/share/autojump/autojump.fish
 
-alias bash 'env DONT_EXEC_FISH=1 bash'
-alias node 'env NODE_NO_READLINE=1 rlwrap -pGreen node'
-alias cr 'cargo run'
-alias o 'xdg-open'
-alias ls 'ls --color=auto'
-alias ll 'ls -l'
-alias la 'ls -A'
-alias lh 'ls -lh'
-alias racket 'rlwrap racket'
-alias rustc1 'multirust run stage1 rustc'
-alias rustc2 'multirust run stage2 rustc'
-
-function rag-def
-  ag "^\s*(pub\s*)?(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$argv[1]\b"
-end
-
-function miri
-  multirust run nightly cargo run -- \
-    --sysroot $HOME/.multirust/toolchains/nightly $argv
-end
-
-function mkcd
-  mkdir -p $argv[1]
-  cd $argv[1]
-end
-
-alias apti  'sudo apt-get install'
-alias aptr  'sudo apt-get remove'
-alias aptrr 'sudo apt-get purge'
-alias aptar 'sudo apt-get autoremove'
-alias aptu  'sudo apt-get update'
-alias aptg  'sudo apt-get upgrade'
-alias apts  'apt-cache search'
-alias aptw  'apt-cache show'
-
-function aptbins
-  dpkg -L $argv[1] | grep --color=none bin/
-end
-
-
-## Autojump
-
-set -l autojump_script ~/.autojump/share/autojump/autojump.fish
-if [ -f $autojump_script ]
-  source $autojump_script
-end
-
-set -l autojump_script /usr/share/autojump/autojump.fish
-if [ -f $autojump_script ]
-  source $autojump_script
-end
-
-
-## TTY casting commands
-
-function start-ttycast
-  if [ ! -p ~/.ttycast/pipe ]
-    echo >&2 "Please run serve-ttycast first."
-    return 1
+for autojump_script in $autojump_scripts
+  if [ -f $autojump_script ]
+    source $autojump_script
   end
-
-  set -l columns (cat ~/.ttycast/columns)
-  set -l lines   (cat ~/.ttycast/lines)
-  resize -s $lines $columns
-  reset
-  ttyrec ~/.ttycast/pipe
-end
-
-function serve-ttycast
-  if [ (count $argv) -ne 2 ]; then
-    echo >&2 "usage: serve-ttycast <columns> <lines>"
-    return 1
-  end
-
-  set -l port    12345
-  set -l columns $argv[1]
-  set -l lines   $argv[2]
-
-  mkdir -p ~/.ttycast
-  rm -f ~/.ttycast/*
-  echo $columns > ~/.ttycast/columns
-  echo $lines   > ~/.ttycast/lines
-  mkfifo ~/.ttycast/pipe
-  echo "Serving at $columns""x$lines on http://vps.solson.me:$port/"
-  ttyplay -n ~/.ttycast/pipe | ssh vps PORT=$port ttycast -r $lines -c $columns
-  # Clean up once ttycast ends.
-  rm -f ~/.ttycast/*
 end
