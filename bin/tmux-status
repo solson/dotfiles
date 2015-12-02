@@ -1,0 +1,19 @@
+#!/bin/sh
+
+divider() {
+  echo -n ' | '
+}
+
+disk_avail() {
+  echo -n "$1 "
+  df -h "$1" | tail -n +2 | awk '{ printf("%s", $4); }'
+}
+
+disk_avail '/'
+divider
+
+disk_avail '/data'
+divider
+
+# 5 minute load average
+cut -d" " -f2 /proc/loadavg

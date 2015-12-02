@@ -102,6 +102,7 @@ setup-common() {
   symlink bin/manpager
   symlink bin/format-duration
   symlink bin/notify-run
+  symlink bin/tmux-status
 }
 
 setup-i3() {
