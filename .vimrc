@@ -60,6 +60,7 @@ nnoremap <leader>u :UltiSnipsEdit<CR>
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 let g:ycm_extra_conf_globlist = ["~/code/*"]
+let g:ycm_semantic_triggers = { 'rust': ['.', '::'] }
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
 nnoremap <leader>gD :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
