@@ -7,7 +7,12 @@ set -x DEVKITARM "$DEVKITPRO/devkitARM"
 set -x R4 "/media/$USER/R4"
 
 # PATH
-set extra_paths ~/bin /usr/lib/ccache ~/.multirust/toolchains/nightly/cargo/bin
+set extra_paths \
+  ~/bin \
+  /usr/lib/ccache \
+  ~/.multirust/toolchains/nightly/cargo/bin \
+  ~/.multirust/toolchains/stable/cargo/bin
+
 for path in $extra_paths
   if [ -d $path ]
     set fish_user_paths $fish_user_paths $path
