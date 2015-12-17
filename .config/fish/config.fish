@@ -41,7 +41,7 @@ alias lh 'ls -lh'
 function lt
   if test -f .gitignore
     set -l ignores (cat .gitignore)
-    eval tree '-I '$ignores $argv
+    eval tree -C '-I '$ignores $argv
   end
 end
 
