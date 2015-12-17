@@ -38,6 +38,13 @@ alias ll 'ls -l'
 alias la 'ls -A'
 alias lh 'ls -lh'
 
+function lt
+  if test -f .gitignore
+    set -l ignores (cat .gitignore)
+    eval tree '-I '$ignores $argv
+  end
+end
+
 function mkcd
   mkdir -p $argv[1]
   cd $argv[1]
@@ -47,8 +54,11 @@ end
 # Rust aliases
 ################################################################################
 
-alias rustc1 'multirust run stage1 rustc'
+alias rustcs 'multirust run stable rustc'
+alias rustcb 'multirust run beta rustc'
+alias rustcn 'multirust run nightly rustc'
 alias rustc2 'multirust run stage2 rustc'
+alias rustc1 'multirust run stage1 rustc'
 
 function rag-def
   ag "^\s*(pub\s*)?(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$argv[1]\b"
