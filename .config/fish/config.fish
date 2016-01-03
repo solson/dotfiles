@@ -61,7 +61,11 @@ alias rustc2 'multirust run stage2 rustc'
 alias rustc1 'multirust run stage1 rustc'
 
 function rag-def
-  ag "^\s*(pub\s*)?(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$argv[1]\b"
+  set -l name $argv[1]
+  set -e argv[1]
+
+  ag "^\s*(pub\s*)?(struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$name\b" \
+    $argv
 end
 
 function miri
