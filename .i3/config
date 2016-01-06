@@ -113,6 +113,7 @@ bar {
 for_window [window_role="^(bubble|pop-up)$"] floating enable, border normal
 for_window [class="^Gtk-recordmydesktop$"] floating enable, border normal
 for_window [class="^Xdot$"] floating enable, border normal
+for_window [title="^Chessrs$"] floating enable, border normal
 
 # Startup applications.
 exec --no-startup-id ~/.i3/autostart.sh
