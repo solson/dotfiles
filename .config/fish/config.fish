@@ -60,6 +60,10 @@ alias rustcn 'multirust run nightly rustc'
 alias rustc2 'multirust run stage2 rustc'
 alias rustc1 'multirust run stage1 rustc'
 
+alias cb 'cargo build -j8'
+alias cr 'cargo run -j8'
+alias cwc 'cargo watch check'
+
 function rag-def
   set -l name $argv[1]
   set -e argv[1]
