@@ -62,7 +62,14 @@ alias rustc1 'multirust run stage1 rustc'
 
 alias cb 'cargo build -j8'
 alias cr 'cargo run -j8'
-alias cwc 'cargo watch check'
+
+function cwc
+  cargo watch "check $argv"
+end
+
+function cwt
+  cargo watch "test $argv"
+end
 
 function rag-def
   set -l name $argv[1]
