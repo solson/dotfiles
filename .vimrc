@@ -59,19 +59,13 @@ nnoremap <leader>u :UltiSnipsEdit<CR>
 
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+let g:ycm_rust_src_path = '/home/scott/.racer-src/stable'
 let g:ycm_extra_conf_globlist = ["~/code/*"]
-let g:ycm_semantic_triggers = { 'rust': ['.', '::'] }
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
 nnoremap <leader>gD :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>g? :YcmCompleter GetDoc<CR>
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
-
-let g:racer_cmd = "/home/scott/code/y/racer/target/release/racer"
-let $RUST_SRC_PATH = "/home/scott/code/y/rust-for-racer/src"
-if isdirectory($RUST_SRC_PATH) && filereadable(g:racer_cmd)
-  Plug 'racer-rust/vim-racer'
-endif
 
 Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp  setlocal commentstring=//\ %s
