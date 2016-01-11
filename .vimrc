@@ -26,6 +26,7 @@ let g:signify_sign_change = '~'
 Plug 'kien/ctrlp.vim'
 Plug 'd11wtq/ctrlp_bdelete.vim'
 let g:ctrlp_switch_buffer = ''
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>e :CtrlP<CR>
 nmap <leader>t :CtrlPTag<CR>
