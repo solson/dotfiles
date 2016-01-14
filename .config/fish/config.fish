@@ -54,14 +54,15 @@ end
 # Rust aliases
 ################################################################################
 
-alias rustcs 'multirust run stable rustc'
-alias rustcb 'multirust run beta rustc'
-alias rustcn 'multirust run nightly rustc'
-alias rustc2 'multirust run stage2 rustc'
-alias rustc1 'multirust run stage1 rustc'
+alias rss 'multirust run stable rustc'
+alias rsb 'multirust run beta rustc'
+alias rsn 'multirust run nightly rustc'
+alias rs2 'multirust run stage2 rustc'
+alias rs1 'multirust run stage1 rustc'
 
 alias cb 'cargo build -j8'
 alias cr 'cargo run -j8'
+alias ct 'cargo test -j8'
 
 function cwc
   cargo watch "check $argv"
