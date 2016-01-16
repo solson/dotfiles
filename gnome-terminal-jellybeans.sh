@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 dconfdir="/org/gnome/terminal/legacy/profiles:"
 profile_id="$(dconf list /org/gnome/terminal/legacy/profiles:/ | sed -e 's/\///g' -n -e '1p')"

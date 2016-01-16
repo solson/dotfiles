@@ -1,6 +1,6 @@
 #!/bin/bash
 
-vim -MRn \
+exec vim -MRn \
   -c 'set ft=man nonumber nolist colorcolumn=' \
   -c 'map q :q<CR>' \
   < /dev/tty \
