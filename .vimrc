@@ -77,6 +77,7 @@ autocmd FileType matlab setlocal commentstring=%\ %s
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
 Plug 'idris-hackers/idris-vim'
+Plug 'LnL7/vim-nix'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'rking/ag.vim'
