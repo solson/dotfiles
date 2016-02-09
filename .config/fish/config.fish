@@ -26,6 +26,28 @@ set -x NO_AT_BRIDGE 1
 set -x MANPAGER manpager
 
 ################################################################################
+# CMPT 442 Aliases
+################################################################################
+
+alias 442mk 'make SML=/usr ARCH=x86-linux'
+
+function 442test
+  442mk compile; and echo; and sml @SMLload=./sources -u tests/$argv[1].tig
+end
+
+function 442test-s
+  442mk compile; and echo; and sml @SMLload=./sources -u (echo $argv | psub)
+end
+
+function 442test-ast
+  442mk compile; and echo; and sml @SMLload=./sources -a tests/$argv[1].tig
+end
+
+function 442test-ast-s
+  442mk compile; and echo; and sml @SMLload=./sources -a (echo $argv | psub)
+end
+
+################################################################################
 # Misc Aliases
 ################################################################################
 
