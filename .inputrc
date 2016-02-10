@@ -1,0 +1,6 @@
+# Include the system-wide defaults.
+$include /etc/inputrc
+
+# Up and down arrow search lines with the same prefix.
+"\e[A": history-search-backward
+"\e[B": history-search-forward

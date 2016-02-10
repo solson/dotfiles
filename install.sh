@@ -97,6 +97,7 @@ setup-common() {
   setup-git
   setup-vim
   setup-fish
+  symlink .inputrc
   symlink .profile
   symlink bin/vigpg
   symlink bin/manpager
