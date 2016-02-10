@@ -128,6 +128,8 @@ end
 # Nix aliases
 ################################################################################
 
+alias nix-repl 'nix-repl "$HOME/.nix-repl.nix"'
+
 function nixs
   # Put .* between each argv string.
   set -l pattern (printf "%s\n" $argv | paste -sd,)
