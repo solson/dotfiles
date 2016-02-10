@@ -177,6 +177,7 @@ set browsedir=buffer " GUI open starts in dir of buffer's file
 autocmd FileType go setlocal noet
 autocmd FileType asm setlocal sw=8 ts=8 nosmartindent
 autocmd FileType c,cpp setlocal sw=4 ts=4
+autocmd FileType nix setlocal sw=2 ts=2
 
 " Disable annoying as-you-type trailing whitespace highlighting
 let go_highlight_trailing_whitespace_error = 0
