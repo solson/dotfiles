@@ -30,7 +30,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>e :CtrlP<CR>
 nmap <leader>t :CtrlPTag<CR>
-nmap <leader>l :CtrlPLine<CR>
 
 Plug 'junegunn/vim-easy-align'
 vnoremap <silent> <Enter> :EasyAlign<Enter>
@@ -135,6 +134,10 @@ set wildmode=longest,list:longest
 set spelllang=en_ca
 set complete+=kspell
 autocmd FileType markdown,tex setlocal spell
+
+" Use <leader>l to switch to the last active buffer instead of C-^ since C-^ is
+" mosh's prefix command.
+noremap <leader>l <C-^>
 
 " Correct the nearest previous spelling error.
 inoremap <C-s> <Esc>[s1z=`]a
