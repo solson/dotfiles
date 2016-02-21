@@ -81,8 +81,6 @@ setup-vim() {
   symlink .vim/UltiSnips
   symlink .vim/autoload/plug.vim &&
     msg Note "remember to run :PlugInstall and build YCM"
-  symlink .gtkrc-2.0.mine &&
-    msg Note "make sure .gtkrc-2.0 includes .gtkrc-2.0.mine (run LXAppearance)"
 
   symlink-absolute "$HOME/.config/nvim" "$HOME/.vim"
   symlink-absolute "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
@@ -118,6 +116,8 @@ setup-gnome-terminal() {
 
 setup-common-gui() {
   setup-common
+  symlink .gtkrc-2.0.mine &&
+    msg Note "make sure .gtkrc-2.0 includes .gtkrc-2.0.mine (run LXAppearance)"
   symlink .config/fontconfig/fonts.conf
   setup-i3
   setup-gnome-terminal
