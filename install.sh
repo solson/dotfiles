@@ -139,6 +139,7 @@ case "$(hostname -s)" in
 
   quark)
     setup-common
+    symlink .tmux.conf
     ;;
 
   *)
