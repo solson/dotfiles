@@ -1,3 +1,5 @@
+[include]
+	path = .gitconfig.private
 [user]
 	name = Scott Olson
 	email = scott@solson.me
