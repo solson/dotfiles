@@ -25,6 +25,9 @@ set -x NO_AT_BRIDGE 1
 # Use a custom man page viewer.
 set -x MANPAGER manpager
 
+# Tell SSH where the ssh-agent socket is.
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
+
 ################################################################################
 # CMPT 442 Aliases
 ################################################################################
