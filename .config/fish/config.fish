@@ -34,20 +34,12 @@ set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
 
 alias 442mk 'make SML=/usr ARCH=x86-linux'
 
+function 442run
+  442mk compile; and echo; and sml @SMLload=./sources $argv
+end
+
 function 442test
-  442mk compile; and echo; and sml @SMLload=./sources -u tests/$argv[1].tig
-end
-
-function 442test-s
-  442mk compile; and echo; and sml @SMLload=./sources -u (echo $argv | psub)
-end
-
-function 442test-ast
-  442mk compile; and echo; and sml @SMLload=./sources -a tests/$argv[1].tig
-end
-
-function 442test-ast-s
-  442mk compile; and echo; and sml @SMLload=./sources -a (echo $argv | psub)
+  442run $argv[1] (echo $argv[2..-1] | psub)
 end
 
 ################################################################################
