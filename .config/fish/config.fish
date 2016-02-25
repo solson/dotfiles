@@ -67,13 +67,6 @@ function mkcd
   cd $argv[1]
 end
 
-function tmux-mouse -a state
-  tmux set -g mouse-select-pane $state
-  tmux set -g mode-mouse $state
-  tmux set -g mouse-resize-pane $state
-  tmux set -g mouse-select-window $state
-end
-
 ################################################################################
 # Rust aliases
 ################################################################################
