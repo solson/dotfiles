@@ -102,6 +102,14 @@ function miri
     --sysroot $HOME/.multirust/toolchains/nightly $argv
 end
 
+function print-mir -a file func
+  multirust run nightly rustc \
+    --crate-type lib \
+    -Z unstable-options \
+    --unpretty mir=$func \
+    $file
+end
+
 ################################################################################
 # Apt aliases
 ################################################################################
