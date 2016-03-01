@@ -39,7 +39,7 @@ function 442run
 end
 
 function 442test
-  442run $argv[1] (echo $argv[2..-1] | psub)
+  442run $argv[1..-2] (echo $argv[-1] | psub)
 end
 
 ################################################################################
