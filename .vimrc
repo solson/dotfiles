@@ -72,6 +72,7 @@ autocmd FileType c,cpp  setlocal commentstring=//\ %s
 autocmd FileType idris  setlocal commentstring=--\ %s
 autocmd FileType racket setlocal commentstring=;\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
+autocmd FileType sml setlocal commentstring=(*%s*)
 
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
