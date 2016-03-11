@@ -254,9 +254,7 @@ if &term =~ '^screen'
 endif
 
 " Adjust spelling error syntax highlighting. Must come after `colorscheme`.
-highlight clear SpellBad
-highlight clear SpellCap
-highlight clear SpellLocal
-highlight SpellBad   cterm=bold,undercurl ctermfg=red
-highlight SpellCap   cterm=bold,undercurl ctermfg=blue
-highlight SpellLocal cterm=bold,undercurl ctermfg=cyan
+highlight SpellBad   ctermfg=9  ctermbg=NONE
+highlight SpellCap   ctermfg=12 ctermbg=NONE
+highlight SpellRare  ctermfg=13 ctermbg=NONE
+highlight SpellLocal ctermfg=14 ctermbg=NONE
