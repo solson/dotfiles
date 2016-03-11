@@ -99,7 +99,9 @@ end
 
 function miri
   multirust run nightly cargo run -- \
-    --sysroot $HOME/.multirust/toolchains/nightly $argv
+    --sysroot $HOME/.multirust/toolchains/nightly \
+    --crate-type lib \
+    $argv
 end
 
 function print-mir -a file func
