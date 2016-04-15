@@ -10,8 +10,7 @@ set -x R4 "/media/$USER/R4"
 set extra_paths \
   ~/bin \
   /usr/lib/ccache \
-  ~/.multirust/toolchains/nightly/cargo/bin \
-  ~/.multirust/toolchains/stable/cargo/bin
+  ~/.cargo/bin
 
 for path in $extra_paths
   if [ -d $path ]
@@ -71,23 +70,9 @@ end
 # Rust aliases
 ################################################################################
 
-alias rss 'multirust run stable rustc'
-alias rsb 'multirust run beta rustc'
-alias rsn 'multirust run nightly rustc'
-alias rs2 'multirust run stage2 rustc'
-alias rs1 'multirust run stage1 rustc'
-
 alias cb 'cargo build -j8'
 alias cr 'cargo run -j8'
 alias ct 'cargo test -j8'
-
-function cwc
-  cargo watch "check $argv"
-end
-
-function cwt
-  cargo watch "test $argv"
-end
 
 function rag-def
   set -l name $argv[1]
@@ -98,14 +83,20 @@ function rag-def
 end
 
 function miri
-  multirust run nightly cargo run -- \
-    --sysroot $HOME/.multirust/toolchains/nightly \
-    --crate-type lib \
+  if [ -z $MIRI_TOOLCHAIN ]
+    set MIRI_TOOLCHAIN x86_64-unknown-linux-gnu
+  end
+  set -l toolchain nightly-$MIRI_TOOLCHAIN
+  echo "Using Rust toolchain: $toolchain"
+  rustup run $toolchain cargo run \
+    --target $MIRI_TOOLCHAIN \
+    -- \
+    --sysroot $HOME/.multirust/toolchains/$toolchain \
     $argv
 end
 
 function print-mir -a file func
-  multirust run nightly rustc \
+  rustup run nightly rustc \
     --crate-type lib \
     -Z unstable-options \
     --unpretty mir=$func \
