@@ -74,6 +74,10 @@ autocmd FileType racket setlocal commentstring=;\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
 autocmd FileType sml setlocal commentstring=(*%s*)
 
+" For Overtone.
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-fireplace'
+
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
 Plug 'idris-hackers/idris-vim'
