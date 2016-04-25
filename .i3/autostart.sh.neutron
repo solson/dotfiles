@@ -32,6 +32,9 @@ udiskie --smart-tray &
 # Set keyboard layout.
 setxkbmap -layout us -option -option caps:escape -option compose:menu &
 
+# Remap Scroll Lock to Caps Lock since I need it for Bitwig.
+xmodmap -e 'keysym Scroll_Lock = Caps_Lock' &
+
 # Set desktop background colour.
 hsetroot -solid '#0d0d0d' &
 
