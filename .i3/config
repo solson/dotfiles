@@ -111,11 +111,8 @@ bar {
 
 # Always float these applications.
 for_window [window_role="^(bubble|pop-up)$"] floating enable, border normal
-for_window [class="^Xdot$"] floating enable, border normal
 for_window [title="^Chessrs$"] floating enable, border normal
-for_window [class="^qemu.*$"] floating enable, border normal
-for_window [class="^Qjackctl$"] floating enable, border normal
-for_window [class="^Pavucontrol$"] floating enable, border normal
+for_window [class="^(Xdot|Chessrs|Qjackctl|Pavucontrol|Paman|Pavumeter)$"] floating enable, border normal
 
 # Startup applications.
 exec --no-startup-id ~/.i3/autostart.sh
