@@ -89,6 +89,13 @@ function mir -a code
   print-mir (echo "pub fn mir$code" | psub) mir
 end
 
+function miri -a code
+  cargo run -- \
+    --crate-type=lib \
+    --crate-name=r \
+    (echo "#![feature(custom_attribute)] #![allow(unused_attributes)] #[miri_run] pub fn r() -> $code" | psub)
+end
+
 ################################################################################
 # Apt aliases
 ################################################################################
