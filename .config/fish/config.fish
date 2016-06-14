@@ -28,20 +28,6 @@ set -x MANPAGER manpager
 set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
 
 ################################################################################
-# CMPT 442 Aliases
-################################################################################
-
-alias 442mk 'make SML=/usr ARCH=x86-linux'
-
-function 442run
-  442mk compile; and echo; and sml @SMLload=./sources $argv
-end
-
-function 442test
-  442run $argv[1..-2] (echo $argv[-1] | psub)
-end
-
-################################################################################
 # Misc Aliases
 ################################################################################
 
