@@ -61,9 +61,17 @@ function lt
   end
 end
 
-function mkcd
-  mkdir -p $argv[1]
-  cd $argv[1]
+function mkcd -a dir
+  mkdir -p $dir
+  cd $dir
+end
+
+function with -a var_name value
+  set -l cmd $argv[3..-1]
+  set -l saved $$var_name
+  set -x $var_name $value
+  eval $argv[3] \"$argv[4..-1]\"
+  set -x $var_name $saved
 end
 
 ################################################################################
@@ -82,25 +90,17 @@ function rag-def
     $argv
 end
 
-function miri
-  if [ -z $MIRI_TOOLCHAIN ]
-    set MIRI_TOOLCHAIN x86_64-unknown-linux-gnu
-  end
-  set -l toolchain nightly-$MIRI_TOOLCHAIN
-  echo "Using Rust toolchain: $toolchain"
-  rustup run $toolchain cargo run \
-    --target $MIRI_TOOLCHAIN \
-    -- \
-    --sysroot $HOME/.multirust/toolchains/$toolchain \
-    $argv
-end
-
 function print-mir -a file func
   rustup run nightly rustc \
+    --crate-name print_mir \
     --crate-type lib \
     -Z unstable-options \
     --unpretty mir=$func \
     $file
+end
+
+function mir -a code
+  print-mir (echo "pub fn mir$code" | psub) mir
 end
 
 ################################################################################
