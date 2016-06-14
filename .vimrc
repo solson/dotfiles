@@ -222,7 +222,8 @@ endfunction
 " Clear search highlights
 nmap <silent> <leader>n :silent :nohlsearch<CR>
 
-" Paste from X11 clipboard
+" Copy and paste using X11 clipboard.
+vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
