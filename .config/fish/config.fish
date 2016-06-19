@@ -90,10 +90,7 @@ function mir -a code
 end
 
 function miri -a code
-  cargo run -- \
-    --crate-type=lib \
-    --crate-name=r \
-    (echo "#![feature(custom_attribute)] #![allow(unused_attributes)] #[miri_run] pub fn r() -> $code" | psub)
+  cargo run -- --crate-name m (echo "fn main() { $argv }" | psub)
 end
 
 ################################################################################
