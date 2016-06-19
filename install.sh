@@ -91,12 +91,17 @@ setup-fish() {
     msg Note "you may want to run fish_update_completions"
 }
 
+setup-bash() {
+  symlink .bashrc
+  symlink .bash_profile
+}
+
 setup-common() {
   setup-git
   setup-vim
   setup-fish
+  setup-bash
   symlink .inputrc
-  symlink .profile
   symlink bin/vigpg
   symlink bin/manpager
   symlink bin/format-duration
