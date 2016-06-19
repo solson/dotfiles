@@ -102,6 +102,7 @@ setup-common() {
   setup-fish
   setup-bash
   symlink .inputrc
+  symlink .irbrc
   symlink bin/vigpg
   symlink bin/manpager
   symlink bin/format-duration
