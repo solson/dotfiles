@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 exec vim -MRn \
   -c 'set ft=man nonumber nolist colorcolumn=' \

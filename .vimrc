@@ -178,7 +178,7 @@ if has('mouse')
 endif
 
 " GUI options
-set guifont=Terminess\ Powerline\ 10
+set guifont=Terminus\ 10
 set guioptions-=mrLtT " Disable menus, toolbar, scrollbars
 set browsedir=buffer " GUI open starts in dir of buffer's file
 
@@ -241,7 +241,7 @@ nnoremap <leader>vs :source $MYVIMRC<cr>
 set dictionary=/usr/share/dict/words
 
 " Because vim is too stupid to figure out these support 256 colors
-if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'xfce4-terminal'
+if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'xfce4-terminal' || exists("$KONSOLE_PROFILE_NAME")
   set t_Co=256
 endif
 

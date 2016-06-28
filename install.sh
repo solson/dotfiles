@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Create symlinks in ~ for files in the current directory.
 
@@ -41,10 +41,10 @@ symlink() {
       ;;
   esac
 
-  symlink-absolute "$dest_path" "$source_path"
+  symlink_absolute "$dest_path" "$source_path"
 }
 
-symlink-absolute() {
+symlink_absolute() {
   local dest_path="$1"
   local source_path="$2"
 
@@ -70,37 +70,37 @@ symlink-absolute() {
 
 ################################################################################
 
-setup-git() {
+setup_git() {
   symlink .gitconfig
   symlink .gitignore.global
 }
 
-setup-vim() {
+setup_vim() {
   mkdir -p ~/.vim/backup
   symlink .vimrc
   symlink .vim/UltiSnips
   symlink .vim/autoload/plug.vim &&
     msg Note "remember to run :PlugInstall and build YCM"
 
-  symlink-absolute "$HOME/.config/nvim" "$HOME/.vim"
-  symlink-absolute "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
+  symlink_absolute "$HOME/.config/nvim" "$HOME/.vim"
+  symlink_absolute "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
 }
 
-setup-fish() {
+setup_fish() {
   symlink .config/fish/config.fish &&
     msg Note "you may want to run fish_update_completions"
 }
 
-setup-bash() {
+setup_bash() {
   symlink .bashrc
   symlink .bash_profile
 }
 
-setup-common() {
-  setup-git
-  setup-vim
-  setup-fish
-  setup-bash
+setup_common() {
+  setup_git
+  setup_vim
+  setup_fish
+  setup_bash
   symlink .inputrc
   symlink .irbrc
   symlink bin/vigpg
@@ -110,41 +110,45 @@ setup-common() {
   symlink bin/tmux-status
 }
 
-setup-i3() {
+setup_i3() {
   symlink .i3/config
   symlink .i3/autostart.sh        ".i3/autostart.sh.$(hostname -s)"
   symlink .config/i3status/config ".config/i3status/config.$(hostname -s)"
 }
 
-setup-gnome-terminal() {
+setup_gnome_terminal() {
   msg Note "run ./gnome-terminal-jellybeans.sh to set gnome-terminal settings"
 }
 
-setup-common-gui() {
-  setup-common
+setup_common_gui() {
+  setup_common
   symlink .gtkrc-2.0.mine &&
     msg Note "make sure .gtkrc-2.0 includes .gtkrc-2.0.mine (run LXAppearance)"
   symlink .config/fontconfig/fonts.conf
-  setup-i3
-  setup-gnome-terminal
+  setup_i3
+  setup_gnome_terminal
 }
 
 case "$(hostname -s)" in
+  conway)
+    setup_common
+    ;;
+
   neutron)
-    setup-common-gui
+    setup_common_gui
     symlink .tmux.conf
     ;;
 
   spark)
-    setup-common-gui
+    setup_common_gui
     ;;
 
   scott-ubuntu-hci)
-    setup-common-gui
+    setup_common_gui
     ;;
 
   quark)
-    setup-common
+    setup_common
     symlink .tmux.conf
     ;;
 
