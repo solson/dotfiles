@@ -164,9 +164,16 @@ function fish_prompt
 end
 
 function fish_right_prompt
-  set_color yellow
   __fish_git_prompt '%s'
 end
+
+set __fish_git_prompt_char_stateseparator ''
+set __fish_git_prompt_describe_style branch
+set __fish_git_prompt_showcolorhints 1
+set __fish_git_prompt_showdirtystate 1
+set __fish_git_prompt_showstashstate 1
+set __fish_git_prompt_showuntrackedfiles 1
+set __fish_git_prompt_showupstream informative
 
 function fish_title
   echo $_ (prompt_pwd)
