@@ -132,6 +132,7 @@ setup_common_gui() {
 case "$(hostname -s)" in
   conway)
     setup_common
+    symlink .tmux.conf
     ;;
 
   neutron)
