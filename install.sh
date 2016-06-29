@@ -140,10 +140,6 @@ case "$(hostname -s)" in
     symlink .tmux.conf
     ;;
 
-  spark)
-    setup_common_gui
-    ;;
-
   scott-ubuntu-hci)
     setup_common_gui
     ;;
