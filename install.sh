@@ -103,6 +103,7 @@ setup_common() {
   setup_bash
   symlink .inputrc
   symlink .irbrc
+  symlink .nix-repl.nix
   symlink bin/vigpg
   symlink bin/manpager
   symlink bin/format-duration
