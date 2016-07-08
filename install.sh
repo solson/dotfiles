@@ -54,8 +54,13 @@ symlink_absolute() {
   fi
 
   if [ -L "$dest_path" ]; then
-    msg Up-to-date "$dest_path"
-    return 1
+    local current_dest="$(readlink "$dest_path")"
+    if [ "$current_dest" != "$source_path" ]; then
+      msg Error "$dest_path points to to $current_dest"
+    else
+      msg Up-to-date "$dest_path"
+      return 1
+    fi
   fi
 
   if [ -e "$dest_path" ]; then
@@ -104,11 +109,11 @@ setup_common() {
   symlink .inputrc
   symlink .irbrc
   symlink .nix-repl.nix
-  symlink bin/vigpg
-  symlink bin/manpager
-  symlink bin/format-duration
-  symlink bin/notify-run
-  symlink bin/tmux-status
+  symlink .bin/vigpg
+  symlink .bin/manpager
+  symlink .bin/format-duration
+  symlink .bin/notify-run
+  symlink .bin/tmux-status
 }
 
 setup_i3() {
