@@ -28,17 +28,22 @@ set -x MANPAGER manpager
 set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
 
 ################################################################################
-# Misc Aliases
+# Misc functions
 ################################################################################
 
 alias bash 'env DONT_EXEC_FISH=1 bash'
-alias node 'env NODE_NO_READLINE=1 rlwrap -pGreen node'
-alias racket 'rlwrap racket'
 alias o 'xdg-open'
-alias ls 'ls --color=auto'
-alias ll 'ls -l'
+alias ll 'ls -lh'
 alias la 'ls -A'
-alias lh 'ls -lh'
+
+function ls
+  command ls \
+    --color=always \
+    --format=across \
+    --group-directories-first \
+    $argv \
+    | filter-nix-store
+end
 
 function lt
   if test -f .gitignore
@@ -58,6 +63,68 @@ function with -a var_name value
   set -x $var_name $value
   eval $argv[3] \"$argv[4..-1]\"
   set -x $var_name $saved
+end
+
+################################################################################
+# Nix functions
+################################################################################
+
+alias nix-repl 'nix-repl "$HOME/.nix-repl.nix"'
+
+alias nb nix-build
+alias nbb 'nix-build --no-out-link "<nixpkgs>" -A'
+alias ne nix-env
+alias nr 'nix-repl "<nixpkgs>" "<nixpkgs/nixos>"'
+alias nre 'sudo nixos-rebuild switch'
+alias ns nix-shell
+
+function nbins -a pkg
+  set -l store_path (nbb $pkg)
+  and ll $store_path/bin
+end
+
+function nwhich
+  for arg in $argv
+    set -l path (which $arg)
+    and set path (readlink $path)
+    and echo $path | filter-nix-store
+  end
+end
+
+# Usage:                    Equivalent:
+#   nu                        nix-shell -p
+#   nu a b                    nix-shell -p a b
+#   nu a b -- foo bar         nix-shell -p a b --run 'foo bar'
+function nu
+  if set -l split (contains -i -- -- $argv)
+    set -l before (math $split - 1)
+    set -l after  (math $split + 1)
+    set -q argv[$before]; and set -l packages $argv[1..$before]
+    set -q argv[$after];  and set -l command  $argv[$after..-1]
+    nix-shell -p $packages --run "$command"
+  else
+    nix-shell -p $argv
+  end
+end
+
+# Usage:                    Equivalent:
+#   nur foo -b baz            nu foo -- foo -b baz
+function nur
+  nix-shell -p $argv[1] --run "$argv"
+end
+
+# Abbreviate nix store paths:
+#   /nix/store/abcdefghijklmnopqrstuvwxyz012345-foo/bar
+# becomes
+#   /ns/abcdefg*-foo/bar
+function filter-nix-store
+  ruby -pe '
+    $_.gsub!(%r"/nix/store/(.*?)([a-z0-9]{32})-") do
+      "/ns/#{$1}#{$2[0..6]}*-"
+    end
+
+    $_.gsub!(/Dec 31  1969 /, "")
+  '
 end
 
 ################################################################################
@@ -91,35 +158,6 @@ end
 
 function miri -a code
   cargo run -- --crate-name m (echo "fn main() { $argv }" | psub)
-end
-
-################################################################################
-# Apt aliases
-################################################################################
-
-alias apti  'sudo apt-get install'
-alias aptr  'sudo apt-get remove'
-alias aptrr 'sudo apt-get purge'
-alias aptar 'sudo apt-get autoremove'
-alias aptu  'sudo apt-get update'
-alias aptg  'sudo apt-get upgrade'
-alias apts  'apt-cache search'
-alias aptw  'apt-cache show'
-
-function aptbins
-  dpkg -L $argv[1] | grep --color=none bin/
-end
-
-################################################################################
-# Nix aliases
-################################################################################
-
-alias nix-repl 'nix-repl "$HOME/.nix-repl.nix"'
-
-function nixs
-  # Put .* between each argv string.
-  set -l pattern (printf "%s\n" $argv | paste -sd,)
-  nix-env -qaP ".*$pattern.*" --description
 end
 
 ################################################################################
