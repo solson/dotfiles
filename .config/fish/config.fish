@@ -78,13 +78,16 @@ alias nr 'nix-repl "<nixpkgs>" "<nixpkgs/nixos>"'
 alias nre 'sudo nixos-rebuild switch'
 alias ns nix-shell
 
-function ni -a code
-  nix-instantiate --strict --eval -E '
+function ni
+  nix-instantiate --strict --eval -E "
     let
-      nixpkgs = import <nixpkgs> {};
       nixos = import <nixpkgs/nixos> {};
+      nixpkgs = import <nixpkgs> {};
+      p = nixpkgs;
     in
-  '$code
+    with import ~/.nix-repl.nix;
+    $argv
+  "
 end
 
 function nbins -a pkg
