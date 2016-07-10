@@ -37,12 +37,11 @@ alias ll 'ls -lh'
 alias la 'ls -A'
 
 function ls
-  command ls \
-    --color=always \
-    --format=across \
-    --group-directories-first \
-    $argv \
-    | filter-nix-store
+  set -l options
+  if isatty stdout
+    set options --color=always --format=across --group-directories-first
+  end
+  command ls $options $argv | filter-nix-paths
 end
 
 function lt
@@ -99,7 +98,7 @@ function nwhich
   for arg in $argv
     set -l path (which $arg)
     and set path (readlink $path)
-    and echo $path | filter-nix-store
+    and echo $path | filter-nix-paths
   end
 end
 
@@ -129,7 +128,7 @@ end
 #   /nix/store/abcdefghijklmnopqrstuvwxyz012345-foo/bar
 # becomes
 #   /ns/abcdefg*-foo/bar
-function filter-nix-store
+function filter-nix-paths
   ruby -pe '
     $_.gsub!(%r"/nix/store/(.*?)([a-z0-9]{32})-") do
       "/ns/#{$1}#{$2[0..6]}*-"
