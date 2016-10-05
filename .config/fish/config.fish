@@ -188,7 +188,7 @@ end
 ################################################################################
 
 set fish_prompt_first 1
-set hostname (hostname -s)
+set hostname (uname -n)
 function fish_prompt
   set -l last_status $status
 
