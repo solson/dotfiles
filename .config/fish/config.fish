@@ -10,11 +10,12 @@ set -x R4 "/media/$USER/R4"
 set extra_paths \
   ~/bin \
   ~/.bin \
-  ~/.cargo/bin
+  ~/.cargo/bin \
+  ~/.perl6/bin
 
 for path in $extra_paths
   if test -d $path
-    set fish_user_paths $fish_user_paths $path
+    set PATH $PATH $path
   end
 end
 
