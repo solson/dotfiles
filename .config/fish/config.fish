@@ -205,7 +205,13 @@ function fish_prompt
     format-duration $CMD_DURATION
   end
 
-  if [ $hostname != "neutron" ]
+  if [ -n "$IN_NIX_SHELL" ]
+    set_color magenta
+    echo -n nix:
+    set_color normal
+  end
+
+  if [ $hostname != "conway" ]
     set_color green
     echo -n $hostname
     set_color normal
