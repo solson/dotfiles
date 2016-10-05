@@ -247,7 +247,7 @@ endif
 
 " Use a nice colorscheme if 256 colors are available
 if &t_Co == 256 || has("gui_running")
-  colorscheme jellybeans
+  colorscheme solson
 endif
 
 " Fix handling of Ctrl-arrowkeys inside tmux, which provides xterm-style keys
@@ -258,9 +258,3 @@ if &term =~ '^screen'
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
 endif
-
-" Adjust spelling error syntax highlighting. Must come after `colorscheme`.
-highlight SpellBad   ctermfg=9  ctermbg=NONE
-highlight SpellCap   ctermfg=12 ctermbg=NONE
-highlight SpellRare  ctermfg=13 ctermbg=NONE
-highlight SpellLocal ctermfg=14 ctermbg=NONE
