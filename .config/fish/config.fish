@@ -73,22 +73,8 @@ alias nix-repl 'nix-repl "$HOME/.nix-repl.nix"'
 
 alias nb nix-build
 alias nbb 'nix-build --no-out-link "<nixpkgs>" -A'
-alias ne nix-env
 alias nr 'nix-repl "<nixpkgs>" "<nixpkgs/nixos>"'
 alias nre 'sudo nixos-rebuild switch'
-alias ns nix-shell
-
-function ni
-  nix-instantiate --strict --eval -E "
-    let
-      nixos = import <nixpkgs/nixos> {};
-      nixpkgs = import <nixpkgs> {};
-      p = nixpkgs;
-    in
-    with import ~/.nix-repl.nix;
-    $argv
-  "
-end
 
 function nbins -a pkg
   set -l store_path (nbb $pkg)
@@ -103,10 +89,14 @@ function nwhich
   end
 end
 
-# Usage:                    Equivalent:
-#   nu                        nix-shell -p
-#   nu a b                    nix-shell -p a b
-#   nu a b -- foo bar         nix-shell -p a b --run 'foo bar'
+# Usage:
+#   nu
+#   nu a b
+#   nu a b -- foo bar
+# Equivalent:
+#   nix-shell -p
+#   nix-shell -p a b
+#   nix-shell -p a b --run 'foo bar'
 function nu
   if set -l split (contains -i -- -- $argv)
     set -l before (math $split - 1)
@@ -119,10 +109,31 @@ function nu
   end
 end
 
-# Usage:                    Equivalent:
-#   nur foo -b baz            nu foo -- foo -b baz
-function nur
+# Usage:
+#   nx foo -b baz
+# Equivalent:
+#   nx foo -- foo -b baz
+function nx
   nix-shell -p $argv[1] --run "$argv"
+end
+
+function nur
+  set_color red
+  echo '"nur" is deprecated, use "nx"'
+  set_color normal
+  nx $argv
+end
+
+function nml
+  if set -l split (contains -i -- -- $argv)
+    set -l before (math $split - 1)
+    set -l after  (math $split + 1)
+    set -q argv[$before]; and set -l packages $argv[1..$before]
+    set -q argv[$after];  and set -l command  $argv[$after..-1]
+    nix-shell -p "(with ocamlPackages_4_02; [utop findlib $packages])" --run "$command"
+  else
+    nix-shell -p "(with ocamlPackages_4_02; [utop findlib $argv])"
+  end
 end
 
 # Abbreviate nix store paths:
@@ -151,12 +162,12 @@ function rag-def
   set -l name $argv[1]
   set -e argv[1]
 
-  ag "^\s*(pub\s*)?(type|struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$name\b" \
+  ag "^[^({]*(type|struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$name\b" \
     $argv
 end
 
 function print-mir -a file func
-  rustup run nightly rustc \
+  rustc \
     --crate-name print_mir \
     --crate-type lib \
     -Z unstable-options \
