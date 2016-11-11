@@ -2,6 +2,11 @@
 set nocompatible
 syntax on
 
+let s:at_work = filereadable(expand('~/.vim/vimrc-work.vim'))
+if s:at_work
+  source ~/.vim/vimrc-work.vim
+endif
+
 " Remap leader to ,
 noremap \ ,
 let mapleader = ","
@@ -57,10 +62,12 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 nnoremap <leader>u :UltiSnipsEdit<CR>
 
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-let g:ycm_rust_src_path = '/home/scott/.racer-src/stable'
-let g:ycm_extra_conf_globlist = ["~/code/*"]
+if !s:at_work
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+  let g:ycm_rust_src_path = '/home/scott/.racer-src/stable'
+  let g:ycm_extra_conf_globlist = ["~/code/*"]
+endif
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
 nnoremap <leader>gD :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
@@ -73,10 +80,6 @@ autocmd FileType idris  setlocal commentstring=--\ %s
 autocmd FileType racket setlocal commentstring=;\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
 autocmd FileType sml setlocal commentstring=(*%s*)
-
-" For Overtone.
-Plug 'tpope/vim-classpath'
-Plug 'tpope/vim-fireplace'
 
 Plug 'LnL7/vim-nix'
 Plug 'Nonius/cargo.vim'
