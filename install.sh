@@ -95,6 +95,7 @@ setup_vim() {
 setup_fish() {
   symlink .config/fish/config.fish &&
     msg Note "you may want to run fish_update_completions"
+  symlink .config/fish/autojump.fish
 }
 
 setup_bash() {
@@ -137,6 +138,11 @@ setup_common_gui() {
 }
 
 case "$(hostname -s)" in
+  olsons-linux0)
+    setup_common
+    symlink .tmux.conf
+    ;;
+
   conway)
     setup_common
     symlink .tmux.conf

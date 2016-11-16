@@ -188,7 +188,7 @@ end
 ################################################################################
 
 set fish_prompt_first 1
-set hostname (uname -n)
+set hostname (uname -n | cut -d. -f1)
 function fish_prompt
   set -l last_status $status
 
@@ -272,10 +272,20 @@ set fish_color_valid_path
 
 set -l autojump_scripts \
   ~/.autojump/share/autojump/autojump.fish \
-  /usr/share/autojump/autojump.fish
+  /usr/share/autojump/autojump.fish \
+  ~/.config/fish/autojump.fish
 
 for autojump_script in $autojump_scripts
   if [ -f $autojump_script ]
-    source $autojump_script
+    . $autojump_script
   end
+end
+
+################################################################################
+# Work-specific configuration
+################################################################################
+
+set -l work_config  ~/.dotfiles-at-work/config-work.fish
+if test -f $work_config
+  . $work_config
 end

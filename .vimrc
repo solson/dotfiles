@@ -2,9 +2,9 @@
 set nocompatible
 syntax on
 
-let s:at_work = filereadable(expand('~/.vim/vimrc-work.vim'))
+let s:at_work = filereadable(expand('~/.dotfiles-at-work/vimrc-work.vim'))
 if s:at_work
-  source ~/.vim/vimrc-work.vim
+  source ~/.dotfiles-at-work/vimrc-work.vim
 endif
 
 " Remap leader to ,
