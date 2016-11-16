@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-# FIXME: Remove this Nix-specific bit.
-if command -v nix-shell >/dev/null 2>&1; then
+if command -v ansifilter >/dev/null 2>&1; then
+  ansifilter=ansifilter
+elif command -v nix-shell >/dev/null 2>&1; then
   ansifilter='nix-shell -p ansifilter --run ansifilter'
 else
-  ansifilter=ansifilter
+  ansifilter='col -bx'
 fi
 
 exec vim -MRn \
