@@ -68,6 +68,7 @@ if !s:at_work
   let g:ycm_rust_src_path = '/home/scott/.racer-src/stable'
   let g:ycm_extra_conf_globlist = ["~/code/*"]
 endif
+let g:ycm_autoclose_preview_window_after_completion = 1
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
 nnoremap <leader>gD :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
