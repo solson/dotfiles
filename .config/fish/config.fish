@@ -180,7 +180,11 @@ function mir -a code
 end
 
 function miri -a code
-  cargo run -- --crate-name m (echo "fn main() { $argv }" | psub)
+  miri-mini "fn main() { $argv }"
+end
+
+function miri-mini -a code
+  cargo run -- --crate-name m -Z mir-opt-level=3 (echo $code | psub)
 end
 
 ################################################################################
