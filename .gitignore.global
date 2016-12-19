@@ -1,3 +1,5 @@
 *.sw?
 *~
 tags
+scott-notes/
+nix-shell.sh
