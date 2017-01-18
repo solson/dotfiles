@@ -3,7 +3,8 @@
 require 'shellwords'
 
 start_time = Time.now
-title = system(*ARGV) ? 'Success' : 'Failure'
+exit_code = system(*ARGV)
+title = exit_code ? 'Success' : 'Failure'
 end_time = Time.now
 
 seconds = end_time - start_time
@@ -15,3 +16,5 @@ if seconds > 5
 
   system('push-notify', title, ARGV.join(' '))
 end
+
+exit exit_code
