@@ -69,11 +69,11 @@ if !s:at_work
   let g:ycm_extra_conf_globlist = ["~/code/*"]
 endif
 let g:ycm_autoclose_preview_window_after_completion = 1
-nnoremap <leader>gd :YcmCompleter GoTo<CR>
-nnoremap <leader>gD :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <leader>g? :YcmCompleter GetDoc<CR>
-nnoremap <leader>fi :YcmCompleter FixIt<CR>
+nnoremap <leader>yg :YcmCompleter GoTo<CR>
+nnoremap <leader>yG :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>yt :YcmCompleter GetType<CR>
+nnoremap <leader>yd :YcmCompleter GetDoc<CR>
+nnoremap <leader>yf :YcmCompleter FixIt<CR>
 
 Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp  setlocal commentstring=//\ %s
