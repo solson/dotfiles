@@ -14,6 +14,14 @@ let mapleader = ","
 " Plugins
 call plug#begin('~/.vim/plugged')
 
+if has('nvim')
+  Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+  let g:LanguageClient_serverCommands = { 'rust': ['rls'] }
+  let g:LanguageClient_autoStart = 1
+  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+endif
+
 Plug 'bling/vim-airline'
 Plug 'asenac/vim-airline-loclist'
 set noshowmode
@@ -62,18 +70,18 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 nnoremap <leader>u :UltiSnipsEdit<CR>
 
-if !s:at_work
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-  let g:ycm_rust_src_path = '/home/scott/.racer-src/stable'
-  let g:ycm_extra_conf_globlist = ["~/code/*"]
-endif
-let g:ycm_autoclose_preview_window_after_completion = 1
-nnoremap <leader>yg :YcmCompleter GoTo<CR>
-nnoremap <leader>yG :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>yt :YcmCompleter GetType<CR>
-nnoremap <leader>yd :YcmCompleter GetDoc<CR>
-nnoremap <leader>yf :YcmCompleter FixIt<CR>
+" if !s:at_work
+"   Plug 'Valloric/YouCompleteMe'
+"   Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+"   let g:ycm_rust_src_path = '/home/scott/.racer-src/stable'
+"   let g:ycm_extra_conf_globlist = ["~/code/*"]
+" endif
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" nnoremap <leader>yg :YcmCompleter GoTo<CR>
+" nnoremap <leader>yG :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>yt :YcmCompleter GetType<CR>
+" nnoremap <leader>yd :YcmCompleter GetDoc<CR>
+" nnoremap <leader>yf :YcmCompleter FixIt<CR>
 
 Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp  setlocal commentstring=//\ %s

@@ -23,7 +23,7 @@ end
 set -x NO_AT_BRIDGE 1
 
 # Use a custom man page viewer.
-set -x MANPAGER manpager
+set -x MANPAGER 'nvim -c "set ft=man" -'
 
 # Tell SSH where the ssh-agent socket is.
 set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
@@ -32,7 +32,6 @@ set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
 # Misc functions
 ################################################################################
 
-alias bash 'env DONT_EXEC_FISH=1 bash'
 alias o 'xdg-open'
 alias ll 'ls -lh'
 alias la 'ls -A'
@@ -69,16 +68,14 @@ end
 # Nix functions
 ################################################################################
 
-alias nix-repl 'nix-repl "$HOME/.nix-repl.nix"'
-
 alias nb nix-build
 alias nbb 'nix-build --no-out-link "<nixpkgs>" -A'
-alias nr 'nix-repl "<nixpkgs>" "<nixpkgs/nixos>"'
+alias nr 'nix repl "$HOME/.nix-repl.nix" "<nixpkgs>"'
 alias nre 'sudo nixos-rebuild switch'
 
 function nbins -a pkg
   set -l store_path (nbb $pkg)
-  and ll $store_path/bin
+  and ll $store_path/bin/
 end
 
 function nwhich
@@ -183,8 +180,16 @@ function miri -a code
   miri-mini "fn main() { $argv }"
 end
 
+function miri-opt -a code
+  miri-mini-opt "fn main() { $argv }"
+end
+
 function miri-mini -a code
-  cargo run -- --crate-name m -Z mir-opt-level=3 (echo $code | psub)
+  cargo run --bin miri -- --crate-name m -Z mir-opt-level=3 (echo $code | psub)
+end
+
+function miri-mini-opt -a code
+  cargo run --release --bin miri -- --crate-name m -Z mir-opt-level=3 (echo $code | psub)
 end
 
 ################################################################################
@@ -255,7 +260,7 @@ end
 ################################################################################
 
 # Disable startup message.
-set -e fish_greeting
+set fish_greeting ""
 
 ################################################################################
 # Colours
