@@ -32,6 +32,7 @@ set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
 # Misc functions
 ################################################################################
 
+alias bash 'env DONT_EXEC_FISH=1 bash'
 alias o 'xdg-open'
 alias ll 'ls -lh'
 alias la 'ls -A'
