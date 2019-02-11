@@ -36,6 +36,7 @@ alias bash 'env DONT_EXEC_FISH=1 bash'
 alias o 'xdg-open'
 alias ll 'ls -lh'
 alias la 'ls -A'
+alias dfh 'df -h /{data{2,},} --output=size,used,avail,pcent,target'
 
 function ls
   set -l options
@@ -155,6 +156,8 @@ end
 alias cb 'cargo build -j8'
 alias cr 'cargo run -j8'
 alias ct 'cargo test -j8'
+alias cbr 'cb --release'
+alias crr 'cr --release'
 
 function rag-def
   set -l name $argv[1]
