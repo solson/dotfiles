@@ -76,8 +76,8 @@ symlink_absolute() {
 ################################################################################
 
 setup_git() {
-  symlink .gitconfig
-  symlink .gitignore.global
+  symlink .config/git/config
+  symlink .config/git/ignore
 }
 
 setup_vim() {

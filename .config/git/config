@@ -1,10 +1,8 @@
 [include]
-	path = .gitconfig.private
+	path = config.private
 [user]
 	name = Scott Olson
 	email = scott@solson.me
-[core]
-	excludesfile = /home/scott/.gitignore.global
 [alias]
 	cm = commit
 	co = checkout
