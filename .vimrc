@@ -14,13 +14,13 @@ let mapleader = ","
 " Plugins
 call plug#begin('~/.vim/plugged')
 
-if has('nvim')
-  Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-  let g:LanguageClient_serverCommands = { 'rust': ['rls'] }
-  let g:LanguageClient_autoStart = 1
-  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-endif
+" if has('nvim')
+"   Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+"   let g:LanguageClient_serverCommands = { 'rust': ['rls'] }
+"   let g:LanguageClient_autoStart = 1
+"   nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"   nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" endif
 
 Plug 'bling/vim-airline'
 Plug 'asenac/vim-airline-loclist'
@@ -86,10 +86,12 @@ nnoremap <leader>u :UltiSnipsEdit<CR>
 Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp  setlocal commentstring=//\ %s
 autocmd FileType idris  setlocal commentstring=--\ %s
-autocmd FileType racket setlocal commentstring=;\ %s
+autocmd FileType julia  setlocal commentstring=#\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
-autocmd FileType sml setlocal commentstring=(*%s*)
+autocmd FileType racket setlocal commentstring=;\ %s
+autocmd FileType sml    setlocal commentstring=(*%s*)
 
+Plug 'JuliaEditorSupport/julia-vim'
 Plug 'LnL7/vim-nix'
 Plug 'Nonius/cargo.vim'
 Plug 'cespare/vim-toml'
@@ -108,7 +110,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn'
-Plug 'tsion/jellybeans.vim'
+" Plug 'tsion/jellybeans.vim'
 Plug 'wlangstroth/vim-racket'
 
 call plug#end()
