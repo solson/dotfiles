@@ -15,5 +15,8 @@ divider
 disk_avail '/data'
 divider
 
+disk_avail '/data2'
+divider
+
 # 1 minute load average
 cut -d" " -f1 /proc/loadavg
