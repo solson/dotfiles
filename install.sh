@@ -76,6 +76,7 @@ symlink_absolute() {
 ################################################################################
 
 setup_git() {
+  symlink .config/git/attributes
   symlink .config/git/config
   symlink .config/git/ignore
 }

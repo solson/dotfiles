@@ -13,3 +13,5 @@
 	default = simple
 [github]
 	user = solson
+[diff "rust"]
+	xfuncname = "^[ \t]*(((pub([(][^)]*[)])?|unsafe|extern([ \t]*\"[^\"]*\")|async)[ \t]+)*((fn|struct|enum|impl|trait|mod|macro|const|static|use|extern[ \t]+crate)[^;]*))$"
