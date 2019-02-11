@@ -201,7 +201,7 @@ end
 ################################################################################
 
 set fish_prompt_first 1
-set hostname (uname -n | cut -d. -f1)
+set hostname_ (uname -n | cut -d. -f1)
 function fish_prompt
   set -l last_status $status
 
@@ -224,9 +224,9 @@ function fish_prompt
     set_color normal
   end
 
-  if [ $hostname != "conway" ]
+  if [ $hostname_ != "conway" ]
     set_color green
-    echo -n $hostname
+    echo -n $hostname_
     set_color normal
     echo -n :
   end
