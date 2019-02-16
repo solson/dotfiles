@@ -15,3 +15,23 @@
 	user = solson
 [diff "rust"]
 	xfuncname = "^[ \t]*(((pub([(][^)]*[)])?|const|unsafe|extern([ \t]*\"[^\"]*\")|async)[ \t]+)*((fn|struct|enum|impl|trait|mod|macro|const|static|use|extern[ \t]+crate)[^;]*))$"
+[diff-so-fancy]
+	markEmptyLines = false
+	stripLeadingSymbols = false
+	useUnicodeRuler = false
+[core]
+	pager = diff-so-fancy | less -RFX
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red
+	oldHighlight = red 52
+	newNormal = green
+	newHighlight = green 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow
+	old = red
+	new = green
+	whitespace = red reverse
