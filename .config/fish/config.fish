@@ -165,39 +165,36 @@ function fish_prompt
   if echo "$PATH" | grep -q /nix/store
     set_color brblack
     echo -n "|"
-    set_color magenta
+    set_color brmagenta
     echo -n "nix"
   end
 
   set_color brblack
   __fish_git_prompt "|%s"
 
+  set_color brblack
+  echo -n ']'
+
   # If the last command took longer than 5 seconds, print its execution time.
   if [ "$CMD_DURATION" -gt 5000 ]
-    set_color brblack
-    echo -n "|"
+    # set_color brblack
+    # echo -n "|"
+    echo -n " "
     set_color yellow
     echo -n (format-duration $CMD_DURATION)
   end
 
   if [ $last_status != 0 ]
-    set_color brblack
-    echo -n "|"
+    # set_color brblack
+    # echo -n "|"
+    echo -n " "
     set_color red
     echo -n $last_status
   end
 
-  set_color brblack
-  echo -n ']'
-  echo
-
-  if [ $last_status != 0 ]
-    set_color red
-  else
-    set_color normal
-  end
-  echo -n '> '
   set_color normal
+  echo
+  echo -n '> '
 end
 
 # function fish_right_prompt
@@ -226,14 +223,14 @@ set fish_greeting ""
 # Colours
 ################################################################################
 
-set fish_color_command yellow
+set fish_color_command brmagenta --bold
+set fish_color_comment brblack
 set fish_color_cwd brblue
+set fish_color_end brblack
 set fish_color_error red
-set fish_color_param white
-set fish_color_quote green
-set fish_color_redirection green
-set fish_color_search_match
-set fish_color_valid_path
+set fish_color_param normal
+set fish_color_quote brblue
+set fish_color_redirection brgreen
 
 ################################################################################
 # Autojump
