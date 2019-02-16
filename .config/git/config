@@ -25,13 +25,14 @@
 	ui = true
 [color "diff-highlight"]
 	oldNormal = red
-	oldHighlight = red 52
+	oldHighlight = red 52 bold # 52 is the darkest red in the 256 colors.
 	newNormal = green
-	newHighlight = green 22
+	newHighlight = green 22 bold # 22 is the darkest red in the 256 colors.
 [color "diff"]
-	meta = yellow
+	meta = blue bold
 	frag = magenta bold
-	commit = yellow
+	func = black bold
+	commit = yellow bold
 	old = red
 	new = green
 	whitespace = red reverse
