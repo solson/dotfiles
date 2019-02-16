@@ -6,7 +6,6 @@ set -x DEVKITPRO "$HOME/code/nds/devkitpro"
 set -x DEVKITARM "$DEVKITPRO/devkitARM"
 set -x R4 "/media/$USER/R4"
 
-# PATH
 set extra_paths \
   ~/bin \
   ~/.bin \
@@ -18,6 +17,9 @@ for path in $extra_paths
     set PATH $PATH $path
   end
 end
+
+# Remove duplicates in path.
+set PATH (ruby -e 'puts ARGV[0].split(":").uniq.join(":")' "$PATH")
 
 # Silence warnings from Gtk applications about the accessibility bus.
 set -x NO_AT_BRIDGE 1
@@ -46,34 +48,17 @@ function ls
   command ls $options $argv | filter-nix-paths
 end
 
-function lt
-  if test -f .gitignore
-    set -l ignores (cat .gitignore)
-    eval tree -C '-I '$ignores $argv
-  end
-end
-
 function mkcd -a dir
   mkdir -p $dir
   cd $dir
-end
-
-function with -a var_name value
-  set -l cmd $argv[3..-1]
-  set -l saved $$var_name
-  set -x $var_name $value
-  eval $argv[3] \"$argv[4..-1]\"
-  set -x $var_name $saved
 end
 
 ################################################################################
 # Nix functions
 ################################################################################
 
-alias nb nix-build
-alias nbb 'nix-build --no-out-link "<nixpkgs>" -A'
+alias nb 'nix-build --no-out-link "<nixpkgs>" -A'
 alias nr 'nix repl "$HOME/.nix-repl.nix" "<nixpkgs>"'
-alias nre 'sudo nixos-rebuild switch'
 
 function nbins -a pkg
   set -l store_path (nbb $pkg)
@@ -111,28 +96,9 @@ end
 # Usage:
 #   nx foo -b baz
 # Equivalent:
-#   nx foo -- foo -b baz
+#   nu foo -- foo -b baz
 function nx
   nix-shell -p $argv[1] --run "$argv"
-end
-
-function nur
-  set_color red
-  echo '"nur" is deprecated, use "nx"'
-  set_color normal
-  nx $argv
-end
-
-function nml
-  if set -l split (contains -i -- -- $argv)
-    set -l before (math $split - 1)
-    set -l after  (math $split + 1)
-    set -q argv[$before]; and set -l packages $argv[1..$before]
-    set -q argv[$after];  and set -l command  $argv[$after..-1]
-    nix-shell -p "(with ocamlPackages_4_02; [utop findlib $packages])" --run "$command"
-  else
-    nix-shell -p "(with ocamlPackages_4_02; [utop findlib $argv])"
-  end
 end
 
 # Abbreviate nix store paths:
@@ -159,49 +125,18 @@ alias ct 'cargo test -j8'
 alias cbr 'cb --release'
 alias crr 'cr --release'
 
-function rag-def
-  set -l name $argv[1]
-  set -e argv[1]
+################################################################################
+# Keybindings
+################################################################################
 
-  ag "^[^({\n]*(type|struct|enum|trait|flags|fn|macro_rules!|static|const|mod)\s+$name\b" \
-    $argv
-end
-
-function print-mir -a file func
-  rustc \
-    --crate-name print_mir \
-    --crate-type lib \
-    -Z unstable-options \
-    --unpretty mir=$func \
-    $file
-end
-
-function mir -a code
-  print-mir (echo "pub fn mir$code" | psub) mir
-end
-
-function miri -a code
-  miri-mini "fn main() { $argv }"
-end
-
-function miri-opt -a code
-  miri-mini-opt "fn main() { $argv }"
-end
-
-function miri-mini -a code
-  cargo run --bin miri -- --crate-name m -Z mir-opt-level=3 (echo $code | psub)
-end
-
-function miri-mini-opt -a code
-  cargo run --release --bin miri -- --crate-name m -Z mir-opt-level=3 (echo $code | psub)
-end
+# Set C-c to simply clear the command line.
+bind \cc 'commandline ""'
 
 ################################################################################
 # Prompt and title
 ################################################################################
 
 set fish_prompt_first 1
-set hostname_ (uname -n | cut -d. -f1)
 function fish_prompt
   set -l last_status $status
 
@@ -211,28 +146,50 @@ function fish_prompt
     set fish_prompt_first 0
   end
 
-  # If the last command took longer than 5 seconds, print its execution time.
-  if [ "$CMD_DURATION" -gt 5000 ]
-    set_color yellow
-    echo -n "Execution time: "
-    format-duration $CMD_DURATION
-  end
+  # Clear the current line with a terminal escape code to avoid drawing issues
+  # with Alt-{Left,Right} working directory history commands.
+  echo -en '\e[2K'
 
-  if [ -n "$IN_NIX_SHELL" ]
-    set_color magenta
-    echo -n nix:
-    set_color normal
-  end
-
-  if [ $hostname_ != "conway" ]
-    set_color green
-    echo -n $hostname_
-    set_color normal
-    echo -n :
-  end
-
+  set_color brblack
+  echo -n '['
   set_color $fish_color_cwd
   echo -n (prompt_pwd)
+
+  if set -q SSH_TTY
+    set_color brblack
+    echo -n "|"
+    set_color brcyan
+    echo -n (prompt_hostname)
+  end
+
+  if echo "$PATH" | grep -q /nix/store
+    set_color brblack
+    echo -n "|"
+    set_color magenta
+    echo -n "nix"
+  end
+
+  set_color brblack
+  __fish_git_prompt "|%s"
+
+  # If the last command took longer than 5 seconds, print its execution time.
+  if [ "$CMD_DURATION" -gt 5000 ]
+    set_color brblack
+    echo -n "|"
+    set_color yellow
+    echo -n (format-duration $CMD_DURATION)
+  end
+
+  if [ $last_status != 0 ]
+    set_color brblack
+    echo -n "|"
+    set_color red
+    echo -n $last_status
+  end
+
+  set_color brblack
+  echo -n ']'
+  echo
 
   if [ $last_status != 0 ]
     set_color red
@@ -243,9 +200,8 @@ function fish_prompt
   set_color normal
 end
 
-function fish_right_prompt
-  __fish_git_prompt '%s'
-end
+# function fish_right_prompt
+# end
 
 set __fish_git_prompt_char_stateseparator ''
 set __fish_git_prompt_describe_style branch
@@ -256,7 +212,7 @@ set __fish_git_prompt_showuntrackedfiles 1
 set __fish_git_prompt_showupstream informative
 
 function fish_title
-  echo $_ (prompt_pwd)
+  echo (prompt_pwd) : $_
 end
 
 ################################################################################
@@ -271,7 +227,7 @@ set fish_greeting ""
 ################################################################################
 
 set fish_color_command yellow
-set fish_color_cwd blue
+set fish_color_cwd brblue
 set fish_color_error red
 set fish_color_param white
 set fish_color_quote green
