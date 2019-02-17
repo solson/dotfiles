@@ -112,6 +112,7 @@ Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn'
 " Plug 'tsion/jellybeans.vim'
 Plug 'wlangstroth/vim-racket'
+Plug 'mk12/vim-lean', { 'for': 'lean' }
 
 call plug#end()
 call ctrlp_bdelete#init()
