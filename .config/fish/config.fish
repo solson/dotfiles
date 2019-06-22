@@ -61,7 +61,7 @@ alias nb 'nix-build --no-out-link "<nixpkgs>" -A'
 alias nr 'nix repl "$HOME/.nix-repl.nix" "<nixpkgs>"'
 
 function nbins -a pkg
-  set -l store_path (nbb $pkg)
+  set -l store_path (nb $pkg)
   and ll $store_path/bin/
 end
 
