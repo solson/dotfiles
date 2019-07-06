@@ -62,7 +62,8 @@ alias nr 'nix repl "$HOME/.nix-repl.nix" "<nixpkgs>"'
 
 function nt -w tree -a pkg
   set -e argv[1]
-  tree (nb $pkg) $argv
+  set -l store_path (nb $pkg)
+  and tree $store_path $argv
 end
 
 function nbins -a pkg
