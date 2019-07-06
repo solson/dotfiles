@@ -4,3 +4,4 @@ tags
 scott-notes/
 nix-shell.sh
 .vscode/
+.directory
