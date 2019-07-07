@@ -27,15 +27,16 @@ symlink() {
 
   case $# in
     1)
-      dest_path="$HOME/$1"
+      dest_path="$HOME/.$1"
       source_path="$PWD/$1"
       ;;
-    2)
-      dest_path="$HOME/$1"
-      source_path="$PWD/$2"
-      ;;
+#    2)
+#      dest_path="$HOME/$1"
+#      source_path="$PWD/$2"
+#      ;;
     *)
-      msg Error "Expected 1 or 2 arguments to symlink, got $#"
+#      msg Error "Expected 1 or 2 arguments to symlink, got $#"
+      msg Error "Expected 1 argument to symlink, got $#"
       msg Error "Arguments were: $*"
       exit 1
       ;;
@@ -76,17 +77,17 @@ symlink_absolute() {
 ################################################################################
 
 setup_git() {
-  symlink .config/git/attributes
-  symlink .config/git/config
-  symlink .config/git/ignore
+  symlink config/git/attributes
+  symlink config/git/config
+  symlink config/git/ignore
 }
 
 setup_vim() {
   mkdir -p ~/.vim/backup
-  symlink .vimrc
-  symlink .vim/UltiSnips
-  symlink .vim/colors/solson.vim
-  symlink .vim/autoload/plug.vim &&
+  symlink vimrc
+  symlink vim/UltiSnips
+  symlink vim/colors/solson.vim
+  symlink vim/autoload/plug.vim &&
     msg Note "remember to run :PlugInstall and build YCM"
 
   symlink_absolute "$HOME/.config/nvim" "$HOME/.vim"
@@ -94,14 +95,14 @@ setup_vim() {
 }
 
 setup_fish() {
-  symlink .config/fish/config.fish &&
+  symlink config/fish/config.fish &&
     msg Note "you may want to run fish_update_completions"
-  symlink .config/fish/autojump.fish
+  symlink config/fish/autojump.fish
 }
 
 setup_bash() {
-  symlink .bashrc
-  symlink .bash_profile
+  symlink bashrc
+  symlink bash_profile
 }
 
 setup_common() {
@@ -109,18 +110,18 @@ setup_common() {
   setup_vim
   setup_fish
   setup_bash
-  symlink .inputrc
-  symlink .irbrc
-  symlink .nix-repl.nix
-  symlink .bin/vigpg
-  symlink .bin/format-duration
-  symlink .bin/notify-run
+  symlink inputrc
+  symlink irbrc
+  symlink nix-repl.nix
+  symlink bin/vigpg
+  symlink bin/format-duration
+  symlink bin/notify-run
 }
 
 case "$(hostname -s)" in
   conway)
     setup_common
-    symlink .tmux.conf
+    symlink tmux.conf
     ;;
 
   *)
