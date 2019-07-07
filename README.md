@@ -1,7 +1,6 @@
 # Dotfiles
 
-My configuration files. `install.sh` and `import.sh` adapted from [programble's
-dotfiles repo](https://github.com/programble/dotfiles).
+My configuration files.
 
 ## Install
 
@@ -9,15 +8,9 @@ dotfiles repo](https://github.com/programble/dotfiles).
 ./install.sh
 ```
 
-## Import
-
-```
-./import.sh .config
-```
-
 ## License
 
-Copyright © 2015, Scott Olson \<scott@solson.me>
+Copyright © 2019, Scott Olson \<scott@solson.me>
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
