@@ -113,52 +113,12 @@ setup_common() {
   symlink .irbrc
   symlink .nix-repl.nix
   symlink .bin/vigpg
-  symlink .bin/manpager
   symlink .bin/format-duration
   symlink .bin/notify-run
-  symlink .bin/tmux-status
-}
-
-setup_i3() {
-  symlink .i3/config
-  symlink .i3/autostart.sh        ".i3/autostart.sh.$(hostname -s)"
-  symlink .config/i3status/config ".config/i3status/config.$(hostname -s)"
-}
-
-setup_gnome_terminal() {
-  msg Note "run ./gnome-terminal-jellybeans.sh to set gnome-terminal settings"
-}
-
-setup_common_gui() {
-  setup_common
-  symlink .gtkrc-2.0.mine &&
-    msg Note "make sure .gtkrc-2.0 includes .gtkrc-2.0.mine (run LXAppearance)"
-  symlink .config/fontconfig/fonts.conf
-  setup_i3
-  setup_gnome_terminal
 }
 
 case "$(hostname -s)" in
-  olsons-linux0)
-    setup_common
-    symlink .tmux.conf
-    ;;
-
   conway)
-    setup_common
-    symlink .tmux.conf
-    ;;
-
-  neutron)
-    setup_common_gui
-    symlink .tmux.conf
-    ;;
-
-  scott-ubuntu-hci)
-    setup_common_gui
-    ;;
-
-  quark)
     setup_common
     symlink .tmux.conf
     ;;
