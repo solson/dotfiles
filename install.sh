@@ -2,8 +2,7 @@
 
 # Create symlinks in ~ for files in the current directory.
 
-# Copyright © 2015, Scott Olson <scott@solson.me>
-# Copyright © 2015, Curtis McEnroe <curtis@cmcenroe.me>
+# Copyright © 2019, Scott Olson <scott@solson.me>
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -30,12 +29,7 @@ symlink() {
       dest_path="$HOME/.$1"
       source_path="$PWD/$1"
       ;;
-#    2)
-#      dest_path="$HOME/$1"
-#      source_path="$PWD/$2"
-#      ;;
     *)
-#      msg Error "Expected 1 or 2 arguments to symlink, got $#"
       msg Error "Expected 1 argument to symlink, got $#"
       msg Error "Arguments were: $*"
       exit 1
@@ -110,12 +104,13 @@ setup_common() {
   setup_vim
   setup_fish
   setup_bash
+  symlink bin/format-duration
+  symlink bin/notify-run
+  symlink bin/vigpg
+  symlink config/bat/config
   symlink inputrc
   symlink irbrc
   symlink nix-repl.nix
-  symlink bin/vigpg
-  symlink bin/format-duration
-  symlink bin/notify-run
 }
 
 case "$(hostname -s)" in

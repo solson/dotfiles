@@ -1,0 +1,4 @@
+--color=always
+--decorations=always
+--pager=never
+--style=numbers,header,grid
