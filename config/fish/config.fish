@@ -242,14 +242,24 @@ set fish_greeting ""
 # Colours
 ################################################################################
 
+set fish_color_autosuggestion brblack
 set fish_color_command brmagenta --bold
 set fish_color_comment brblack
 set fish_color_cwd brblue
 set fish_color_end brblack
 set fish_color_error red
+set fish_color_escape brblue
+set fish_color_history_current --bold
+set fish_color_normal normal
+set fish_color_operator bryellow
 set fish_color_param normal
 set fish_color_quote brblue
 set fish_color_redirection brgreen
+set fish_color_search_match ''
+set fish_color_valid_path ''
+set fish_pager_color_description bryellow
+set fish_pager_color_prefix ''
+set fish_pager_color_progress brwhite
 
 ################################################################################
 # Autojump
