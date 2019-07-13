@@ -68,7 +68,7 @@ end
 
 function nbins -a pkg
   set -l store_path (nb $pkg)
-  echo $store_path/bin
+  and echo $store_path/bin
   and ll $store_path/bin/
 end
 
