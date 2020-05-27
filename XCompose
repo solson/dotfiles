@@ -1,0 +1,9 @@
+# Import the default Compose file (for the current locale).
+include "%L"
+
+<Multi_key> <Multi_key> <s> : "⭐"
+<Multi_key> <Multi_key> <t> : "🎵"
+<Multi_key> <Multi_key> <a> : "💿"
+<Multi_key> <Multi_key> <r> : "🔁"
+
+<Multi_key> <asciitilde> <asciitilde> : "≈"

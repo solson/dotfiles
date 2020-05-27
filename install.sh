@@ -111,6 +111,7 @@ setup_common() {
   symlink inputrc
   symlink irbrc
   symlink nix-repl.nix
+  symlink XCompose
 }
 
 case "$(hostname -s)" in
