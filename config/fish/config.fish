@@ -133,6 +133,15 @@ alias cbr 'cb --release'
 alias crr 'cr --release'
 
 ################################################################################
+# youtube-dl aliases
+################################################################################
+
+alias yt youtube-dl
+alias yta 'yt --config-location ~/.config/youtube-dl/config-archival'
+alias ytm 'yt --config-location ~/.config/youtube-dl/config-music'
+alias ytmp3 'yt --config-location ~/.config/youtube-dl/config-mp3'
+
+################################################################################
 # Keybindings
 ################################################################################
 
