@@ -62,13 +62,6 @@ let g:vimtex_syntax_minted = [
   \ { 'lang': 'rust' },
 \ ]
 
-" Snippets engine
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-nnoremap <leader>u :UltiSnipsEdit<CR>
 
 " if !s:at_work
 "   Plug 'Valloric/YouCompleteMe'
