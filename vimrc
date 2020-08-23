@@ -14,6 +14,9 @@ let mapleader = ","
 " Plugins
 call plug#begin('~/.vim/plugged')
 
+let g:redtt_path = '/home/scott/Projects/redtt/result/bin/redtt'
+Plug '~/Projects/redtt/vim'
+
 " if has('nvim')
 "   Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 "   let g:LanguageClient_serverCommands = { 'rust': ['rls'] }
@@ -68,6 +71,7 @@ autocmd FileType idris  setlocal commentstring=--\ %s
 autocmd FileType julia  setlocal commentstring=#\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
 autocmd FileType racket setlocal commentstring=;\ %s
+autocmd FileType redtt  setlocal commentstring=--\ %s
 autocmd FileType sml    setlocal commentstring=(*%s*)
 
 Plug 'JuliaEditorSupport/julia-vim'
