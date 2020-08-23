@@ -128,6 +128,10 @@ set ttimeoutlen=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
 
+if has('nvim')
+  set inccommand=nosplit
+endif
+
 " Spell checking
 set spelllang=en_ca
 set complete+=kspell
