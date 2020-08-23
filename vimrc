@@ -62,20 +62,6 @@ let g:vimtex_syntax_minted = [
   \ { 'lang': 'rust' },
 \ ]
 
-
-" if !s:at_work
-"   Plug 'Valloric/YouCompleteMe'
-"   Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-"   let g:ycm_rust_src_path = '/home/scott/.racer-src/stable'
-"   let g:ycm_extra_conf_globlist = ["~/code/*"]
-" endif
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" nnoremap <leader>yg :YcmCompleter GoTo<CR>
-" nnoremap <leader>yG :YcmCompleter GoToDefinition<CR>
-" nnoremap <leader>yt :YcmCompleter GetType<CR>
-" nnoremap <leader>yd :YcmCompleter GetDoc<CR>
-" nnoremap <leader>yf :YcmCompleter FixIt<CR>
-
 Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp  setlocal commentstring=//\ %s
 autocmd FileType idris  setlocal commentstring=--\ %s
@@ -103,7 +89,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn'
-" Plug 'tsion/jellybeans.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'mk12/vim-lean', { 'for': 'lean' }
 
