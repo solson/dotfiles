@@ -2,6 +2,7 @@ export function divmod(x: number, y: number): [number, number] {
     return [Math.trunc(x / y), x % y]
 }
 
+// Inspired by https://docs.raku.org/routine/polymod.
 export function polymod(x: number, mods: number[]): number[] {
     let more = x;
     let remainders: number[] = [];
@@ -16,12 +17,7 @@ export function polymod(x: number, mods: number[]): number[] {
 }
 
 export function format_duration(total_ms: number): string {
-    const [total_s, ms] = divmod(total_ms, 1000)
-    const [total_m, s] = divmod(total_s, 60)
-    const [total_h, m] = divmod(total_m, 60)
-    const [total_d, h] = divmod(total_h, 24)
-    const d = total_d
-
+    const [ms, s, m, h, d] = polymod(total_ms, [1000, 60, 60, 24])
     const ms_hundreds = Math.round(ms / 100)
 
     if (d > 0) {
