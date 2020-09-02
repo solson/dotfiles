@@ -45,7 +45,7 @@ function ls
   if isatty stdout
     set options --color=always --format=across --group-directories-first
   end
-  command ls $options $argv | filter-nix-paths
+  command ls $options $argv
 end
 
 function mkcd -a dir
@@ -119,6 +119,7 @@ function filter-nix-paths
     end
 
     $_.gsub!(/Dec 31  1969 /, "")
+    $_.gsub!(/Jan  1  1970 /, "")
   '
 end
 
