@@ -100,6 +100,10 @@ function nu
   end
 end
 
+function nf
+  nix-shell -p $argv --run fish
+end
+
 # Usage:
 #   nx foo -b baz
 # Equivalent:
