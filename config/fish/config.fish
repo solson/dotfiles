@@ -74,9 +74,7 @@ end
 
 function nwhich
   for arg in $argv
-    set -l path (which $arg)
-    and set path (readlink $path)
-    and echo $path | filter-nix-paths
+    readlink -f (which $arg)
   end
 end
 
