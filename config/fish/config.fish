@@ -10,7 +10,7 @@ set extra_paths \
   ~/bin \
   ~/.bin \
   ~/.cargo/bin \
-  ~/.perl6/bin
+  ~/.deno/bin
 
 for path in $extra_paths
   if test -d $path
