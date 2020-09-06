@@ -38,6 +38,7 @@ alias o 'xdg-open'
 alias ll 'ls -lh'
 alias la 'ls -A'
 alias dfh 'df -h /{data{2,},} --output=size,used,avail,pcent,target'
+alias rg 'rg -i'
 
 function ls
   set -l options
