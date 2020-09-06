@@ -2,10 +2,6 @@
 # Environment
 ################################################################################
 
-set -x DEVKITPRO "$HOME/code/nds/devkitpro"
-set -x DEVKITARM "$DEVKITPRO/devkitARM"
-set -x R4 "/media/$USER/R4"
-
 set extra_paths \
   ~/bin \
   ~/.bin \
