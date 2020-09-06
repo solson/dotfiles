@@ -106,7 +106,7 @@ setup_common() {
   symlink bin/format-duration
   symlink bin/notify-run
   symlink bin/vigpg
-  symlink config/bat/config
+  symlink config/bat
   symlink inputrc
   symlink irbrc
   symlink nix-repl.nix

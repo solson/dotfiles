@@ -1,4 +1,4 @@
 --color=always
---decorations=always
---pager=never
---style=numbers,header,grid
+--paging=never
+--style=numbers
+--theme='Visual Studio Dark+'
