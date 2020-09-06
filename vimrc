@@ -217,8 +217,8 @@ function! s:ScrollUp()
   endif
 endfunction
 
-" Clear search highlights
-nmap <silent> <leader>n :silent :nohlsearch<CR>
+" Clear search highlights. Note that <C-_> matches Ctrl+/ in Vim.
+nmap <silent> <C-_> :silent :nohlsearch<CR>
 
 " Copy and paste using X11 clipboard.
 vnoremap <leader>y "+y
