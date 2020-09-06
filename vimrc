@@ -17,13 +17,6 @@ call plug#begin('~/.vim/plugged')
 let g:redtt_path = '/home/scott/Projects/redtt/result/bin/redtt'
 Plug '~/Projects/redtt/vim'
 
-" if has('nvim')
-"   Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-"   let g:LanguageClient_serverCommands = { 'rust': ['rls'] }
-"   let g:LanguageClient_autoStart = 1
-"   nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-"   nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-" endif
 
 Plug 'bling/vim-airline'
 Plug 'asenac/vim-airline-loclist'
