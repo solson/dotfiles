@@ -69,6 +69,7 @@ autocmd FileType matlab setlocal commentstring=%\ %s
 autocmd FileType racket setlocal commentstring=;\ %s
 autocmd FileType redtt  setlocal commentstring=--\ %s
 autocmd FileType sml    setlocal commentstring=(*%s*)
+autocmd FileType xquery setlocal commentstring=(:%s:)
 
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'LnL7/vim-nix'
