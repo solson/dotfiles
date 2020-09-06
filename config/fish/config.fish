@@ -26,6 +26,9 @@ set -x MANPAGER 'nvim -c "set ft=man" -'
 # Tell SSH where the ssh-agent socket is.
 set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
 
+# Set useful defaults for `less`
+set -x LESS R
+
 ################################################################################
 # Misc functions
 ################################################################################
