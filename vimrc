@@ -21,15 +21,44 @@ Plug '~/Projects/redtt/vim'
 Plug 'tomasiser/vim-code-dark'
 
 Plug 'bling/vim-airline'
-Plug 'asenac/vim-airline-loclist'
 set noshowmode
+let g:airline_theme = 'codedark_scott'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.readonly = '🛇 '
+
 let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#loclist#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme = 'codedark'
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+" See `:help mode()` for an explanation of the mode names.
+let g:airline_mode_map = {
+  \ '__' : ' ',
+  \ 'c'  : ':',
+  \ 'i'  : 'I',
+  \ 'ic' : 'I',
+  \ 'ix' : 'I',
+  \ 'n'  : 'N',
+  \ 'ni' : 'Ṇ',
+  \ 'R'  : 'R',
+  \ 'Rv' : 'R̰',
+  \ 's'  : 'S',
+  \ 'S'  : 'S̲',
+  \ '' : 'S̪',
+  \ 't'  : '>',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V̲',
+  \ '' : 'V̪',
+  \ }
 
 Plug 'mhinz/vim-signify'
 let g:signify_vcs_list = ['git', 'svn']
