@@ -39,6 +39,8 @@ alias la 'ls -A'
 alias ll 'ls -lh'
 alias o 'xdg-open'
 alias rg 'rg -i'
+alias v nvim
+alias vim nvim
 
 function ls
   set -l options
