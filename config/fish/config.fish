@@ -34,10 +34,10 @@ set -x LESS R
 ################################################################################
 
 alias bash 'env DONT_EXEC_FISH=1 bash'
-alias o 'xdg-open'
-alias ll 'ls -lh'
-alias la 'ls -A'
 alias dfh 'df -h /{data{2,},} --output=size,used,avail,pcent,target'
+alias la 'ls -A'
+alias ll 'ls -lh'
+alias o 'xdg-open'
 alias rg 'rg -i'
 
 function ls
