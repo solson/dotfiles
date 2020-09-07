@@ -134,7 +134,7 @@ set autoindent
 set backspace=indent,eol,start
 set colorcolumn=+1
 set display+=lastline
-set fillchars=vert:\|,fold:\ 
+set fillchars=vert:│,fold:\ 
 set formatoptions+=cqtrol
 set gdefault
 set hidden
