@@ -1,7 +1,7 @@
 import fc from "https://cdn.skypack.dev/fast-check@2.2.1?dts";
 import { assertEquals } from "https://deno.land/std@0.68.0/testing/asserts.ts";
 import { zip } from "https://deno.land/x/fae@v0.6.0/zip.ts";
-import { divmod, polymod, format_duration } from "./lib.ts";
+import { divmod, format_duration, polymod } from "./lib.ts";
 
 const pos_nat = fc.integer(1, Number.MAX_SAFE_INTEGER - 1);
 
