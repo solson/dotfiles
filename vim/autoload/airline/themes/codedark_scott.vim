@@ -67,7 +67,7 @@ let s:cdDark = {'gui': '#3C3C3C', 'cterm': (g:codedark_term256 ? '237' : s:cterm
 
 let s:Warning = [ s:cdRed.gui, s:cdDarkDark.gui, s:cdRed.cterm, s:cdDarkDark.cterm, 'none']
 
-" Normal:
+" Normal
 
 let s:N1 = [ s:cdFront.gui, s:cdBlue.gui, s:cdFront.cterm, s:cdBlue.cterm, 'none' ]
 let s:N2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cterm, 'none' ]
@@ -79,7 +79,7 @@ let g:airline#themes#codedark_scott#palette.normal_modified = { 'airline_c': s:N
 let g:airline#themes#codedark_scott#palette.normal.airline_warning = s:Warning
 let g:airline#themes#codedark_scott#palette.normal_modified.airline_warning = s:Warning
 
-" Insert:
+" Insert
 
 let s:I1 = [ s:cdFront.gui, s:cdGreen.gui, s:cdFront.cterm, s:cdGreen.cterm, 'none' ]
 let s:I2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cterm, 'none' ]
@@ -91,7 +91,7 @@ let g:airline#themes#codedark_scott#palette.insert_modified = { 'airline_c': s:I
 let g:airline#themes#codedark_scott#palette.insert.airline_warning = s:Warning
 let g:airline#themes#codedark_scott#palette.insert_modified.airline_warning = s:Warning
 
-" Replace:
+" Replace
 
 let s:R1 = [ s:cdFront.gui, s:cdRed.gui, s:cdFront.cterm, s:cdRed.cterm, 'none' ]
 let s:R2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cterm, 'none' ]
@@ -103,7 +103,7 @@ let g:airline#themes#codedark_scott#palette.replace_modified = { 'airline_c': s:
 let g:airline#themes#codedark_scott#palette.replace.airline_warning = s:Warning
 let g:airline#themes#codedark_scott#palette.replace_modified.airline_warning = s:Warning
 
-" Visual:
+" Visual
 
 let s:V1 = [ s:cdFront.gui, s:cdPink.gui, s:cdFront.cterm, s:cdPink.cterm, 'none' ]
 let s:V2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cterm, 'none' ]
@@ -115,7 +115,7 @@ let g:airline#themes#codedark_scott#palette.visual_modified = { 'airline_c': s:V
 let g:airline#themes#codedark_scott#palette.visual.airline_warning = s:Warning
 let g:airline#themes#codedark_scott#palette.visual_modified.airline_warning = s:Warning
 
-" Inactive:
+" Inactive
 
 let s:IA1 = [ s:cdFrontGray.gui, s:cdDark.gui, s:cdFrontGray.cterm, s:cdDark.cterm, 'none' ]
 let s:IA2 = [ s:cdFrontGray.gui, s:cdDarkDark.gui, s:cdFrontGray.cterm, s:cdDarkDark.cterm, 'none' ]
@@ -125,9 +125,22 @@ let s:IAM = [ s:cdFrontGray.gui, s:cdDarkDarkDark.gui, s:cdFrontGray.cterm, s:cd
 let g:airline#themes#codedark_scott#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
 let g:airline#themes#codedark_scott#palette.inactive_modified = { 'airline_c': s:IAM }
 
-" Red accent for readonly:
+" Accents
 
 let g:airline#themes#codedark_scott#palette.accents = {
-      \ 'red': [ s:cdRed.gui, '', s:cdRed.cterm, '' ]
-      \ }
+  \ 'gray': [ s:cdGray.gui, '', s:cdGray.cterm, '' ],
+  \ 'violet': [ s:cdViolet.gui, '', s:cdViolet.cterm, '' ],
+  \ 'blue': [ s:cdBlue.gui, '', s:cdBlue.cterm, '' ],
+  \ 'dark_blue': [ s:cdDarkBlue.gui, '', s:cdDarkBlue.cterm, '' ],
+  \ 'light_blue': [ s:cdLightBlue.gui, '', s:cdLightBlue.cterm, '' ],
+  \ 'green': [ s:cdGreen.gui, '', s:cdGreen.cterm, '' ],
+  \ 'blue_green': [ s:cdBlueGreen.gui, '', s:cdBlueGreen.cterm, '' ],
+  \ 'light_green': [ s:cdLightGreen.gui, '', s:cdLightGreen.cterm, '' ],
+  \ 'orange': [ s:cdOrange.gui, '', s:cdOrange.cterm, '' ],
+  \ 'red': [ s:cdRed.gui, '', s:cdRed.cterm, '' ],
+  \ 'light_red': [ s:cdLightRed.gui, '', s:cdLightRed.cterm, '' ],
+  \ 'yellow_orange': [ s:cdYellowOrange.gui, '', s:cdYellowOrange.cterm, '' ],
+  \ 'yellow': [ s:cdYellow.gui, '', s:cdYellow.cterm, '' ],
+  \ 'pink': [ s:cdPink.gui, '', s:cdPink.cterm, '' ],
+  \ }
 
