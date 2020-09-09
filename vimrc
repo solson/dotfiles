@@ -275,6 +275,7 @@ nmap <silent> <C-_> :silent :nohlsearch<CR>
 
 " Copy and paste using X11 clipboard.
 vnoremap <leader>y "+y
+nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
