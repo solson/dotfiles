@@ -3,14 +3,17 @@ import { assertEquals } from "https://deno.land/std@0.68.0/testing/asserts.ts";
 import { zip } from "https://deno.land/x/fae@v0.6.0/zip.ts";
 import { divmod, format_duration, polymod } from "./lib.ts";
 
-const pos_nat = fc.integer(1, Number.MAX_SAFE_INTEGER - 1);
-
+// TODO(solson): Is this the definition of divmod that I want?
 Deno.test("divmod: basic", () => {
   assertEquals(divmod(25, 7), [3, 4]);
+  assertEquals(divmod(-25, 7), [-3, -4]);
+  assertEquals(divmod(25, -7), [-3, 4]);
+  assertEquals(divmod(-25, -7), [3, -4]);
 });
 
 Deno.test("divmod: definition [prop]", () => {
-  fc.assert(fc.property(fc.nat(), pos_nat, (x: number, y: number) => {
+  fc.assert(fc.property(fc.integer(), fc.integer(), (x: number, y: number) => {
+    fc.pre(y !== 0);
     const [d, m] = divmod(x, y);
     assertEquals(d * y + m, x);
   }));
@@ -24,7 +27,8 @@ Deno.test("polymod: basic", () => {
 
 Deno.test("polymod: recombine [prop]", () => {
   fc.assert(
-    fc.property(fc.nat(), fc.array(pos_nat), (x: number, mods: number[]) => {
+    fc.property(fc.integer(), fc.array(fc.integer()), (x: number, mods: number[]) => {
+      fc.pre(!mods.includes(0));
       const parts = polymod(x, mods);
       assertEquals(parts.length, mods.length + 1);
       let whole = parts.pop()!;
