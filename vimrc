@@ -155,7 +155,6 @@ set formatoptions+=cqtrol
 set gdefault
 set hidden
 set history=50
-set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
@@ -173,6 +172,15 @@ set title
 set ttimeoutlen=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
+
+" Setting 'hlsearch' has the annoying side-effect of immediately turning on
+" highlights if a search term is set. To avoid highlights re-enabling whenever
+" .vimrc is sourced, we check if they were on or off and keep it that way.
+let s:hl = v:hlsearch
+set hlsearch
+if !s:hl
+  nohlsearch
+endif
 
 if has('nvim')
   set inccommand=nosplit
