@@ -38,7 +38,23 @@ let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+function! SolsonBetterFfenc()
+  let l:ff  = strlen(&ff) ? '['.&ff.']' : ''
+  let l:bom = &l:bomb ? '[bom]' : ''
+  let l:out = &fenc . l:ff . l:bom
+  if l:out is# 'utf-8[unix]' || l:out is# '[unix]'
+    return ''
+  else
+    return l:out
+  endif
+endfunction
+
+function! SolsonAirlineInit()
+  call airline#parts#define_function('better_ffenc', 'SolsonBetterFfenc')
+  let g:airline_section_y = airline#section#create(['better_ffenc'])
+endfunction
+autocmd User AirlineAfterInit call SolsonAirlineInit()
 
 " See `:help mode()` for an explanation of the mode names.
 let g:airline_mode_map = {
