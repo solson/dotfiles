@@ -76,6 +76,7 @@ let g:airline_mode_map = {
 Plug 'mhinz/vim-signify'
 let g:signify_vcs_list = ['git', 'svn']
 let g:signify_sign_change = '~'
+autocmd User Fugitive SignifyRefresh
 
 Plug 'kien/ctrlp.vim'
 Plug 'd11wtq/ctrlp_bdelete.vim'
