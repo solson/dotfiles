@@ -1,12 +1,11 @@
 " Vim Code Dark (airline theme)
 " https://github.com/tomasiser/vim-code-dark
 
-" With a different choice of background colors for Normal/Insert/Replace/Visual.
-" - Scott Olson <scott@solson.me>
+" With personal modifications by Scott Olson <scott@solson.me>
 
 scriptencoding utf-8
 
-let g:airline#themes#codedark_scott#palette = {}
+let g:airline#themes#codedark_solson#palette = {}
 
 " Terminal colors (base16):
 let s:cterm00 = "00"
@@ -74,10 +73,10 @@ let s:N2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cter
 let s:N3 = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none' ]
 let s:NM = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none']
 
-let g:airline#themes#codedark_scott#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
-let g:airline#themes#codedark_scott#palette.normal_modified = { 'airline_c': s:NM }
-let g:airline#themes#codedark_scott#palette.normal.airline_warning = s:Warning
-let g:airline#themes#codedark_scott#palette.normal_modified.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
+let g:airline#themes#codedark_solson#palette.normal_modified = { 'airline_c': s:NM }
+let g:airline#themes#codedark_solson#palette.normal.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.normal_modified.airline_warning = s:Warning
 
 " Insert
 
@@ -86,10 +85,10 @@ let s:I2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cter
 let s:I3 = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none' ]
 let s:IM = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none']
 
-let g:airline#themes#codedark_scott#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
-let g:airline#themes#codedark_scott#palette.insert_modified = { 'airline_c': s:IM }
-let g:airline#themes#codedark_scott#palette.insert.airline_warning = s:Warning
-let g:airline#themes#codedark_scott#palette.insert_modified.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
+let g:airline#themes#codedark_solson#palette.insert_modified = { 'airline_c': s:IM }
+let g:airline#themes#codedark_solson#palette.insert.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.insert_modified.airline_warning = s:Warning
 
 " Replace
 
@@ -98,10 +97,10 @@ let s:R2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cter
 let s:R3 = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none' ]
 let s:RM = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none']
 
-let g:airline#themes#codedark_scott#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
-let g:airline#themes#codedark_scott#palette.replace_modified = { 'airline_c': s:RM }
-let g:airline#themes#codedark_scott#palette.replace.airline_warning = s:Warning
-let g:airline#themes#codedark_scott#palette.replace_modified.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
+let g:airline#themes#codedark_solson#palette.replace_modified = { 'airline_c': s:RM }
+let g:airline#themes#codedark_solson#palette.replace.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.replace_modified.airline_warning = s:Warning
 
 " Visual
 
@@ -110,10 +109,10 @@ let s:V2 = [ s:cdFront.gui, s:cdDarkDark.gui, s:cdFront.cterm, s:cdDarkDark.cter
 let s:V3 = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none' ]
 let s:VM = [ s:cdFront.gui, s:cdDarkDarkDark.gui, s:cdFront.cterm, s:cdDarkDarkDark.cterm, 'none']
 
-let g:airline#themes#codedark_scott#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
-let g:airline#themes#codedark_scott#palette.visual_modified = { 'airline_c': s:VM }
-let g:airline#themes#codedark_scott#palette.visual.airline_warning = s:Warning
-let g:airline#themes#codedark_scott#palette.visual_modified.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
+let g:airline#themes#codedark_solson#palette.visual_modified = { 'airline_c': s:VM }
+let g:airline#themes#codedark_solson#palette.visual.airline_warning = s:Warning
+let g:airline#themes#codedark_solson#palette.visual_modified.airline_warning = s:Warning
 
 " Inactive
 
@@ -122,12 +121,12 @@ let s:IA2 = [ s:cdFrontGray.gui, s:cdDarkDark.gui, s:cdFrontGray.cterm, s:cdDark
 let s:IA3 = [ s:cdFrontGray.gui, s:cdDarkDarkDark.gui, s:cdFrontGray.cterm, s:cdDarkDarkDark.cterm, 'none' ]
 let s:IAM = [ s:cdFrontGray.gui, s:cdDarkDarkDark.gui, s:cdFrontGray.cterm, s:cdDarkDarkDark.cterm, 'none' ]
 
-let g:airline#themes#codedark_scott#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
-let g:airline#themes#codedark_scott#palette.inactive_modified = { 'airline_c': s:IAM }
+let g:airline#themes#codedark_solson#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
+let g:airline#themes#codedark_solson#palette.inactive_modified = { 'airline_c': s:IAM }
 
 " Accents
 
-let g:airline#themes#codedark_scott#palette.accents = {
+let g:airline#themes#codedark_solson#palette.accents = {
   \ 'gray': [ s:cdGray.gui, '', s:cdGray.cterm, '' ],
   \ 'violet': [ s:cdViolet.gui, '', s:cdViolet.cterm, '' ],
   \ 'blue': [ s:cdBlue.gui, '', s:cdBlue.cterm, '' ],

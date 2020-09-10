@@ -22,7 +22,7 @@ Plug 'tomasiser/vim-code-dark'
 
 Plug 'bling/vim-airline'
 set noshowmode
-let g:airline_theme = 'codedark_scott'
+let g:airline_theme = 'codedark_solson'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
