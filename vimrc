@@ -134,6 +134,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn'
+Plug 'wincent/terminus'
 Plug 'wlangstroth/vim-racket'
 Plug 'mk12/vim-lean', { 'for': 'lean' }
 
