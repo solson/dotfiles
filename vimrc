@@ -17,9 +17,6 @@ call plug#begin('~/.vim/plugged')
 let g:redtt_path = '/home/scott/Projects/redtt/result/bin/redtt'
 Plug '~/Projects/redtt/vim'
 
-" Visual Studio Code Dark+ colorscheme
-Plug 'tomasiser/vim-code-dark'
-
 Plug 'bling/vim-airline'
 set noshowmode
 let g:airline_theme = 'codedark_solson'
@@ -299,7 +296,7 @@ endif
 
 " Use a nice colorscheme if 256 colors are available
 if &t_Co == 256 || has("gui_running")
-  colorscheme codedark
+  colorscheme codedark_solson
 endif
 
 " Fix handling of Ctrl-arrowkeys inside tmux, which provides xterm-style keys

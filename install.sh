@@ -80,6 +80,7 @@ setup_vim() {
   mkdir -p ~/.vim/backup
   symlink vimrc
   symlink vim/UltiSnips
+  symlink vim/colors
   symlink vim/autoload/airline
   symlink vim/autoload/plug.vim &&
     msg Note "remember to run :PlugInstall and build YCM"
