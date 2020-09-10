@@ -131,11 +131,11 @@ end
 # Rust aliases
 ################################################################################
 
-alias cb 'cargo build -j8'
-alias cr 'cargo run -j8'
-alias ct 'cargo test -j8'
-alias cbr 'cb --release'
-alias crr 'cr --release'
+alias cb 'cargo build'
+alias cr 'cargo run'
+alias ct 'cargo test'
+alias cbr 'cargo build --release'
+alias crr 'cargo run --release'
 
 ################################################################################
 # youtube-dl aliases
