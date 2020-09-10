@@ -286,14 +286,6 @@ nnoremap Y y$
 nnoremap <leader>ve :split $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
-" Set the dictionary for ctrl-x ctrl-k word completion.
-set dictionary=/usr/share/dict/words
-
-" Because vim is too stupid to figure out these support 256 colors
-if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'xfce4-terminal' || exists("$KONSOLE_PROFILE_NAME")
-  set t_Co=256
-endif
-
 " Use a nice colorscheme if 256 colors are available
 if &t_Co == 256 || has("gui_running")
   colorscheme codedark_solson
