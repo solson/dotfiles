@@ -12,7 +12,7 @@ Deno.test("divmod: basic", () => {
 });
 
 Deno.test("divmod: definition [prop]", () => {
-  fc.assert(fc.property(fc.integer(), fc.integer(), (x: number, y: number) => {
+  fc.assert(fc.property(fc.integer(), fc.integer(), (x, y) => {
     fc.pre(y !== 0);
     const [d, m] = divmod(x, y);
     assertEquals(d * y + m, x);
@@ -27,7 +27,7 @@ Deno.test("polymod: basic", () => {
 
 Deno.test("polymod: recombine [prop]", () => {
   fc.assert(
-    fc.property(fc.integer(), fc.array(fc.integer()), (x: number, mods: number[]) => {
+    fc.property(fc.integer(), fc.array(fc.integer()), (x, mods) => {
       fc.pre(!mods.includes(0));
       const parts = polymod(x, mods);
       assertEquals(parts.length, mods.length + 1);
