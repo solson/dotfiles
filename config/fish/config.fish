@@ -46,6 +46,12 @@ alias rg 'rg -i'
 alias v nvim
 alias vim nvim
 
+# Useful for `deno types | lessb -lts`, for example (to view output as
+# syntax-highlighted TypeScript).
+function lessb
+  bat $argv | less -R
+end
+
 function ls
   set -l options
   if isatty stdout
