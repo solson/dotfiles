@@ -32,3 +32,24 @@ export function format_duration(total_ms: number): string {
     return `${s}s`;
   }
 }
+
+/**
+ * Indicates unfinished code.
+ *
+ * This can be useful if you are prototyping and are just looking to have your
+ * code typecheck.
+ */
+export function todo(msg?: string): never {
+  const err = new Error(
+    msg === undefined ? "not yet implemented" : `not yet implemented: ${msg}`,
+  );
+  // Capture a stack trace from where `todo` was called instead of at the above
+  // `Error` constructor.
+  Error.captureStackTrace(err, todo);
+  throw err;
+}
+
+export function once<T>(f: () => T): () => T {
+  let cached: T | undefined;
+  return () => cached ?? (cached = f());
+}
