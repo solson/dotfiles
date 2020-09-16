@@ -262,6 +262,9 @@ end
 # Disable startup message.
 set fish_greeting ""
 
+# Just use regular man pages instead of Fish's weird postprocessing.
+alias __fish_print_help man
+
 ################################################################################
 # Colours
 ################################################################################
