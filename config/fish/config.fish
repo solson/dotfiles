@@ -181,9 +181,9 @@ function fish_prompt
   # with Alt-{Left,Right} working directory history commands.
   echo -en '\e[2K'
 
-  set -l prompt_bgcolor 363636
-
+  set -l prompt_bgcolor 262626
   set_color -b $prompt_bgcolor
+
   set_color $prompt_bgcolor
   echo -n '['
   set_color brblue
