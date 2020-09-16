@@ -181,30 +181,46 @@ function fish_prompt
   # with Alt-{Left,Right} working directory history commands.
   echo -en '\e[2K'
 
-  set_color brblack
+  set -l prompt_bgcolor 363636
+
+  set_color -b $prompt_bgcolor
+  set_color $prompt_bgcolor
   echo -n '['
-  set_color $fish_color_cwd
+  set_color brblue
   echo -n (prompt_pwd)
 
   if set -q SSH_TTY
-    set_color brblack
+    set_color $prompt_bgcolor
     echo -n "|"
     set_color brcyan
     echo -n (prompt_hostname)
   end
 
   if echo "$PATH" | grep -q /nix/store
-    set_color brblack
+    set_color $prompt_bgcolor
     echo -n "|"
     set_color brmagenta
     echo -n "nix"
   end
 
-  set_color brblack
-  __fish_git_prompt "|%s"
+  # FIXME(solson): This is a ridiculous hack to make fish_git_prompt not reset
+  # the background color.
+  if not set -q ___fish_git_prompt_init
+    fish_git_prompt > /dev/null
+    set -g ___fish_git_prompt_color_branch_done ''
+    set -g ___fish_git_prompt_color_branch_detached_done ''
+    set -g ___fish_git_prompt_color_dirtystate_done ''
+    set -g ___fish_git_prompt_color_stagedstate_done ''
+    set -g ___fish_git_prompt_color_stashstate_done ''
+    set -g ___fish_git_prompt_color_untrackedfiles_done ''
+    set -g ___fish_git_prompt_color_upstream_done ''
+  end
+  set_color $prompt_bgcolor
+  fish_git_prompt "|%s"
 
-  set_color brblack
+  set_color $prompt_bgcolor
   echo -n ']'
+  set_color normal
 
   # If the last command took longer than 5 seconds, print its execution time.
   if [ "$CMD_DURATION" -gt 5000 ]
@@ -248,8 +264,12 @@ set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 set __fish_git_prompt_char_upstream_diverged '↕'
 
+set __fish_git_prompt_color_dirtystate red
+set __fish_git_prompt_color_invalidstate brred
+set __fish_git_prompt_color_stagedstate green
 set __fish_git_prompt_color_stashstate yellow
 set __fish_git_prompt_color_untrackedfiles red
+set __fish_git_prompt_color_upstream white
 
 function fish_title
   echo (prompt_pwd) : $_
