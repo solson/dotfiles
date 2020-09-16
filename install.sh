@@ -113,6 +113,7 @@ setup_common() {
   symlink irbrc
   symlink nix-repl.nix
   symlink XCompose
+  symlink local/share/konsole/VSCode-WIP.colorscheme
 }
 
 case "$(hostname -s)" in
