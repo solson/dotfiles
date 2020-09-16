@@ -4,15 +4,14 @@ export function divmod(x: number, y: number): [number, number] {
 
 // Inspired by https://docs.raku.org/routine/polymod.
 export function polymod(x: number, mods: number[]): number[] {
-  let more = x;
   let remainders: number[] = [];
   for (const mod of mods) {
-    const rem = more % mod;
+    const rem = x % mod;
     remainders.push(rem);
-    more -= rem;
-    more /= mod;
+    x -= rem;
+    x /= mod;
   }
-  remainders.push(more);
+  remainders.push(x);
   return remainders;
 }
 
