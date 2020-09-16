@@ -269,6 +269,11 @@ alias __fish_print_help man
 # Colours
 ################################################################################
 
+# Enable 24-bit color in Konsole.
+if set -q KONSOLE_VERSION
+  set fish_term24bit 1
+end
+
 set fish_color_autosuggestion brblack
 set fish_color_command brmagenta --bold
 set fish_color_comment brblack
