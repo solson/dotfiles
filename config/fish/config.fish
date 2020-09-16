@@ -191,16 +191,16 @@ function fish_prompt
 
   if set -q SSH_TTY
     set_color $prompt_bgcolor
-    echo -n "|"
+    echo -n '|'
     set_color brcyan
     echo -n (prompt_hostname)
   end
 
-  if echo "$PATH" | grep -q /nix/store
+  if echo $PATH | grep -q /nix/store
     set_color $prompt_bgcolor
-    echo -n "|"
+    echo -n '|'
     set_color brmagenta
-    echo -n "nix"
+    echo -n 'nix'
   end
 
   # FIXME(solson): This is a ridiculous hack to make fish_git_prompt not reset
@@ -224,17 +224,13 @@ function fish_prompt
 
   # If the last command took longer than 5 seconds, print its execution time.
   if [ "$CMD_DURATION" -gt 5000 ]
-    # set_color brblack
-    # echo -n "|"
-    echo -n " "
+    echo -n ' '
     set_color yellow
     echo -n (format-duration $CMD_DURATION)
   end
 
   if [ $last_status != 0 ]
-    # set_color brblack
-    # echo -n "|"
-    echo -n " "
+    echo -n ' '
     set_color red
     echo -n $last_status
   end
