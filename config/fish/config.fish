@@ -285,6 +285,10 @@ set fish_greeting ""
 # Just use regular man pages instead of Fish's weird postprocessing.
 alias __fish_print_help man
 
+# Screen clearing that handles my newline-between-prompts setup better.
+bind \cl 'set fish_prompt_first 1; command clear -x; commandline -f repaint'
+alias clear 'set fish_prompt_first 1; command clear'
+
 ################################################################################
 # Colours
 ################################################################################
