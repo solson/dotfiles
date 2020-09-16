@@ -28,16 +28,23 @@
 	ui = true
 [color "diff-highlight"]
 	oldNormal = red
-	oldHighlight = red 52 bold # 52 is the darkest red in the 256 colors.
+	oldHighlight = brightred 52 # 52 is the darkest red in the 256 colors.
 	newNormal = green
-	newHighlight = green 22 bold # 22 is the darkest red in the 256 colors.
+	newHighlight = brightgreen 22 # 22 is the darkest green in the 256 colors.
 [color "diff"]
-	meta = blue bold
-	frag = magenta bold
+	meta = brightblue
+	frag = brightmagenta
 	func = black bold
-	commit = yellow bold
+	commit = brightyellow
 	old = red
 	new = green
 	whitespace = red reverse
+[color "status"]
+	added = brightgreen
+	updated = brightgreen
+	changed = red
+	untracked = red
+	branch = green
+	unmerged = brightred
 [ghq]
 	root = /home/scott/.clones
