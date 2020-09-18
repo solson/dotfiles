@@ -193,6 +193,9 @@ set updatetime=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
 
+" Disable netrw history files.
+let g:netrw_dirhistmax = 0
+
 " Setting 'hlsearch' has the annoying side-effect of immediately turning on
 " highlights if a search term is set. To avoid highlights re-enabling whenever
 " .vimrc is sourced, we check if they were on or off and keep it that way.
