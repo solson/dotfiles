@@ -153,6 +153,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
 Plug 'wincent/terminus'
 Plug 'wlangstroth/vim-racket'
 Plug 'mk12/vim-lean', { 'for': 'lean' }
