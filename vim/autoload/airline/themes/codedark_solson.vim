@@ -143,3 +143,54 @@ let g:airline#themes#codedark_solson#palette.accents = {
   \ 'pink': [ s:cdPink.gui, '', s:cdPink.cterm, '' ],
   \ }
 
+" Warnings
+
+let s:WI = [ s:cdFront.gui, s:cdYellow.gui, s:cdFront.cterm, s:cdYellow.cterm, 'bold' ]
+let g:airline#themes#codedark_solson#palette.normal.airline_warning = s:WI
+
+let g:airline#themes#codedark_solson#palette.normal_modified.airline_warning =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_warning
+
+let g:airline#themes#codedark_solson#palette.insert.airline_warning =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_warning
+
+let g:airline#themes#codedark_solson#palette.insert_modified.airline_warning =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_warning
+
+let g:airline#themes#codedark_solson#palette.visual.airline_warning =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_warning
+
+let g:airline#themes#codedark_solson#palette.visual_modified.airline_warning =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_warning
+
+let g:airline#themes#codedark_solson#palette.replace.airline_warning =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_warning
+
+let g:airline#themes#codedark_solson#palette.replace_modified.airline_warning =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_warning
+
+" Errors
+
+let s:ER = [ s:cdFront.gui, s:cdRed.gui, s:cdFront.cterm, s:cdRed.cterm, 'bold' ]
+let g:airline#themes#codedark_solson#palette.normal.airline_error = s:ER
+
+let g:airline#themes#codedark_solson#palette.normal_modified.airline_error =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_error
+
+let g:airline#themes#codedark_solson#palette.insert.airline_error =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_error
+
+let g:airline#themes#codedark_solson#palette.insert_modified.airline_error =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_error
+
+let g:airline#themes#codedark_solson#palette.visual.airline_error =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_error
+
+let g:airline#themes#codedark_solson#palette.visual_modified.airline_error =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_error
+
+let g:airline#themes#codedark_solson#palette.replace.airline_error =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_error
+
+let g:airline#themes#codedark_solson#palette.replace_modified.airline_error =
+    \ g:airline#themes#codedark_solson#palette.normal.airline_error
