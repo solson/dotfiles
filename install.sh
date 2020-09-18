@@ -77,13 +77,8 @@ setup_git() {
 }
 
 setup_vim() {
-  mkdir -p ~/.vim/backup
+  symlink vim
   symlink vimrc
-  symlink vim/colors
-  symlink vim/autoload/airline
-  symlink vim/autoload/plug.vim &&
-    msg Note "remember to run :PlugInstall and build YCM"
-
   symlink_absolute "$HOME/.config/nvim" "$HOME/.vim"
   symlink_absolute "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
 }
