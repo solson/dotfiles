@@ -235,9 +235,10 @@ function fish_prompt
     echo -n $last_status
   end
 
-  set_color normal
   echo
+  set_color brblack
   echo -n '> '
+  set_color normal
 end
 
 # function fish_right_prompt
