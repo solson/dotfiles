@@ -37,11 +37,13 @@ let g:airline_symbols.spell = 'SP'
 let g:airline_symbols.paste = 'PASTE'
 
 let g:airline#extensions#ctrlp#show_adjacent_modes = 0
-let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#fugitiveline#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 
-function! SolsonBetterFfenc()
+function! SolsonBetterFfenc() abort
   let l:ff  = strlen(&ff) ? '['.&ff.']' : ''
   let l:bom = &l:bomb ? '[bom]' : ''
   let l:out = &fenc . l:ff . l:bom
@@ -52,8 +54,16 @@ function! SolsonBetterFfenc()
   endif
 endfunction
 
-function! SolsonAirlineInit()
+function! SolsonCocGit() abort
+  let l:global = get(g:, 'coc_git_status', '')
+  let l:buffer = get(b:, 'coc_git_status', '')
+  return l:global . l:buffer
+endfunction
+
+function! SolsonAirlineInit() abort
   call airline#parts#define_function('better_ffenc', 'SolsonBetterFfenc')
+  call airline#parts#define_function('coc_git', 'SolsonCocGit')
+  let g:airline_section_b = airline#section#create(['coc_git'])
   let g:airline_section_y = airline#section#create(['better_ffenc'])
 endfunction
 autocmd User AirlineAfterInit call SolsonAirlineInit()
