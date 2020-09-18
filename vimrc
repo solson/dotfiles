@@ -78,10 +78,6 @@ let g:airline_mode_map = {
   \ '' : 'V̪',
   \ }
 
-Plug 'mhinz/vim-signify'
-let g:signify_vcs_list = ['git', 'svn']
-let g:signify_sign_change = '~'
-autocmd User Fugitive SignifyRefresh
 
 Plug 'kien/ctrlp.vim'
 Plug 'd11wtq/ctrlp_bdelete.vim'
@@ -118,6 +114,17 @@ autocmd FileType racket setlocal commentstring=;\ %s
 autocmd FileType redtt  setlocal commentstring=--\ %s
 autocmd FileType sml    setlocal commentstring=(*%s*)
 autocmd FileType xquery setlocal commentstring=(:%s:)
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+inoremap <silent><expr> <c-space> coc#refresh()
+highlight link CocRustChainingHint NonText
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-declaration)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> <F2> <Plug>(coc-rename)
+nnoremap <silent> gh :call CocAction('doHover')<CR>
+autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd FileType rust nnoremap <buffer><silent> <M-i> :CocCommand rust-analyzer.toggleInlayHints<CR>
 
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'LnL7/vim-nix'
@@ -176,6 +183,7 @@ set smarttab
 set textwidth=80
 set title
 set ttimeoutlen=100
+set updatetime=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
 
