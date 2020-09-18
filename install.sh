@@ -77,10 +77,9 @@ setup_git() {
 }
 
 setup_vim() {
-  symlink vim
-  symlink vimrc
-  symlink_absolute "$HOME/.config/nvim" "$HOME/.vim"
-  symlink_absolute "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
+  symlink config/nvim
+  symlink_absolute "$HOME/.vim" "$HOME/.config/nvim"
+  symlink_absolute "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
 }
 
 setup_fish() {
