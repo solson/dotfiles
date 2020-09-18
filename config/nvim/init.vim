@@ -107,14 +107,6 @@ Plug 'glts/vim-textobj-comment'
 " `a,/i,` for a function parameter
 Plug 'sgur/vim-textobj-parameter'
 
-Plug 'lervag/vimtex'
-let g:tex_flavor = 'latex' " Never use the plaintex filetype.
-let g:vimtex_latexmk_build_dir = 'out'
-let g:vimtex_syntax_minted = [
-  \ { 'lang': 'c' },
-  \ { 'lang': 'rust' },
-\ ]
-
 Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp  setlocal commentstring=//\ %s
 autocmd FileType idris  setlocal commentstring=--\ %s
