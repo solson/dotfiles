@@ -200,7 +200,7 @@ function fish_prompt
     echo -n (prompt_hostname)
   end
 
-  if echo $PATH | grep -q /nix/store
+  if set -q IN_NIX_SHELL
     set_color $prompt_bgcolor
     echo -n '|'
     set_color brmagenta
