@@ -312,7 +312,7 @@ noremap Q gq
 nnoremap Y y$
 
 " Quickly edit and source this file
-nnoremap <leader>ve :split $MYVIMRC<cr>
+nnoremap <leader>ve :edit $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " Use a nice colorscheme if 256 colors are available
