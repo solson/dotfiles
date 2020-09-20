@@ -245,9 +245,6 @@ function fish_prompt
   set_color normal
 end
 
-# function fish_right_prompt
-# end
-
 set __fish_git_prompt_describe_style default
 set __fish_git_prompt_showcolorhints 1
 set __fish_git_prompt_showdirtystate 1
