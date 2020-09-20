@@ -31,13 +31,17 @@ set -x LESS FR
 set -x SYSTEMD_LESS $LESS
 
 # ...but don't use -F when invoked directly.
-alias less 'env LESS=R less'
+function less
+  env LESS=R less $argv
+end
 
 ################################################################################
 # Misc functions
 ################################################################################
 
-alias bash 'env DONT_EXEC_FISH=1 bash'
+function bash
+  env DONT_EXEC_FISH=1 bash $argv
+end
 alias dfh 'df -h /{data{2,},} --output=size,used,avail,pcent,target'
 alias la 'ls -A'
 alias ll 'ls -lh'
