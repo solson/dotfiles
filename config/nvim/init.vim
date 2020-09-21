@@ -183,21 +183,9 @@ if !s:hl
   nohlsearch
 endif
 
-" Spell checking
-set spelllang=en_ca
-set complete+=kspell
-autocmd FileType markdown,tex setlocal spell
-
 " Use <leader>l to switch to the last active buffer instead of C-^ since C-^ is
 " mosh's prefix command.
 noremap <leader>l <C-^>
-
-" Correct the nearest previous spelling error.
-inoremap <C-s> <Esc>[s1z=`]a
-
-" Visuall bell must be disabled after the GUI starts.
-set visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
 
 " Default to 2-space indents, 2-character tabs
 set expandtab
@@ -214,16 +202,10 @@ set listchars=tab:\ \ ,trail:·
 autocmd InsertEnter * setlocal nolist
 autocmd InsertLeave * setlocal list
 
-" GUI options
-set guifont=Terminus\ 10
-set guioptions-=mrLtT " Disable menus, toolbar, scrollbars
-set browsedir=buffer " GUI open starts in dir of buffer's file
-
 " Indentation exceptions
-autocmd FileType go setlocal noet
-autocmd FileType asm setlocal sw=8 ts=8 nosmartindent
+autocmd FileType go    setlocal noet
+autocmd FileType asm   setlocal sw=8 ts=8 nosmartindent
 autocmd FileType c,cpp setlocal sw=4 ts=4
-autocmd FileType nix setlocal sw=2 ts=2
 
 " Disable annoying as-you-type trailing whitespace highlighting
 let go_highlight_trailing_whitespace_error = 0
@@ -270,19 +252,7 @@ noremap Q gq
 nnoremap Y y$
 
 " Quickly edit and source this file
-nnoremap <leader>ve :edit $MYVIMRC<cr>
-nnoremap <leader>vs :source $MYVIMRC<cr>
+nnoremap <leader>ve :edit $MYVIMRC<CR>
+nnoremap <leader>vs :source $MYVIMRC<CR>
 
-" Use a nice colorscheme if 256 colors are available
-if &t_Co == 256 || has("gui_running")
-  colorscheme codedark_solson
-endif
-
-" Fix handling of Ctrl-arrowkeys inside tmux, which provides xterm-style keys
-" but has a screen-256color TERM variable.
-if &term =~ '^screen'
-  execute "set <xUp>=\e[1;*A"
-  execute "set <xDown>=\e[1;*B"
-  execute "set <xRight>=\e[1;*C"
-  execute "set <xLeft>=\e[1;*D"
-endif
+colorscheme codedark_solson
