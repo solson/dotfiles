@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Create symlinks from ~ to this repository.
+set -euo pipefail
 
 msg() {
   printf "%10s %s\n" "$1" "$2"
@@ -30,7 +31,6 @@ symlink_absolute() {
 
   if [ ! -e "$source_path" ]; then
     msg Error "$source_path doesn't exist"
-    return 1
   fi
 
   if [ -L "$dest_path" ]; then
@@ -39,26 +39,17 @@ symlink_absolute() {
       msg Error "$dest_path points to to $current_dest"
     else
       msg Up-to-date "$dest_path"
-      return 1
     fi
   fi
 
   if [ -e "$dest_path" ]; then
     msg Error "$dest_path exists and isn't a symlink"
-    return 1
   fi
 
   mkdir -p "$(dirname "$dest_path")"
   ln -s "$source_path" "$dest_path"
   msg Linking "$dest_path -> $source_path"
 }
-
-################################################################################
-
-# Vim
-symlink config/nvim
-symlink_absolute "$HOME/.vim" "$HOME/.config/nvim"
-symlink_absolute "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
 
 symlink XCompose
 symlink bash_profile
@@ -69,9 +60,11 @@ symlink bin/vigpg
 symlink config/bat
 symlink config/fish
 symlink config/git
+symlink config/nvim
 symlink inputrc
 symlink irbrc
 symlink local/share/konsole/VSCode-WIP.colorscheme
 symlink nix-repl.nix
 symlink tmux.conf
+
 exit 0

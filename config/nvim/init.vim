@@ -1,18 +1,9 @@
-" Use Vim settings, rather than Vi settings
-set nocompatible
-syntax on
-
-let s:at_work = filereadable(expand('~/.dotfiles-at-work/vimrc-work.vim'))
-if s:at_work
-  source ~/.dotfiles-at-work/vimrc-work.vim
-endif
-
 " Remap leader to ,
 noremap \ ,
 let mapleader = ","
 
 " Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin(stdpath('config') . '/plugged')
 
 let g:redtt_path = '/home/scott/Projects/redtt/result/bin/redtt'
 Plug '~/Projects/redtt/vim'
@@ -88,9 +79,7 @@ let g:airline_mode_map = {
   \ '' : 'V̪',
   \ }
 
-
 Plug 'kien/ctrlp.vim'
-Plug 'd11wtq/ctrlp_bdelete.vim'
 let g:ctrlp_switch_buffer = ''
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 nmap <leader>b :CtrlPBuffer<CR>
@@ -160,37 +149,23 @@ Plug 'wlangstroth/vim-racket'
 Plug 'mk12/vim-lean', { 'for': 'lean' }
 
 call plug#end()
-call ctrlp_bdelete#init()
-
-" Place all backup files in ~/.vim/backup
-set backup
-set backupdir=~/.vim/backup
 
 " General
-set autoindent
-set backspace=indent,eol,start
 set colorcolumn=+1
-set display+=lastline
-set fillchars=vert:│,fold:\ 
-set formatoptions+=cqtrol
+set formatoptions+=rol
 set gdefault
 set hidden
-set history=50
 set ignorecase
-set incsearch
-set laststatus=2
+set inccommand=nosplit
+set mouse=a
 set nojoinspaces
 set number
-set ruler
 set shiftround
-set shortmess=atI
-set showcmd
+set shortmess+=I
 set smartcase
 set smartindent
-set smarttab
 set textwidth=80
 set title
-set ttimeoutlen=100
 set updatetime=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
@@ -200,15 +175,11 @@ let g:netrw_dirhistmax = 0
 
 " Setting 'hlsearch' has the annoying side-effect of immediately turning on
 " highlights if a search term is set. To avoid highlights re-enabling whenever
-" .vimrc is sourced, we check if they were on or off and keep it that way.
+" init.vim is sourced, we check if they were on or off and keep it that way.
 let s:hl = v:hlsearch
 set hlsearch
 if !s:hl
   nohlsearch
-endif
-
-if has('nvim')
-  set inccommand=nosplit
 endif
 
 " Spell checking
@@ -235,23 +206,12 @@ set tabstop=2
 " Use Google C++ style
 set cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4,N-s
 
-if &encoding == 'utf-8'
-  " Visible trailing whitespace
-  set list
-  set listchars=tab:\ \ ,trail:·
-  " Hide trailing whitespace in insert mode
-  autocmd InsertEnter * setlocal nolist
-  autocmd InsertLeave * setlocal list
-endif
-
-" Enable mouse in terminals
-if has('mouse')
-  set mouse=a
-
-  if !has('nvim')
-    set ttymouse=xterm2
-  endif
-endif
+" Visible trailing whitespace
+set list
+set listchars=tab:\ \ ,trail:·
+" Hide trailing whitespace in insert mode
+autocmd InsertEnter * setlocal nolist
+autocmd InsertLeave * setlocal list
 
 " GUI options
 set guifont=Terminus\ 10
@@ -270,9 +230,6 @@ let go_highlight_trailing_whitespace_error = 0
 " Filetypes
 autocmd BufRead,BufNewFile *.apr set filetype=clojure
 autocmd BufRead,BufNewFile SConstruct,SConscript set filetype=python
-
-" Smarter %
-runtime macros/matchit.vim
 
 " Scroll up and down, keeping the cursor in the same place on the screen, as if
 " the lines are scrolling past and the cursor is stationary.
