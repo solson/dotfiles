@@ -166,6 +166,7 @@ set smartcase
 set smartindent
 set textwidth=80
 set title
+set undofile
 set updatetime=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
