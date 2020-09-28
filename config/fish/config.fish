@@ -69,6 +69,14 @@ function mkcd -a dir
   cd $dir
 end
 
+function acd -a archive
+  set -l tmp (mktemp /tmp/aunpack.XXXXXXXXXX)
+  aunpack --quiet --save-outdir=$tmp $argv
+  set -l dir (cat $tmp)
+  [ $dir != '' -a -d $dir ]; and cd $dir
+  rm -f $tmp
+end
+
 ################################################################################
 # Nix functions
 ################################################################################
@@ -124,6 +132,10 @@ end
 #   nu foo -- foo -b baz
 function nx
   nix-shell -p $argv[1] --run "$argv"
+end
+
+function nsrc -a pkg
+  acd (nb $pkg.src)
 end
 
 # Abbreviate nix store paths:
