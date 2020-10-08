@@ -1,3 +1,5 @@
+# vim: ft=gitconfig
+
 [include]
 path = config.private
 
