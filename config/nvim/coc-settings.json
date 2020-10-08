@@ -5,6 +5,7 @@
   "diagnostic.errorSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.infoSign": "",
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualTextLines": 1,
