@@ -469,3 +469,8 @@ call <sid>hi('yamlConstant', s:cdBlue, {}, 'none', {})
 hi! link diffAdded DiffAdd
 hi! link diffChanged DiffChange
 hi! link diffRemoved DiffDelete
+
+call <sid>hi('CocErrorSign', s:cdRed, {}, 'none', {})
+call <sid>hi('CocWarningSign', s:cdYellowOrange, {}, 'none', {})
+call <sid>hi('CocInfoSign', s:cdBlue, {}, 'none', {})
+hi! link CocHintSign NonText
