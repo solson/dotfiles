@@ -1,52 +1,66 @@
 [include]
-	path = config.private
+path = config.private
+
 [user]
-	name = Scott Olson
-	email = scott@solson.me
+name = Scott Olson
+email = scott@solson.me
+
 [alias]
-	cm = commit
-	st = status -s
-	br = branch
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	sw = switch
-	re = restore
+cm = commit
+st = status -s
+br = branch
+lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+sw = switch
+re = restore
+
 [push]
-	default = simple
+default = simple
+
 [pull]
-	ff = only
+ff = only
+
 [github]
-	user = solson
+user = solson
+
 [diff "rust"]
-	xfuncname = "^[ \t]*(((pub([(][^)]*[)])?|const|unsafe|extern([ \t]*\"[^\"]*\")|async)[ \t]+)*((fn|struct|enum|impl|trait|mod|macro|const|static|use|extern[ \t]+crate)[^;]*))$"
+xfuncname = "^[ \t]*(((pub([(][^)]*[)])?|const|unsafe|extern([ \t]*\"[^\"]*\")|async)[ \t]+)*((fn|struct|enum|impl|trait|mod|macro|const|static|use|extern[ \t]+crate)[^;]*))$"
+
 [diff-so-fancy]
-	markEmptyLines = false
-	stripLeadingSymbols = false
-	useUnicodeRuler = false
+markEmptyLines = false
+stripLeadingSymbols = false
+useUnicodeRuler = false
+
 [core]
-	pager = diff-so-fancy | less -RFX
+pager = diff-so-fancy | less -RFX
+
 [color]
-	ui = true
+ui = true
+
 [color "diff-highlight"]
-	oldNormal = red
-	oldHighlight = brightred 52 # 52 is the darkest red in the 256 colors.
-	newNormal = green
-	newHighlight = brightgreen 22 # 22 is the darkest green in the 256 colors.
+oldNormal = red
+oldHighlight = brightred 52 # 52 is the darkest red in the 256 colors.
+newNormal = green
+newHighlight = brightgreen 22 # 22 is the darkest green in the 256 colors.
+
 [color "diff"]
-	meta = brightblue
-	frag = brightmagenta
-	func = black bold
-	commit = brightyellow
-	old = red
-	new = green
-	whitespace = red reverse
+meta = brightblue
+frag = brightmagenta
+func = black bold
+commit = brightyellow
+old = red
+new = green
+whitespace = red reverse
+
 [color "status"]
-	added = brightgreen
-	updated = brightgreen
-	changed = red
-	untracked = red
-	branch = green
-	unmerged = brightred
+added = brightgreen
+updated = brightgreen
+changed = red
+untracked = red
+branch = green
+unmerged = brightred
+
 [commit]
-	verbose = true
+verbose = true
+
 [ghq]
-	root = /home/scott/.clones
+root = /home/scott/.clones
