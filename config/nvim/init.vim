@@ -109,6 +109,7 @@ autocmd FileType xquery setlocal commentstring=(:%s:)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \'coc-deno',
+  \'coc-diagnostic',
   \'coc-git',
   \'coc-json',
   \'coc-rust-analyzer',

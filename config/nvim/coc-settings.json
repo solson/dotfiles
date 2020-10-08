@@ -9,6 +9,7 @@
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualTextLines": 1,
   "diagnostic.warningSign": "",
+  "diagnostic-languageserver.filetypes": { "sh": "shellcheck" },
   "git.addGBlameToBufferVar": true,
   "git.branchCharacter": "",
   "git.changedDecorator": "~",
