@@ -28,7 +28,7 @@ xfuncname = "^[ \t]*(((pub([(][^)]*[)])?|const|unsafe|extern([ \t]*\"[^\"]*\")|a
 [diff-so-fancy]
 markEmptyLines = false
 stripLeadingSymbols = false
-useUnicodeRuler = false
+useUnicodeRuler = true
 
 [core]
 pager = diff-so-fancy | less -RFX
