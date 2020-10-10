@@ -6,6 +6,7 @@ include "%L"
 <Multi_key> <Multi_key> <t> : "🎵"
 <Multi_key> <Multi_key> <a> : "💿"
 <Multi_key> <Multi_key> <r> : "🔁"
+<Multi_key> <Multi_key> <p> : "📌"
 
 # Misc symbols
 <Multi_key> <s> <t> : "★"
