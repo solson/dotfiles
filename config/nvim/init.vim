@@ -155,6 +155,7 @@ call plug#end()
 
 " General
 set colorcolumn=+1
+set fillchars=vert:│,fold:\ ,diff:╱
 set formatoptions+=rol
 set gdefault
 set hidden
