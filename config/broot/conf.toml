@@ -37,3 +37,7 @@ execution = ":select_first"
 [[verbs]]
 key = "end"
 execution = ":select_last"
+
+[[verbs]]
+shortcut = "s"
+execution = ":toggle_sizes"
