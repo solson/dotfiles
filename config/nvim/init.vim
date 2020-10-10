@@ -34,7 +34,7 @@ let g:airline#extensions#fugitiveline#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 
-function! SolsonBetterFfenc() abort
+function! s:BetterFfenc() abort
   let l:ff  = strlen(&ff) ? '['.&ff.']' : ''
   let l:bom = &l:bomb ? '[bom]' : ''
   let l:out = &fenc . l:ff . l:bom
@@ -45,19 +45,19 @@ function! SolsonBetterFfenc() abort
   endif
 endfunction
 
-function! SolsonCocGit() abort
+function! s:CocGit() abort
   let l:global = get(g:, 'coc_git_status', '')
   let l:buffer = get(b:, 'coc_git_status', '')
   return l:global . l:buffer
 endfunction
 
-function! SolsonAirlineInit() abort
-  call airline#parts#define_function('better_ffenc', 'SolsonBetterFfenc')
-  call airline#parts#define_function('coc_git', 'SolsonCocGit')
+function! s:AirlineInit() abort
+  call airline#parts#define_function('better_ffenc', string(function('s:BetterFfenc')))
+  call airline#parts#define_function('coc_git', string(function('s:CocGit')))
   let g:airline_section_b = airline#section#create(['coc_git'])
   let g:airline_section_y = airline#section#create(['better_ffenc'])
 endfunction
-autocmd User AirlineAfterInit call SolsonAirlineInit()
+autocmd User AirlineAfterInit call <SID>AirlineInit()
 
 " See `:help mode()` for an explanation of the mode names.
 let g:airline_mode_map = {
