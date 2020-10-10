@@ -90,6 +90,12 @@ function nt -w tree -a pkg
   and tree $store_path $argv
 end
 
+function nbr -w br -a pkg
+  set -e argv[1]
+  set -l store_path (nb $pkg)
+  and br $argv $store_path
+end
+
 function nbins -a pkg
   set -l store_path (nb $pkg)
   and echo $store_path/bin
