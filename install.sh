@@ -61,6 +61,7 @@ symlink bin/format-duration
 symlink bin/notify-run
 symlink bin/vigpg
 symlink config/bat
+symlink config/broot
 symlink config/fish
 symlink config/git
 symlink config/nvim
