@@ -18,7 +18,7 @@ symlink() {
     *)
       msg Error "Expected 1 argument to symlink, got $#"
       msg Error "Arguments were: $*"
-      exit 1
+      return 1
       ;;
   esac
 
@@ -31,6 +31,7 @@ symlink_absolute() {
 
   if [ ! -e "$source_path" ]; then
     msg Error "$source_path doesn't exist"
+    return
   fi
 
   if [ -L "$dest_path" ]; then
@@ -40,10 +41,12 @@ symlink_absolute() {
     else
       msg Up-to-date "$dest_path"
     fi
+    return
   fi
 
   if [ -e "$dest_path" ]; then
     msg Error "$dest_path exists and isn't a symlink"
+    return
   fi
 
   mkdir -p "$(dirname "$dest_path")"
