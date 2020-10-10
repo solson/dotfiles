@@ -63,3 +63,12 @@ unmerged = brightred
 
 [commit]
 verbose = true
+
+[difftool]
+prompt = false
+
+[difftool "nvimdiff"]
+cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[diff]
+tool = nvimdiff
