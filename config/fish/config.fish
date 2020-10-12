@@ -313,12 +313,3 @@ for autojump_script in $autojump_scripts
     . $autojump_script
   end
 end
-
-################################################################################
-# Work-specific configuration
-################################################################################
-
-set -l work_config  ~/.dotfiles-at-work/config-work.fish
-if test -f $work_config
-  . $work_config
-end
