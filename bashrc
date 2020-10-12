@@ -4,6 +4,10 @@
 # Environment variables
 ################################################################################
 
+# Build the PATH from scratch, saving the original in _PATH.
+[[ -z "$_PATH" ]] && export _PATH=$PATH
+PATH=/run/wrappers/bin:/run/current-system/sw/bin:"$HOME/.local/bin"
+
 # Set the SSH agent directory to a stable location rather than a random
 # temporary directory.
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
