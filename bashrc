@@ -8,6 +8,11 @@
 [[ -z "$_PATH" ]] && export _PATH=$PATH
 PATH=/run/wrappers/bin:/run/current-system/sw/bin:"$HOME/.local/bin"
 
+export NO_AT_BRIDGE=1 # Silence warnings in Gtk apps about accessibility bus.
+export MANPAGER='nvim +Man!'
+export LESS=FR
+export SYSTEMD_LESS=FR
+
 [[ -z "$XDG_CONFIG_HOME" ]] && export XDG_CONFIG_HOME=$HOME/.config
 [[ -z "$XDG_CACHE_HOME" ]] && export XDG_CACHE_HOME=$HOME/.cache
 [[ -z "$XDG_DATA_HOME" ]] && export XDG_DATA_HOME=$HOME/.local/share

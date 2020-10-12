@@ -1,23 +1,4 @@
 ################################################################################
-# Environment
-################################################################################
-
-# Silence warnings from Gtk applications about the accessibility bus.
-set -x NO_AT_BRIDGE 1
-
-# Use a custom man page viewer.
-set -x MANPAGER 'nvim +Man!'
-
-# Set useful defaults for `less`...
-set -x LESS FR
-set -x SYSTEMD_LESS $LESS
-
-# ...but don't use -F when invoked directly.
-function less
-  env LESS=R less $argv
-end
-
-################################################################################
 # Misc functions
 ################################################################################
 
@@ -30,7 +11,10 @@ alias ll 'ls -lh'
 alias o 'xdg-open'
 alias rg 'rg -i'
 alias v nvim
-alias vim nvim
+
+function less
+  env LESS=R less $argv
+end
 
 # Useful for `deno types | lessb -lts`, for example (to view output as
 # syntax-highlighted TypeScript).
