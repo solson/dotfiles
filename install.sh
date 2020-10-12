@@ -69,6 +69,5 @@ symlink config/nvim
 symlink config/readline
 symlink config/X11
 symlink local/share/konsole/VSCode-WIP.colorscheme
-symlink tmux.conf
 
 exit 0
