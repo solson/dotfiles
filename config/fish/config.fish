@@ -2,21 +2,6 @@
 # Environment
 ################################################################################
 
-set extra_paths \
-  ~/bin \
-  ~/.bin \
-  ~/.cargo/bin \
-  ~/.deno/bin
-
-for path in $extra_paths
-  if test -d $path
-    set PATH $PATH $path
-  end
-end
-
-# Remove duplicates in path.
-set PATH (ruby -e 'puts ARGV[0].split(":").uniq.join(":")' "$PATH")
-
 # Silence warnings from Gtk applications about the accessibility bus.
 set -x NO_AT_BRIDGE 1
 
