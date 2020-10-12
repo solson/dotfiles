@@ -56,9 +56,6 @@ symlink_absolute() {
 
 symlink bash_profile
 symlink bashrc
-symlink bin/format-duration
-symlink bin/notify-run
-symlink bin/vigpg
 symlink config/bat
 symlink config/broot
 symlink config/fish
@@ -68,6 +65,9 @@ symlink config/nix
 symlink config/nvim
 symlink config/readline
 symlink config/X11
+symlink local/bin/format-duration
+symlink local/bin/notify-run
+symlink local/bin/vigpg
 symlink local/share/konsole/VSCode-WIP.colorscheme
 
 exit 0
