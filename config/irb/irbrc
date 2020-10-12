@@ -1,0 +1,6 @@
+require 'fileutils'
+require 'irb/completion'
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+IRB.conf[:SAVE_HISTORY] = 10000
+IRB.conf[:HISTORY_FILE] = File.join(ENV["XDG_DATA_HOME"], "irb", "history")
+FileUtils.mkdir_p(File.dirname(IRB.conf[:HISTORY_FILE]))

@@ -127,13 +127,15 @@ nnoremap <silent> gh :call CocAction('doHover')<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd FileType rust nnoremap <buffer><silent> <M-i> :CocCommand rust-analyzer.toggleInlayHints<CR>
 
+Plug 'mattn/vim-gist'
+let g:gist_token_file = $XDG_CONFIG_HOME . '/vim-gist/token'
+
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'LnL7/vim-nix'
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
 Plug 'idris-hackers/idris-vim'
 Plug 'jeroenp/vim-xquery-syntax'
-Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'sickill/vim-pasta'

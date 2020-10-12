@@ -54,7 +54,6 @@ symlink_absolute() {
   msg Linking "$dest_path -> $source_path"
 }
 
-symlink XCompose
 symlink bash_profile
 symlink bashrc
 symlink bin/format-duration
@@ -64,11 +63,12 @@ symlink config/bat
 symlink config/broot
 symlink config/fish
 symlink config/git
+symlink config/irb
+symlink config/nix
 symlink config/nvim
-symlink inputrc
-symlink irbrc
+symlink config/readline
+symlink config/X11
 symlink local/share/konsole/VSCode-WIP.colorscheme
-symlink nix-repl.nix
 symlink tmux.conf
 
 exit 0

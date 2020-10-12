@@ -82,7 +82,7 @@ end
 ################################################################################
 
 alias nb 'nix-build --no-out-link "<nixpkgs>" -A'
-alias nr 'nix repl "$HOME/.nix-repl.nix" "<nixpkgs>"'
+alias nr 'nix repl "$XDG_CONFIG_HOME/nix/nix-repl.nix" "<nixpkgs>"'
 
 function nt -w tree -a pkg
   set -e argv[1]
