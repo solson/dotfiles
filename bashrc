@@ -8,10 +8,6 @@
 [[ -z "$_PATH" ]] && export _PATH=$PATH
 PATH=/run/wrappers/bin:/run/current-system/sw/bin:"$HOME/.local/bin"
 
-# Set the SSH agent directory to a stable location rather than a random
-# temporary directory.
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
-
 [[ -z "$XDG_CONFIG_HOME" ]] && export XDG_CONFIG_HOME=$HOME/.config
 [[ -z "$XDG_CACHE_HOME" ]] && export XDG_CACHE_HOME=$HOME/.cache
 [[ -z "$XDG_DATA_HOME" ]] && export XDG_DATA_HOME=$HOME/.local/share
