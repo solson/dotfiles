@@ -56,15 +56,16 @@ symlink_absolute() {
 
 symlink bash_profile
 symlink bashrc
+symlink config/X11
 symlink config/bat
 symlink config/broot
+symlink config/curl
 symlink config/fish
 symlink config/git
 symlink config/irb
 symlink config/nix
 symlink config/nvim
 symlink config/readline
-symlink config/X11
 symlink local/bin/format-duration
 symlink local/bin/notify-run
 symlink local/bin/vigpg

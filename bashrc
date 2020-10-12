@@ -23,6 +23,9 @@ export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 # Cargo
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 
+# Curl
+export CURL_HOME=$XDG_CONFIG_HOME/curl
+
 # Dungeon Crawl Stone Soup
 export CRAWL_DIR=$XDG_DATA_HOME/crawl/ # Trailing / is required.
 
