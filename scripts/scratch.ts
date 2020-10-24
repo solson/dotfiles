@@ -46,8 +46,7 @@
 //   },
 // }
 // assert(data, Article);
-// const data_typed: Article = data;
-// console.log(data_typed.title);
+// console.log(data.title);
 
 // import yargs from 'https://deno.land/x/yargs/deno.ts'
 // import { Arguments, YargsType } from 'https://deno.land/x/yargs/types.ts'
