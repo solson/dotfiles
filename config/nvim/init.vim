@@ -97,7 +97,8 @@ Plug 'glts/vim-textobj-comment'
 Plug 'sgur/vim-textobj-parameter'
 
 Plug 'tpope/vim-commentary'
-autocmd FileType c,cpp  setlocal commentstring=//\ %s
+autocmd FileType c,cpp,typescript
+  \ setlocal commentstring=//\ %s
 autocmd FileType idris  setlocal commentstring=--\ %s
 autocmd FileType julia  setlocal commentstring=#\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
