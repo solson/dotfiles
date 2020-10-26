@@ -28,6 +28,9 @@ export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 # Cargo
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 
+# clojure.tools.gitlibs
+export GITLIBS=$XDG_CACHE_HOME/gitlibs
+
 # Curl
 export CURL_HOME=$XDG_CONFIG_HOME/curl
 
