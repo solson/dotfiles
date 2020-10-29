@@ -157,6 +157,37 @@ bind \cc 'commandline ""'
 # Prompt and title
 ################################################################################
 
+# Keep track of /nix/store paths in PATH.
+function update_nix_shell_pkg_list -v PATH
+  set -l nix_paths
+  for path in $PATH
+    string match -q '/nix/store/*' $path || continue
+    set -a nix_paths $path
+  end
+
+  if test (count $nix_paths) -eq 0
+    set -gu NIX_SHELL_PKGS
+  else
+    set -gu NIX_SHELL_PKGS (nix show-derivation $nix_paths |
+      jq -r 'to_entries[].value.env | .pname // (.name | split("-")[0])')
+  end
+
+  # Check if the entire set of nixpkgs stdenv packages is present, and if so,
+  # abbreviate it.
+  set -l stdenv gnumake bzip2 gzip bash xz gcc gnused coreutils gnutar \
+    patchelf gcc-wrapper gnugrep bash gawk diffutils patch findutils glibc \
+    binutils-wrapper binutils
+
+  set -l pkgs_without_stdenv $NIX_SHELL_PKGS
+  for pkg in $stdenv
+    set -l i (contains -i $pkg $pkgs_without_stdenv) || return
+    set -e pkgs_without_stdenv[$i]
+  end
+
+  set -gu NIX_SHELL_PKGS «stdenv» $pkgs_without_stdenv
+end
+update_nix_shell_pkg_list
+
 set fish_prompt_first 1
 function fish_prompt
   set -l last_status $status
@@ -186,11 +217,16 @@ function fish_prompt
     echo -n (prompt_hostname)
   end
 
-  if set -q IN_NIX_SHELL
+  if test (count $NIX_SHELL_PKGS) -gt 0
     set_color $prompt_bgcolor
     echo -n '|'
     set_color brmagenta
-    echo -n 'nix'
+    echo -n '❄️'
+    set -l limit 3
+    test (count $NIX_SHELL_PKGS) -gt 1 && echo -n '{'
+    echo -n $NIX_SHELL_PKGS[1..$limit]
+    test (count $NIX_SHELL_PKGS) -gt $limit && echo -n ' …'
+    test (count $NIX_SHELL_PKGS) -gt 1 && echo -n '}'
   end
 
   # FIXME(solson): This is a ridiculous hack to make fish_git_prompt not reset
