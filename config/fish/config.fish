@@ -211,7 +211,7 @@ function fish_prompt
   set_color $prompt_bgcolor
   echo -n '['
   set_color brblue
-  echo -n (prompt_pwd)
+  echo -n (solson_prompt_pwd)
 
   if set -q SSH_TTY
     set_color $prompt_bgcolor
@@ -304,7 +304,12 @@ set __fish_git_prompt_color_untrackedfiles red
 set __fish_git_prompt_color_upstream white
 
 function fish_title
-  echo (prompt_pwd) : $_
+  echo (solson_prompt_pwd)" : $_"
+end
+
+function solson_prompt_pwd
+  string replace -rf '^/mut/platform/?' // $PWD
+  or prompt_pwd
 end
 
 ################################################################################
