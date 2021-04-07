@@ -72,3 +72,6 @@ cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [diff]
 tool = nvimdiff
+
+[rebase]
+autoSquash = true
