@@ -147,6 +147,7 @@ alias yt youtube-dl
 alias yta 'yt --config-location ~/.config/youtube-dl/config-archival'
 alias ytm 'yt --config-location ~/.config/youtube-dl/config-music'
 alias ytmp3 'yt --config-location ~/.config/youtube-dl/config-mp3'
+alias ytn 'yt --format="bestvideo[height<=?1440]+bestaudio/best"'
 
 ################################################################################
 # Keybindings
