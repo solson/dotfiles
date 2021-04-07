@@ -112,6 +112,7 @@ let g:coc_global_extensions = [
   \'coc-deno',
   \'coc-diagnostic',
   \'coc-git',
+  \'coc-go',
   \'coc-json',
   \'coc-rust-analyzer',
   \'coc-sh',
@@ -138,6 +139,7 @@ Plug 'dag/vim-fish'
 Plug 'idris-hackers/idris-vim'
 Plug 'jeroenp/vim-xquery-syntax'
 Plug 'mattn/webapi-vim'
+Plug 'mattn/vim-gomod'
 Plug 'rust-lang/rust.vim'
 Plug 'sickill/vim-pasta'
 Plug 'tpope/vim-abolish'
