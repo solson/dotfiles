@@ -281,4 +281,7 @@ nnoremap Y y$
 nnoremap <leader>ve :edit $MYVIMRC<CR>
 nnoremap <leader>vs :source $MYVIMRC<CR>
 
+" Close help windows easily.
+autocmd FileType help noremap <buffer> <silent> q :silent :helpclose<CR>
+
 colorscheme codedark_solson
