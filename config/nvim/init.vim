@@ -27,7 +27,6 @@ let g:airline_symbols.notexists = '?'
 let g:airline_symbols.spell = 'SP'
 let g:airline_symbols.paste = 'PASTE'
 
-let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#fugitiveline#enabled = 0
@@ -81,12 +80,11 @@ let g:airline_mode_map = {
   \ '' : 'V̪',
   \ }
 
-Plug 'kien/ctrlp.vim'
-let g:ctrlp_switch_buffer = ''
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>e :CtrlP<CR>
-nmap <leader>t :CtrlPTag<CR>
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+nmap <leader>b :Buffers<CR>
+nmap <leader>e :GFiles<CR>
+nmap <leader>h :Helptags<CR>
 
 Plug 'junegunn/vim-easy-align'
 vnoremap <silent> <Enter> :EasyAlign<Enter>
