@@ -374,3 +374,12 @@ end
 ################################################################################
 
 direnv hook fish | source
+
+################################################################################
+# Fzf - https://github.com/junegunn/fzf
+################################################################################
+
+set -x FZF_CTRL_T_COMMAND 'fd --type f . $dir'
+set -x FZF_CTRL_T_OPTS '--preview "bat {} --line-range :500"'
+set -x FZF_ALT_C_COMMAND 'fd --type d . $dir'
+set -x FZF_ALT_C_OPTS '--preview "tree -C {} | head -200"'
