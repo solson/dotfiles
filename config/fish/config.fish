@@ -8,6 +8,8 @@ end
 alias dfh 'df -h /{data{2,},} --output=size,used,avail,pcent,target'
 alias la 'ls -A'
 alias ll 'ls -lh'
+alias ffmpeg 'ffmpeg -hide_banner'
+alias ffprobe 'ffprobe -hide_banner'
 alias o 'xdg-open'
 alias rg 'rg -i'
 alias v nvim
