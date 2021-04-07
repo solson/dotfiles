@@ -41,10 +41,13 @@ include "%L"
 <Multi_key> <i> <minus> <greater> : "↪"
 <Multi_key> <less> <minus> <greater> : "↔"
 <Multi_key> <i> <f> <f> : "↔"
+<Multi_key> <i> <o> : "⊸"
 <Multi_key> <minus> <u> : "↑"
 <Multi_key> <bar> <asciicircum> : "↑"
 <Multi_key> <minus> <d> : "↓"
 <Multi_key> <bar> <v> : "↓"
+<Multi_key> <minus> <less> : "←"
+<Multi_key> <less> <minus> : "←"
 
 # Greek uppercase
 <Multi_key> <G> <A> : "Α"
