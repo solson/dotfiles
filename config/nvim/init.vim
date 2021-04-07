@@ -54,7 +54,9 @@ endfunction
 function! s:AirlineInit() abort
   call airline#parts#define_function('better_ffenc', string(function('s:BetterFfenc')))
   call airline#parts#define_function('coc_git', string(function('s:CocGit')))
+  call airline#parts#define_function('better_file', string(function('SolsonPath')))
   let g:airline_section_b = airline#section#create(['coc_git'])
+  let g:airline_section_c = airline#section#create(['%<', 'better_file', g:airline_symbols.space, 'readonly', 'coc_status', 'lsp_progress'])
   let g:airline_section_y = airline#section#create(['better_ffenc'])
 endfunction
 autocmd User AirlineAfterInit call <SID>AirlineInit()
@@ -174,11 +176,28 @@ set shortmess+=I
 set smartcase
 set smartindent
 set textwidth=80
-set title
 set undofile
 set updatetime=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
+
+" Title
+set title
+set titlestring=%{SolsonPath()}\ :\ nvim
+
+function! SolsonPath() abort
+  if &buftype == "help"
+    return '[help] '. expand('%:t')
+  endif
+  let l:path = expand('%:p:~')
+  if l:path =~ '^/mut/platform/'
+    return substitute(l:path, '/mut/platform/', '//', '')
+  elseif getcwd() == $HOME
+    return expand('%:~')
+  else
+    return expand('%:~:.')
+  end
+endfunction
 
 " Disable netrw history files.
 let g:netrw_dirhistmax = 0
