@@ -211,9 +211,9 @@ if !s:hl
   nohlsearch
 endif
 
-" Use <leader>l to switch to the last active buffer instead of C-^ since C-^ is
-" mosh's prefix command.
-noremap <leader>l <C-^>
+" Remap switching to the last active buffer away from C-^ since C-^ is mosh's
+" prefix command.
+noremap <leader><tab> <C-^>
 
 " Default to 2-space indents, 2-character tabs
 set expandtab
