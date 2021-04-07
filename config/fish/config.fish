@@ -221,15 +221,24 @@ function fish_prompt
   end
 
   if test (count $NIX_SHELL_PKGS) -gt 0
+    set -l pkgs $NIX_SHELL_PKGS
+    set -l output
+
+    if set -l i (contains -i «stdenv» $pkgs)
+      set -e pkgs[$i]
+      set -a output «stdenv»
+    end
+
+    if test (count $pkgs) -gt 3
+      set -a output (count $pkgs)…
+    else
+      set -a output $pkgs
+    end
+
     set_color $prompt_bgcolor
     echo -n '|'
     set_color brmagenta
-    echo -n '❄️'
-    set -l limit 3
-    test (count $NIX_SHELL_PKGS) -gt 1 && echo -n '{'
-    echo -n $NIX_SHELL_PKGS[1..$limit]
-    test (count $NIX_SHELL_PKGS) -gt $limit && echo -n ' …'
-    test (count $NIX_SHELL_PKGS) -gt 1 && echo -n '}'
+    echo -n "{$output}"
   end
 
   # FIXME(solson): This is a ridiculous hack to make fish_git_prompt not reset
