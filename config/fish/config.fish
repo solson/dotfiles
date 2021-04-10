@@ -12,7 +12,18 @@ alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
 alias o 'xdg-open'
 alias rg 'rg -i'
-alias v nvim
+
+function v -w nvim
+  if not set -q argv[1]
+    nvim
+    return $status
+  end
+  if not string match -rq '^(?<path>[^:]*)(:(?<line>\d+)(:(?<col>\d+))?)?$' $argv[1]
+    echo "bad path '$argv[1]', expected <path>[:<line>[:<col>]]"
+    return 1
+  end
+  nvim '+normal '$line'gg'$col'|' $path $argv[2..]
+end
 
 function less
   env LESS=R less $argv
