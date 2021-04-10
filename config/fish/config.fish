@@ -56,7 +56,8 @@ function acd -a archive -w aunpack
   rm -f $tmp
 end
 
-alias t 'broot -c :pt --height (math (tput lines) - 3)'
+alias t tree
+alias bt 'broot -c :pt --height (math (tput lines) - 3)'
 
 function fdt -w fd
   fd $argv | as-tree
