@@ -83,7 +83,7 @@ let g:airline_mode_map = {
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 nmap <leader>b :Buffers<CR>
-nmap <leader>e :GFiles<CR>
+nmap <leader>e :Files<CR>
 nmap <leader>h :Helptags<CR>
 
 Plug 'junegunn/vim-easy-align'
