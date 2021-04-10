@@ -31,7 +31,7 @@ end
 
 # Useful for `deno types | lessb -lts`, for example (to view output as
 # syntax-highlighted TypeScript).
-function lessb
+function lessb -w bat
   bat $argv | less -R
 end
 
@@ -48,7 +48,7 @@ function mkcd -a dir
   cd $dir
 end
 
-function acd -a archive
+function acd -a archive -w aunpack
   set -l tmp (mktemp /tmp/aunpack.XXXXXXXXXX)
   aunpack --quiet --save-outdir=$tmp $argv
   set -l dir (cat $tmp)
@@ -58,7 +58,7 @@ end
 
 alias t 'broot -c :pt --height (math (tput lines) - 3)'
 
-function fdt
+function fdt -w fd
   fd $argv | as-tree
 end
 
