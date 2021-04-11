@@ -374,16 +374,7 @@ set fish_pager_color_progress brwhite
 # Autojump
 ################################################################################
 
-set -l autojump_scripts \
-  ~/.autojump/share/autojump/autojump.fish \
-  /usr/share/autojump/autojump.fish \
-  ~/.config/fish/autojump.fish
-
-for autojump_script in $autojump_scripts
-  if [ -f $autojump_script ]
-    . $autojump_script
-  end
-end
+source ~/.config/fish/autojump.fish
 
 ################################################################################
 # Direnv
