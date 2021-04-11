@@ -66,9 +66,9 @@ function _map_lines -a f
   end
 end
 
-function _map_args -a f cmd
-  set -e argv[1..2]
-  eval $cmd (for a in $argv; echo $a; end | _map_lines $f)
+function _map -a f
+  set -e argv[1]
+  for a in $argv; echo $a; end | _map_lines $f
 end
 
 function _v -w nvim
@@ -84,20 +84,20 @@ function _v -w nvim
 end
 
 function v -w nvim
-  _map_args _expand_mut_path _v $argv
+  _v (_map _expand_mut_path $argv)
 end
 
 function c -w cd
-  _map_args _expand_mut_path cd $argv
+  cd (_map _expand_mut_path $argv)
 end
 
-function _complete_mut_path
-  _map_args _expand_mut_path __fish_complete_path $argv |
-    _map_lines _abbrev_mut_path
+function _complete_mut -a inner
+  set -e argv[1]
+  eval $inner (_map _expand_mut_path $argv) | _map_lines _abbrev_mut_path
 end
 
-complete -c c -a '(_complete_mut_path (commandline -t))'
-complete -c v -a '(_complete_mut_path (commandline -t))'
+complete -c c -a '(_complete_mut __fish_complete_directories (commandline -t))'
+complete -c v -a '(_complete_mut __fish_complete_path (commandline -t))'
 
 ################################################################################
 # Nix functions
