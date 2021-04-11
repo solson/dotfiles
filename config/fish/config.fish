@@ -12,6 +12,7 @@ alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
 alias o 'xdg-open'
 alias rg 'rg -i'
+alias diskus 'diskus --size-format=binary'
 
 function less
   env LESS=R less $argv
