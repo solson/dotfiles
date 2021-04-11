@@ -45,7 +45,6 @@ function acd -a archive -w aunpack
   rm -f $tmp
 end
 
-alias t tree
 alias bt 'broot -c :pt --height (math (tput lines) - 3)'
 
 function fdt -w fd
@@ -83,12 +82,16 @@ function _v -w nvim
   nvim '+normal '$line'gg'$col'|' $path $argv[2..]
 end
 
-function v -w _v
-  _v (_map _expand_mut_path $argv)
-end
-
 function c -w cd
   cd (_map _expand_mut_path $argv)
+end
+
+function t -w tree
+  tree (_map _expand_mut_path $argv)
+end
+
+function v -w _v
+  _v (_map _expand_mut_path $argv)
 end
 
 function _complete_mut -a inner
@@ -97,6 +100,7 @@ function _complete_mut -a inner
 end
 
 complete -c c -a '(_complete_mut __fish_complete_directories (commandline -t))'
+complete -c t -a '(_complete_mut __fish_complete_directories (commandline -t))'
 complete -c v -a '(_complete_mut __fish_complete_path (commandline -t))'
 
 ################################################################################
