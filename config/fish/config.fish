@@ -13,18 +13,6 @@ alias ffprobe 'ffprobe -hide_banner'
 alias o 'xdg-open'
 alias rg 'rg -i'
 
-function v -w nvim
-  if not set -q argv[1]
-    nvim
-    return $status
-  end
-  if not string match -rq '^(?<path>[^:]*)(:(?<line>\d+)(:(?<col>\d+))?)?$' $argv[1]
-    echo "bad path '$argv[1]', expected <path>[:<line>[:<col>]]"
-    return 1
-  end
-  nvim '+normal '$line'gg'$col'|' $path $argv[2..]
-end
-
 function less
   env LESS=R less $argv
 end
@@ -62,6 +50,53 @@ alias bt 'broot -c :pt --height (math (tput lines) - 3)'
 function fdt -w fd
   fd $argv | as-tree
 end
+
+function _expand_mut_path -a path
+  string replace -r '^//' /mut/platform/ $path
+end
+
+function _abbrev_mut_path -a path
+  string replace -r '^/mut/platform/' // $path
+end
+
+function _map_lines -a f
+  while read -l line
+    eval $f $line
+  end
+end
+
+function _map_args -a f cmd
+  set -e argv[1..2]
+  eval $cmd (for a in $argv; echo $a; end | _map_lines $f)
+end
+
+function _v -w nvim
+  if not set -q argv[1]
+    nvim
+    return $status
+  end
+  if not string match -rq '^(?<path>[^:]*)(:(?<line>\d+)(:(?<col>\d+))?)?$' $argv[1]
+    echo "bad path '$argv[1]', expected <path>[:<line>[:<col>]]"
+    return 1
+  end
+  nvim '+normal '$line'gg'$col'|' $path $argv[2..]
+end
+
+function v -w nvim
+  _map_args _expand_mut_path _v $argv
+end
+
+function c -w cd
+  _map_args _expand_mut_path cd $argv
+end
+
+function _complete_mut_path
+  _map_args _expand_mut_path __fish_complete_path $argv |
+    _map_lines _abbrev_mut_path
+end
+
+complete -c c -a '(_complete_mut_path (commandline -t))'
+complete -c v -a '(_complete_mut_path (commandline -t))'
 
 ################################################################################
 # Nix functions
