@@ -15,6 +15,18 @@
   "git.branchCharacter": "",
   "git.changedDecorator": "~",
   "git.untrackedDecorator": "?",
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  },
   "rust-analyzer.completion.addCallArgumentSnippets": false,
   "rust-analyzer.lens.implementations": false,
   "signature.target": "echo",
