@@ -138,8 +138,9 @@ Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
 Plug 'idris-hackers/idris-vim'
 Plug 'jeroenp/vim-xquery-syntax'
-Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gomod'
+Plug 'mattn/webapi-vim'
+Plug 'mk12/vim-lean', { 'for': 'lean' }
 Plug 'rust-lang/rust.vim'
 Plug 'sickill/vim-pasta'
 Plug 'tpope/vim-abolish'
@@ -155,7 +156,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'vito-c/jq.vim'
 Plug 'wincent/terminus'
 Plug 'wlangstroth/vim-racket'
-Plug 'mk12/vim-lean', { 'for': 'lean' }
 
 call plug#end()
 
