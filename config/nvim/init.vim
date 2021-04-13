@@ -133,6 +133,11 @@ nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> <F2> <Plug>(coc-rename)
 
+xmap <leader>= <Plug>(coc-format-selected)
+nmap <leader>= <Plug>(coc-format-selected)
+nmap <leader>== <Plug>(coc-format-selected)_
+command! -nargs=0 Format :call CocAction('format')
+
 Plug 'mattn/vim-gist'
 let g:gist_token_file = $XDG_CONFIG_HOME . '/vim-gist/token'
 
