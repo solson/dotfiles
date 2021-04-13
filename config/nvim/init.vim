@@ -119,15 +119,19 @@ let g:coc_global_extensions = [
   \'coc-tsserver',
   \'coc-vimlsp',
   \]
-inoremap <silent><expr> <c-space> coc#refresh()
+
 highlight link CocRustChainingHint NonText
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd FileType rust nnoremap <buffer><silent> <M-i> :CocCommand rust-analyzer.toggleInlayHints<CR>
+
+inoremap <silent><expr> <c-space> coc#refresh()
+nnoremap <silent> gh :call CocAction('doHover')<CR>
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> <F2> <Plug>(coc-rename)
-nnoremap <silent> gh :call CocAction('doHover')<CR>
-autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd FileType rust nnoremap <buffer><silent> <M-i> :CocCommand rust-analyzer.toggleInlayHints<CR>
 
 Plug 'mattn/vim-gist'
 let g:gist_token_file = $XDG_CONFIG_HOME . '/vim-gist/token'
