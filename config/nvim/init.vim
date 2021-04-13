@@ -127,6 +127,7 @@ autocmd FileType rust nnoremap <buffer><silent> <M-i> :CocCommand rust-analyzer.
 
 inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <silent> gh :call CocAction('doHover')<CR>
+nmap <silent> <leader>oi :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD <Plug>(coc-declaration)
