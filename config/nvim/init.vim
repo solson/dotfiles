@@ -89,6 +89,13 @@ nmap <leader>E :Files<CR>
 nmap <leader>g :GFiles<CR>
 nmap <leader>G :GFiles?<CR>
 nmap <leader>h :Helptags<CR>
+nmap <leader>r :RgLocal 
+nmap <leader>R :Rg 
+
+command! -bang -nargs=* RgLocal
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '.shellescape(expand('%:h')), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 Plug 'junegunn/vim-easy-align'
 vnoremap <silent> <Enter> :EasyAlign<Enter>
