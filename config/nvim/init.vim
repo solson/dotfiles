@@ -1,6 +1,7 @@
-" Remap leader to ,
+" Remap leader to , and use <space> as an additional leader
 noremap \ ,
 let mapleader = ","
+map <space> <leader>
 
 " Plugins
 call plug#begin(stdpath('config') . '/plugged')
