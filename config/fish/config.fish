@@ -51,23 +51,12 @@ function fdt -w fd
   fd $argv | as-tree
 end
 
-function _expand_mut_path -a path
-  string replace -r '^//' /mut/platform/ -- $path
+function m
+  string replace -r '^//' '/mut/platform/' -- $argv
 end
 
-function _abbrev_mut_path -a path
-  string replace -r '^/mut/platform/' // -- $path
-end
-
-function _map_lines -a f
-  while read -l line
-    eval $f $line
-  end
-end
-
-function _map -a f
-  set -e argv[1]
-  for a in $argv; echo $a; end | _map_lines $f
+function un-m
+  string replace -r '^/mut/platform/' '//' -- $argv
 end
 
 function _v -w nvim
@@ -83,25 +72,25 @@ function _v -w nvim
 end
 
 function c -w cd
-  cd (_map _expand_mut_path $argv)
+  cd (m $argv)
 end
 
 function t -w tree
-  tree (_map _expand_mut_path $argv)
+  tree (m $argv)
 end
 
 function v -w _v
-  _v (_map _expand_mut_path $argv)
+  _v (m $argv)
 end
 
-function _complete_mut -a inner
-  set -e argv[1]
-  eval $inner (_map _expand_mut_path $argv) | _map_lines _abbrev_mut_path
+function _complete_mut
+  un-m ($argv[1] (m $argv[2..]))
 end
 
-complete -c c -a '(_complete_mut __fish_complete_directories (commandline -t))'
-complete -c t -a '(_complete_mut __fish_complete_directories (commandline -t))'
-complete -c v -a '(_complete_mut __fish_complete_path (commandline -t))'
+complete c -f -a '(_complete_mut __fish_complete_directories (commandline -t) "")'
+complete m -f -a '(_complete_mut __fish_complete_path (commandline -t))'
+complete t -f -a '(_complete_mut __fish_complete_directories (commandline -t) "")'
+complete v -f -a '(_complete_mut __fish_complete_path (commandline -t))'
 
 ################################################################################
 # Nix functions
