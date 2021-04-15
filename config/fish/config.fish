@@ -6,8 +6,6 @@ function bash
   env DONT_EXEC_FISH=1 bash $argv
 end
 alias dfh 'df -h /{data{2,},} --output=size,used,avail,pcent,target'
-alias la 'ls -A'
-alias ll 'ls -lh'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
 alias o 'xdg-open'
@@ -24,7 +22,7 @@ function lessb -w bat
   bat $argv | less -R
 end
 
-function ls
+function _ls
   set -l options
   if isatty stdout
     set options --color=always --format=across --group-directories-first
@@ -51,14 +49,6 @@ function fdt -w fd
   fd $argv | as-tree
 end
 
-function m
-  string replace -r '^//' '/mut/platform/' -- $argv
-end
-
-function un-m
-  string replace -r '^/mut/platform/' '//' -- $argv
-end
-
 function _v -w nvim
   if not set -q argv[1]
     nvim
@@ -71,26 +61,31 @@ function _v -w nvim
   nvim '+normal '$line'gg'$col'|' $path $argv[2..]
 end
 
-function c -w cd
-  cd (m $argv)
+function m
+  string replace -r '^//' '/mut/platform/' -- $argv
 end
 
-function t -w tree
-  tree (m $argv)
+function un-m
+  string replace -r '^/mut/platform/' '//' -- $argv
 end
 
-function v -w _v
-  _v (m $argv)
+function complete-m -a inner
+  un-m ($inner (m (commandline -t)) '')
 end
 
-function _complete_mut
-  un-m ($argv[1] (m $argv[2..]))
+complete m -f -a '(complete-m __fish_complete_path)'
+
+function alias-m -a new_cmd old_cmd invocation completion
+  echo "function $new_cmd -w $old_cmd; $invocation (m \$argv); end" | source
+  complete $new_cmd -f -a "(complete-m $completion)"
 end
 
-complete c -f -a '(_complete_mut __fish_complete_directories (commandline -t) "")'
-complete m -f -a '(_complete_mut __fish_complete_path (commandline -t))'
-complete t -f -a '(_complete_mut __fish_complete_directories (commandline -t) "")'
-complete v -f -a '(_complete_mut __fish_complete_path (commandline -t))'
+alias-m c cd cd __fish_complete_directories
+alias-m t tree tree __fish_complete_directories
+alias-m v _v _v __fish_complete_path
+alias-m ls ls _ls __fish_complete_path
+alias-m ll ls '_ls -lh' __fish_complete_path
+alias-m la ls '_ls -A' __fish_complete_path
 
 ################################################################################
 # Nix functions
