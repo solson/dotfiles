@@ -151,6 +151,17 @@ nmap <leader>= <Plug>(coc-format-selected)
 nmap <leader>== <Plug>(coc-format-selected)_
 command! -nargs=0 Format :call CocAction('format')
 
+function! s:CocToggle() abort
+  if g:coc_enabled
+    execute 'CocDisable'
+    call coc#float#close_all()
+  else
+    execute 'CocEnable'
+  endif
+endfunction
+
+nmap <leader>c :call <SID>CocToggle()<CR>
+
 Plug 'mattn/vim-gist'
 let g:gist_token_file = $XDG_CONFIG_HOME . '/vim-gist/token'
 
