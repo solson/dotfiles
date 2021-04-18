@@ -69,23 +69,38 @@ function un-m
   string replace -r '^/mut/platform/' '//' -- $argv
 end
 
-function complete-m -a inner
-  un-m ($inner (m (commandline -t)) '')
+function complete-m -a completer text
+  set -l text (m $text)
+  set -l rewrote $status
+  set -l output ($completer $text)
+  test $rewrote = 0 && set -l output (un-m $output)
+  string join \n -- $output
 end
 
-complete m -f -a '(complete-m __fish_complete_path)'
+function complete_path -a partial_path
+  # Copying a hack from __fish_complete_directories, we call into Fish's default
+  # path completion using any non-existent command name, e.g. a UUID. It is
+  # unfortunate that Fish doesn't expose this as a proper API.
+  complete -C "d720be8f-772d-486e-b1b0-fe3e7e589aaa $partial_path"
+end
 
-function alias-m -a new_cmd old_cmd invocation completion
+function complete_dir -a partial_path
+  complete_path $partial_path | string match -r '.*/$'
+end
+
+complete m -f -a '(complete-m complete_path (commandline -t))'
+
+function alias-m -a new_cmd old_cmd invocation completer
   echo "function $new_cmd -w $old_cmd; $invocation (m \$argv); end" | source
-  complete $new_cmd -f -a "(complete-m $completion)"
+  complete $new_cmd -f -a "(complete-m $completer (commandline -t))"
 end
 
-alias-m c cd cd __fish_complete_directories
-alias-m t tree tree __fish_complete_directories
-alias-m v _v _v __fish_complete_path
-alias-m ls ls _ls __fish_complete_path
-alias-m ll ls '_ls -lh' __fish_complete_path
-alias-m la ls '_ls -A' __fish_complete_path
+alias-m c cd cd complete_dir
+alias-m t tree tree complete_dir
+alias-m v _v _v complete_path
+alias-m ls ls _ls complete_path
+alias-m ll ls '_ls -lh' complete_path
+alias-m la ls '_ls -A' complete_path
 
 ################################################################################
 # Nix functions
@@ -348,7 +363,7 @@ function fish_title
 end
 
 function solson_prompt_pwd
-  string replace -rf '^/mut/platform/?' // $PWD
+  string replace -rf '^/mut/platform(/|$)' // $PWD
   or prompt_pwd
 end
 
