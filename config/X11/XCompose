@@ -39,7 +39,6 @@ include "%L"
 # Arrows
 <Multi_key> <backslash> <minus> <greater> : "↪"
 <Multi_key> <i> <minus> <greater> : "↪"
-<Multi_key> <less> <minus> <greater> : "↔"
 <Multi_key> <i> <f> <f> : "↔"
 <Multi_key> <i> <o> : "⊸"
 <Multi_key> <minus> <u> : "↑"
