@@ -184,6 +184,20 @@ function filter-nix-paths
   '
 end
 
+function nw -a pkgname
+  set -l json (env pkgname=$pkgname nix-instantiate --eval --strict --json -E '
+    let
+      name = builtins.getEnv "pkgname";
+      pkg = (import <nixpkgs> {})."${name}"; in
+    {
+      inherit (pkg) name;
+      description = pkg.meta.description or "<no description>";
+      homepage = pkg.meta.homepage or "<no homepage>";
+    }
+  ')
+  and echo $json | jq -r '"\(.name) — \(.homepage)\n  \(.description)"'
+end
+
 ################################################################################
 # Rust aliases
 ################################################################################
