@@ -91,6 +91,8 @@ nmap <leader>G :GFiles?<CR>
 nmap <leader>h :Helptags<CR>
 nmap <leader>r :RgLocal 
 nmap <leader>R :Rg 
+nmap <leader>l :BLines<CR>
+nmap <leader>L :Lines<CR>
 
 command! -bang -nargs=* RgLocal
   \ call fzf#vim#grep(
