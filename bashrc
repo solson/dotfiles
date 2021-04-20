@@ -31,9 +31,6 @@ export CARGO_HOME=$XDG_DATA_HOME/cargo
 # clojure.tools.gitlibs
 export GITLIBS=$XDG_CACHE_HOME/gitlibs
 
-# Curl
-export CURL_HOME=$XDG_CONFIG_HOME/curl
-
 # Dungeon Crawl Stone Soup
 export CRAWL_DIR=$XDG_DATA_HOME/crawl/ # Trailing / is required.
 

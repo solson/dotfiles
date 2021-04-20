@@ -59,7 +59,6 @@ symlink bashrc
 symlink config/X11
 symlink config/bat
 symlink config/broot
-symlink config/curl
 symlink config/fish
 symlink config/git
 symlink config/irb
