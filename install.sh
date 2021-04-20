@@ -67,7 +67,6 @@ symlink config/nvim
 symlink config/readline
 symlink local/bin/format-duration
 symlink local/bin/notify-run
-symlink local/bin/vigpg
 symlink local/share/konsole/VSCode-WIP.colorscheme
 
 exit 0
