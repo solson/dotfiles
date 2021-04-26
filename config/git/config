@@ -11,9 +11,11 @@ email = scott@solson.me
 br = branch -vv
 cm = commit
 cmb = "!f() { git switch -c \"$1\" && git commit; }; f"
+l = lg HEAD --not --remotes
 lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 re = restore
-s = show --no-patch --oneline
+s = show --no-patch
+ss = show --stat
 st = status -s
 sw = switch
 
