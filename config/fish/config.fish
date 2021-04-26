@@ -159,7 +159,7 @@ function nu
 end
 
 function nf
-  nix-shell -p $argv --run fish
+  nix-shell -p $argv --run 'exec fish'
 end
 
 # Usage:
