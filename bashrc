@@ -6,7 +6,9 @@
 
 # Build the PATH from scratch, saving the original in _PATH.
 [[ -z "$_PATH" ]] && export _PATH=$PATH
-PATH=/run/wrappers/bin:/run/current-system/sw/bin:"$HOME/.local/bin"
+PATH="/run/wrappers/bin:$HOME/.local/bin:$HOME/.nix-profile/bin:/run/current-system/sw/bin"
+
+source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
 export NO_AT_BRIDGE=1 # Silence warnings in Gtk apps about accessibility bus.
 export MANPAGER='nvim +Man!'

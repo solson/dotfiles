@@ -109,6 +109,9 @@ alias-m la ls '_ls -A' complete_path
 alias nb 'nix-build --no-out-link "<nixpkgs>" -A'
 alias nr 'nix repl "$XDG_CONFIG_HOME/nix/nix-repl.nix"'
 alias nrc 'nr "<nixpkgs/nixos>"' # access to `config`, my NixOS configuration
+alias nrh 'nr "<home-manager/modules>" \
+  --argstr configuration ~/.config/nixpkgs/home.nix \
+  --arg pkgs "import <nixpkgs> {}"'
 alias nrn 'nr "<nixpkgs>"'
 
 function nt -w tree -a pkg

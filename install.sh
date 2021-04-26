@@ -63,6 +63,7 @@ symlink config/fish
 symlink config/git
 symlink config/irb
 symlink config/nix
+symlink config/nixpkgs
 symlink config/nvim
 symlink config/readline
 symlink local/bin/format-duration
