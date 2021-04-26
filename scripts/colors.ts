@@ -1,4 +1,5 @@
-import * as colors from "https://deno.land/std@0.69.0/fmt/colors.ts";
+#!/usr/bin/env -S deno run
+import * as colors from "https://deno.land/std@0.95.0/fmt/colors.ts";
 
 const text = "text";
 

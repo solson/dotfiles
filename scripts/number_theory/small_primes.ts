@@ -1,6 +1,6 @@
-import { assertEquals } from "https://deno.land/std@0.68.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.95.0/testing/asserts.ts";
 import { assertSafeInt } from "./util.ts";
-import { divmod, once, todo } from "../lib.ts";
+import { divmod, once } from "../lib.ts";
 
 // Each group represents 60 numbers but is represented by 16 bits. See `non235`.
 const NUM_GROUPS = 17000;

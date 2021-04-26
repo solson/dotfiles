@@ -1,9 +1,9 @@
-import fc from "https://cdn.skypack.dev/fast-check@2.2.1?dts";
+import fc from "https://cdn.skypack.dev/fast-check@2.14.0?dts";
 import {
   assertEquals,
   assertThrows,
-} from "https://deno.land/std@0.69.0/testing/asserts.ts";
-import { zip } from "https://deno.land/x/fae@v0.6.2/zip.ts";
+} from "https://deno.land/std@0.95.0/testing/asserts.ts";
+import { zip } from "https://deno.land/x/fae@v1.0.0/zip.ts";
 import { divmod, format_duration, once, polymod, todo } from "./lib.ts";
 
 // TODO(solson): Is this the definition of divmod that I want?
