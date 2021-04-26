@@ -11,7 +11,7 @@
   "diagnostic.virtualTextLines": 1,
   "diagnostic.warningSign": "",
   "diagnostic-languageserver.filetypes": { "sh": "shellcheck" },
-  "git.addGBlameToBufferVar": true,
+  "git.addGBlameToBufferVar": false,
   "git.branchCharacter": "",
   "git.changedDecorator": "~",
   "git.untrackedDecorator": "?",
