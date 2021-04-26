@@ -49,7 +49,7 @@ in
     fzf
     ghc
     gist
-    # git-revise # TODO: try it out
+    git-revise # use instead of `git rebase -i`
     # git-series # TODO: try it out
     gitAndTools.diff-so-fancy
     # gitAndTools.git-annex # TODO: try it out
