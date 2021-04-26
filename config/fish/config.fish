@@ -448,3 +448,12 @@ set -x FZF_CTRL_T_COMMAND 'fd --type f . $dir'
 set -x FZF_CTRL_T_OPTS '--preview "bat {} --line-range :500"'
 set -x FZF_ALT_C_COMMAND 'fd --type d . $dir'
 set -x FZF_ALT_C_OPTS '--preview "tree -C {} | head -200"'
+
+################################################################################
+# Extra config not checked into source control
+################################################################################
+
+begin
+  set -l f (status dirname)/private_config.fish
+  test -f $f && source $f
+end

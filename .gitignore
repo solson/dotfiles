@@ -1,3 +1,4 @@
 /config/nvim/autoload/plug.vim.old
 /config/nvim/plugged/
 /config/git/config.private
+/config/fish/private_config.fish
