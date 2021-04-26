@@ -1,7 +1,10 @@
 import fc from "https://cdn.skypack.dev/fast-check@2.2.1?dts";
-import { assertEquals } from "https://deno.land/std@0.69.0/testing/asserts.ts";
+import {
+  assertEquals,
+  assertThrows,
+} from "https://deno.land/std@0.69.0/testing/asserts.ts";
 import { zip } from "https://deno.land/x/fae@v0.6.2/zip.ts";
-import { divmod, format_duration, polymod } from "./lib.ts";
+import { divmod, format_duration, once, polymod, todo } from "./lib.ts";
 
 // TODO(solson): Is this the definition of divmod that I want?
 Deno.test("divmod: basic", () => {
@@ -42,5 +45,22 @@ Deno.test("polymod: recombine [prop]", () => {
 });
 
 Deno.test("format_duration: basic", () => {
+  assertEquals(format_duration(0), "0s");
+  assertEquals(format_duration(1234), "1.2s");
+  assertEquals(format_duration(123456), "2m 3s");
+  assertEquals(format_duration(12345678), "3h 25m 45s");
   assertEquals(format_duration(123456789), "1d 10h 17m 36s");
+});
+
+Deno.test("once: basic", () => {
+  let counter = 0;
+  const f = once(() => ++counter);
+  assertEquals(f(), 1);
+  assertEquals(f(), 1);
+  assertEquals(counter, 1);
+});
+
+Deno.test("todo: basic", () => {
+  assertThrows(() => todo());
+  assertThrows(() => todo("test"));
 });
