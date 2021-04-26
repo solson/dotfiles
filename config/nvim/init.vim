@@ -250,6 +250,9 @@ endif
 " prefix command.
 noremap <leader><tab> <C-^>
 
+" Easier to type window close.
+nmap <leader>q <C-w>q
+
 " Default to 2-space indents, 2-character tabs
 set expandtab
 set shiftwidth=2
