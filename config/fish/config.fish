@@ -62,11 +62,19 @@ function _v -w nvim
 end
 
 function m
-  string replace -r '^//' '/mut/platform/' -- $argv
+  if set -q MUT_PLATFORM
+    string replace -r '^//' "$MUT_PLATFORM/" -- $argv
+  else
+    string join \n -- $argv
+  end
 end
 
 function un-m
-  string replace -r '^/mut/platform/' '//' -- $argv
+  if set -q MUT_PLATFORM
+    string replace -r "^$MUT_PLATFORM/" '//' -- $argv
+  else
+    string join \n -- $argv
+  end
 end
 
 function complete-m -a completer text
@@ -382,6 +390,7 @@ function fish_title
 end
 
 function solson_prompt_pwd
+  # TODO: Generalize this to multiple worktrees of /mut/platform* somehow.
   string replace -rf '^/mut/platform(/|$)' // $PWD
   or prompt_pwd
 end
