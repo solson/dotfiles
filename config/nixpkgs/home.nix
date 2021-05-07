@@ -1,6 +1,13 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
+  inherit (builtins) listToAttrs;
+  inherit (lib) nameValuePair;
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+
+  # TODO: Move home.nix to the repository root.
+  dotfilesRoot = toString ../..;
+
   # symlinkBinsPrefixed = prefix: pkg: bins:
   #   pkgs.runCommand "${pkg.name}-bins" {} ''
   #     mkdir -p $out/bin
@@ -108,6 +115,31 @@ in
     whois
     # (lowPrio graalvm11-ce) # Don't override node/ruby.
   ];
+
+  home.file =
+    let
+      files = [
+        "bash_profile"
+        "bashrc"
+        "config/X11"
+        "config/bat"
+        "config/broot"
+        "config/fish"
+        "config/git"
+        "config/irb"
+        "config/nix"
+        "config/nixpkgs"
+        "config/nvim"
+        "config/readline"
+        "local/bin/format-duration"
+        "local/bin/notify-run"
+        "local/share/konsole/VSCode-WIP.colorscheme"
+      ];
+      mkMutSymlink = file: nameValuePair ".${file}" {
+        source = mkOutOfStoreSymlink "${dotfilesRoot}/${file}";
+      };
+    in
+      listToAttrs (map mkMutSymlink files);
 
   programs.man = {
     enable = true;
