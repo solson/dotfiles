@@ -193,6 +193,11 @@ Plug 'vito-c/jq.vim'
 Plug 'wincent/terminus'
 Plug 'wlangstroth/vim-racket'
 
+Plug 'rstacruz/vim-closer'
+autocmd FileType nix
+  \ let b:closer = 1 |
+  \ let b:closer_flags = '([{;'
+
 call plug#end()
 
 " General
