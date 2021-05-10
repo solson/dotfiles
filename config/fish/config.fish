@@ -11,6 +11,7 @@ alias ffprobe 'ffprobe -hide_banner'
 alias o 'xdg-open'
 alias rg 'rg -i'
 alias diskus 'diskus --size-format=binary'
+alias vman 'env MANPAGER="nvim +Man!" man'
 
 function less
   env LESS=R less $argv

@@ -11,7 +11,7 @@ PATH="/run/wrappers/bin:$HOME/.local/bin:$HOME/.nix-profile/bin:/run/current-sys
 source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
 export NO_AT_BRIDGE=1 # Silence warnings in Gtk apps about accessibility bus.
-export MANPAGER='nvim +Man!'
+export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=always'"
 export LESS=FR
 export SYSTEMD_LESS=FR
 
