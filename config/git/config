@@ -9,6 +9,7 @@ email = scott@solson.me
 
 [alias]
 br = branch -vv
+clone1 = clone --depth=1
 cm = commit
 cmb = "!f() { git switch -c \"$1\" && git commit; }; f"
 l = lg HEAD --not --remotes
