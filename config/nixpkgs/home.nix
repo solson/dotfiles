@@ -8,114 +8,141 @@ let
   # TODO: Move home.nix to the repository root.
   dotfilesRoot = toString ../..;
 
-  # symlinkBinsPrefixed = prefix: pkg: bins:
-  #   pkgs.runCommand "${pkg.name}-bins" {} ''
-  #     mkdir -p $out/bin
-  #     ${map (bin: "ln -s ${pkg}/bin/${bin} $out/bin/${bin}\n" bins}
-  #   '';
-
-  # symlinkBins = symlinkBinsPrefixed "";
-
-  # graalBins1 = symlinkBins pkgs.graalvm11-ce [ "native-image" ];
-  # graalBins2 = symlinkBinsPrefixed "graal-" pkgs.graalvm11-ce [ "native-image" ];
+  # wrap = pkg: name: pkgs.runCommand name {} ''
+  #   mkdir $out
+  #   ln -s ${pkg}/* $out/
+  #   rm $out/bin
+  #   mkdir $out/bin
+  #   ln -s ${pkg}/bin/truffleruby $out/bin/
+  # '';
 in
 
 {
   home.packages = with pkgs; [
-    # TODO: Make my own version of https://github.com/Shopify/comma/blob/master/%2C
-    denoBins.latest # TODO: move denoBins overlay into home-manager config
-    diffoscope
-    nix-tree # https://github.com/utdemir/nix-tree
-    noti # https://github.com/variadico/noti
-    yq-go # https://github.com/mikefarah/yq
-
-    # TODO: Moved over from system configuration. To be sorted.
-    aria # TODO: do i need this because something else uses it?
-    as-tree
-    asciinema
-    atool
-    autojump
-    babashka
-    bat
+    # Media
+    aria # For youtube-dl. TODO: interpolate directly into youtube-dl config
     (beets.override {
       enableAlternatives = true;
       enableCopyArtifacts = true;
     })
+    ffmpeg
+    imagemagick
+    mediainfo
+    youtube-dl
+
+    # GUI utilities
+    # TODO: move more stuff over from NixOS config if they work well in home-manager
+    screenkey
+
+    # CLI utilities
+    # just # TODO: try replacing ~/Projects/etc-nixos/shannon scripts with this
+    # rclone # TODO: try it out
+    as-tree
+    asciinema
+    atool
+    autojump
+    bat
     broot
+    curl
+    diffoscope
+    diskus
+    elvish
+    fd
+    file
+    fish
+    fzf
+    hexyl
+    htop
+    jq
+    litecli # for sqlite
+    moreutils # vidir, ts
+    ncdu
+    neovim
+    noti # TODO: try it out
+    pstree
+    renameutils # imv, icp
+    rink
+    ripgrep
+    rlwrap
+    rsync
+    tokei
+    tree
+    unrar
+    unzip
+    xclip
+    xxd
+
+    # Programming
+    babashka
     cargo-asm
     cargo-edit
     cargo-watch
-    denoBins.latest
     direnv
-    diskus
-    dnsutils # dig
-    emacs
-    fd
-    file
-    # firejail # TODO: try it out
-    fzf
+    deno
+    emacs # for agda. TODO: investigate vim and vscode extensions
     ghc
-    gist
-    git-revise # use instead of `git rebase -i`
-    # git-series # TODO: try it out
-    gitAndTools.diff-so-fancy
-    # gitAndTools.git-annex # TODO: try it out
-    # gitAndTools.git-annex-remote-rclone
-    # gitAndTools.git-annex-utils
-    gitAndTools.hub # TODO: try alternative `gh`
     go
-    hexyl
-    httpie
-    imagemagick
-    jq
     julia
-    just # TODO: try replacing ~/Projects/etc-nixos/shannon scripts with this
-    linuxPackages.bpftrace # TODO: try it out
-    linuxPackages.perf
-    litecli # for sqlite
-    lsof
-    ltrace
-    mediainfo
-    moreutils # vidir, ts
-    mtr
-    ncdu
-    nix-index
+    llvmPackages_latest.clang
     nodejs
-    patchelf
-    pciutils # lspci
-    pstree
     python3
-    racket
     rakudo
-    # rclone # TODO: try it out
-    renameutils # imv, icp
-    rink
-    ripgrep # rg
-    rlwrap
-    rsync
-    ruby
+    ruby_3_0
     rustup
     shellcheck
-    strace
-    tokei # SLOC counter
-    traceroute
-    usbutils # lsusb
     watchexec
-    xclip
-    xxd
-    youtube-dl
-    zef # Package manager for Raku
+
+    # Git
+    # git-annex # TODO: try it out
+    # git-annex-remote-rclone
+    # git-annex-utils
+    # git-series # TODO: try it out
+    diff-so-fancy
+    gh
+    gist
+    git-absorb
+    git-revise
+    gitFull
+
+    # Nix
+    # TODO: make a clone of https://github.com/Shopify/comma/blob/master/%2C
+    nix-index
+    nix-tree
+    patchelf
 
     # Networking
-    # TODO: Package https://github.com/dreibh/subnetcalc
-    ipcalc # cidr, ipv4-only, colorful
+    # TODO: create a package for https://github.com/dreibh/subnetcalc
+    curlie
+    dnsutils # dig
+    dogdns
+    ipcalc # CIDR, IPv4-only, colorful
+    ipv6calc
+    mtr
     nmap
-    sipcalc # cidr, ipv4/ipv6, non-colorful
+    sipcalc # CIDR, IPv4/IPv6, non-colorful
     tcpdump
+    traceroute
     whois
-    # (lowPrio graalvm11-ce) # Don't override node/ruby.
+
+    # Security
+    # firejail # TODO: try it out
+    gnupg
+    yubikey-manager
+
+    # Debugging/tracing
+    gdb
+    linuxPackages.bpftrace # TODO: try it out
+    linuxPackages.perf
+    lsof
+    ltrace
+    strace
+
+    # Hardware
+    pciutils # lspci
+    usbutils # lsusb
   ];
 
+  # TODO: replace mutable files with immutable store paths where it makes sense
   home.file =
     let
       files = [
@@ -146,21 +173,8 @@ in
     generateCaches = true;
   };
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
   home.username = "scott";
   home.homeDirectory = "/home/scott";
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
   home.stateVersion = "21.05";
 }
