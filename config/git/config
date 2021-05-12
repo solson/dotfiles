@@ -12,6 +12,8 @@ br = branch -vv
 clone1 = clone --depth=1
 cm = commit
 cmb = "!f() { git switch -c \"$1\" && git commit; }; f"
+d = diff
+ds = diff --staged
 l = lg HEAD --not --remotes
 lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 re = restore
