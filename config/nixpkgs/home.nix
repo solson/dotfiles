@@ -165,8 +165,14 @@ in
       mkMutSymlink = file: nameValuePair ".${file}" {
         source = mkOutOfStoreSymlink "${dotfilesRoot}/${file}";
       };
+      mutSymlinks = listToAttrs (map mkMutSymlink files);
+      symlinks = {
+        # Repurpose complete.oga as my terminal bell sound.
+        ".local/share/sounds/freedesktop/stereo/bell.oga".source =
+          "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/complete.oga";
+      };
     in
-      listToAttrs (map mkMutSymlink files);
+      symlinks // mutSymlinks;
 
   programs.man = {
     enable = true;
