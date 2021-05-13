@@ -82,3 +82,12 @@ tool = nvimdiff
 
 [rebase]
 autoSquash = true
+
+[tig]
+main-view-author-display = email-user
+main-view-date-display = relative
+mouse = yes
+
+[tig "bind"]
+diff = <PageUp> move-half-page-up
+diff = <PageDown> move-half-page-down

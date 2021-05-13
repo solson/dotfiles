@@ -103,6 +103,7 @@ in
     git-absorb
     git-revise
     gitFull
+    tig
 
     # Nix
     # TODO: make a clone of https://github.com/Shopify/comma/blob/master/%2C
