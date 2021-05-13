@@ -221,6 +221,11 @@ set updatetime=100
 set wildignore=*.o,*~
 set wildmode=longest,list:longest
 
+" Soft wrapping
+set breakindent
+set linebreak
+set showbreak=↘\ 
+
 " Title
 set title
 set titlestring=%{SolsonPath()}\ :\ nvim
