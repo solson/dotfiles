@@ -14,6 +14,7 @@ export NO_AT_BRIDGE=1 # Silence warnings in Gtk apps about accessibility bus.
 export MANPAGER="sh -c 'col -bx | env LESS=R bat -l man -p --paging=always'"
 export LESS=FR
 export SYSTEMD_LESS=FR
+export TMPDIR=/tmp
 
 [[ -z "$XDG_CONFIG_HOME" ]] && export XDG_CONFIG_HOME=$HOME/.config
 [[ -z "$XDG_CACHE_HOME" ]] && export XDG_CACHE_HOME=$HOME/.cache
