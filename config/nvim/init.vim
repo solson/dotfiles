@@ -334,4 +334,7 @@ nnoremap <leader>vs :source $MYVIMRC<CR>
 " Close help windows easily.
 autocmd FileType help noremap <buffer> <silent> q :silent :helpclose<CR>
 
+" Access window management bindings more easily.
+nmap <leader>w <C-w>
+
 colorscheme codedark_solson
