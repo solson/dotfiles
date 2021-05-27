@@ -11,6 +11,7 @@ email = scott@solson.me
 br = branch -vv
 clone1 = clone --depth=1
 cm = commit
+cma = commit --amend --no-edit
 cmb = "!f() { git switch -c \"$1\" && git commit; }; f"
 d = diff
 ds = diff --staged
