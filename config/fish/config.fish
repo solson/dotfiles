@@ -110,6 +110,7 @@ alias-m v _v _v complete_path
 alias-m ls ls _ls complete_path
 alias-m ll ls '_ls -lh' complete_path
 alias-m la ls '_ls -A' complete_path
+alias-m b bat bat complete_path
 
 ################################################################################
 # Nix functions
