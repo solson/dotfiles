@@ -460,6 +460,13 @@ set -x FZF_CTRL_T_OPTS '--preview "bat {} --line-range :500"'
 set -x FZF_ALT_C_COMMAND 'fd --type d . $dir'
 set -x FZF_ALT_C_OPTS '--preview "tree -C {} | head -200"'
 
+# Bind an alternative for C-t on C-Space.
+# See here for why it uses `-k nul`: https://github.com/fish-shell/fish-shell/issues/3189
+# And see here for why it uses `fish_user_key_bindings`: https://github.com/fish-shell/fish-shell/issues/7922#issuecomment-817353535
+function fish_user_key_bindings
+  bind -k nul fzf-file-widget
+end
+
 ################################################################################
 # Extra config not checked into source control
 ################################################################################
