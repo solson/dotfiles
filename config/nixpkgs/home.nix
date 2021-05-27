@@ -35,8 +35,12 @@ in
     screenkey
 
     # CLI utilities
+    # dijo # TODO: try it out
     # just # TODO: try replacing ~/Projects/etc-nixos/shannon scripts with this
+    # procs # TODO: try it out
     # rclone # TODO: try it out
+    # sd # TODO: try it out
+    # zoxide # TODO: try it out, replace autojump
     as-tree
     asciinema
     atool
@@ -93,10 +97,11 @@ in
     watchexec
 
     # Git
+    # delta # TODO: try it out, replace diff-so-fancy
     # git-annex # TODO: try it out
     # git-annex-remote-rclone
     # git-annex-utils
-    # git-series # TODO: try it out
+    # gitui/lazygit # TODO: try them out
     diff-so-fancy
     gh
     gist
