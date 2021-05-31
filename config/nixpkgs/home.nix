@@ -48,8 +48,7 @@ in
     bat
     broot
     curl
-    diffoscope
-    diskus
+    du-dust
     elvish
     fd
     file
@@ -59,6 +58,7 @@ in
     htop
     jq
     litecli # for sqlite
+    megatools
     moreutils # vidir, ts
     ncdu
     neovim
@@ -86,7 +86,7 @@ in
     emacs # for agda. TODO: investigate vim and vscode extensions
     ghc
     go
-    julia
+    julia_16-bin
     llvmPackages_latest.clang
     nodejs
     python3
@@ -126,6 +126,7 @@ in
     mtr
     nmap
     sipcalc # CIDR, IPv4/IPv6, non-colorful
+    socat
     tcpdump
     traceroute
     whois
