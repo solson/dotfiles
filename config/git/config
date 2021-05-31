@@ -23,6 +23,9 @@ ss = show --stat
 st = status -s
 sw = switch
 
+[init]
+defaultBranch = main
+
 [push]
 default = simple
 
