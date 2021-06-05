@@ -46,6 +46,9 @@ useUnicodeRuler = true
 [core]
 pager = diff-so-fancy | less -RFX
 
+[interactive]
+diffFilter = diff-so-fancy --patch
+
 [color]
 ui = true
 
