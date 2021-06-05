@@ -26,8 +26,8 @@ function rg -w rg
   command rg -i $argv
 end
 
-function diskus -w diskus
-  command diskus --size-format=binary $argv
+function dust -w dust
+  command dust -br $argv
 end
 
 function vman -w man
