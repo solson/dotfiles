@@ -117,6 +117,7 @@ in
     gh
     gist
     git-absorb
+    git-quick-stats
     git-revise
     gitFull
     tig
