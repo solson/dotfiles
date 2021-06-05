@@ -56,6 +56,7 @@ in
     fzf
     hexyl
     htop
+    hyperfine
     jq
     litecli # for sqlite
     megatools
