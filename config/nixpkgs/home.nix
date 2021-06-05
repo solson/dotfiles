@@ -103,7 +103,16 @@ in
     # git-annex-remote-rclone
     # git-annex-utils
     # gitui/lazygit # TODO: try them out
-    diff-so-fancy
+    (diff-so-fancy.overrideAttrs (old: rec {
+      # TODO: https://github.com/so-fancy/diff-so-fancy/issues/411
+      version = "1.3.0";
+      src = fetchFromGitHub {
+        owner = "so-fancy";
+        repo = "diff-so-fancy";
+        rev = "v${version}";
+        sha256 = "0aavxahzha2mms4vdwysk79pa6wzswpfwgsq2hwaxnaf66maahfl";
+      };
+    }))
     gh
     gist
     git-absorb
