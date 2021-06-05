@@ -5,15 +5,36 @@
 function bash
   env DONT_EXEC_FISH=1 bash $argv
 end
-alias dfh 'df -h /{data{2,},} --output=size,used,avail,pcent,target'
-alias ffmpeg 'ffmpeg -hide_banner'
-alias ffprobe 'ffprobe -hide_banner'
-alias o 'xdg-open'
-alias rg 'rg -i'
-alias diskus 'diskus --size-format=binary'
-alias vman 'env MANPAGER="nvim +Man!" man'
 
-function less
+function dfh -w df
+  df -h /{data{2,},} --output=size,used,avail,pcent,target $argv
+end
+
+function ffmpeg -w ffmpeg
+  command ffmpeg -hide_banner $argv
+end
+
+function ffprobe -w ffprobe
+  command ffprobe -hide_banner $argv
+end
+
+function o -w xdg-open
+  xdg-open $argv
+end
+
+function rg -w rg
+  command rg -i $argv
+end
+
+function diskus -w diskus
+  command diskus --size-format=binary $argv
+end
+
+function vman -w man
+  env MANPAGER='nvim +Man!' man $argv
+end
+
+function less -w less
   env LESS=R less $argv
 end
 
@@ -44,7 +65,9 @@ function acd -a archive -w aunpack
   rm -f $tmp
 end
 
-alias bt 'broot -c :pt --height (math (tput lines) - 3)'
+function bt -w broot
+  broot -c :pt --height (math (tput lines) - 3) $argv
+end
 
 function fdt -w fd
   fd $argv | as-tree
@@ -116,13 +139,28 @@ alias-m b bat bat complete_path
 # Nix functions
 ################################################################################
 
-alias nb 'nix-build --no-out-link "<nixpkgs>" -A'
-alias nr 'nix repl "$XDG_CONFIG_HOME/nix/nix-repl.nix"'
-alias nrc 'nr "<nixpkgs/nixos>"' # access to `config`, my NixOS configuration
-alias nrh 'nr "<home-manager/modules>" \
-  --argstr configuration ~/.config/nixpkgs/home.nix \
-  --arg pkgs "import <nixpkgs> {}"'
-alias nrn 'nr "<nixpkgs>"'
+function nb -a attr
+  nix-build --no-out-link '<nixpkgs>' -A $attr
+end
+
+function nr -w 'nix repl'
+  nix repl "$XDG_CONFIG_HOME/nix/nix-repl.nix" $argv
+end
+
+function nrc -w nr
+  nr '<nixpkgs/nixos>' # access to `config`, my NixOS configuration $argv
+end
+
+function nrh -w nr
+  nr '<home-manager/modules>' \
+    --argstr configuration ~/.config/nixpkgs/home.nix \
+    --arg pkgs 'import <nixpkgs> {}' \
+    $argv
+end
+
+function nrn -w nr
+  nr '<nixpkgs>' $argv
+end
 
 function nt -w tree -a pkg
   set -e argv[1]
@@ -217,21 +255,49 @@ end
 # Rust aliases
 ################################################################################
 
-alias cb 'cargo build'
-alias cr 'cargo run'
-alias ct 'cargo test'
-alias cbr 'cargo build --release'
-alias crr 'cargo run --release'
+function cb -w 'cargo build'
+  cargo build $argv
+end
+
+function cr -w 'cargo run'
+  cargo run $argv
+end
+
+function ct -w 'cargo test'
+  cargo test $argv
+end
+
+function cbr -w 'cargo build'
+  cargo build --release $argv
+end
+
+function crr -w 'cargo run'
+  cargo run --release $argv
+end
 
 ################################################################################
 # youtube-dl aliases
 ################################################################################
 
-alias yt youtube-dl
-alias yta 'yt --config-location ~/.config/youtube-dl/config-archival'
-alias ytm 'yt --config-location ~/.config/youtube-dl/config-music'
-alias ytmp3 'yt --config-location ~/.config/youtube-dl/config-mp3'
-alias ytn 'yt --format="bestvideo[height<=?1440]+bestaudio/best"'
+function yt -w youtube-dl
+  youtube-dl $argv
+end
+
+function yta -w yt
+  yt --config-location ~/.config/youtube-dl/config-archival $argv
+end
+
+function ytm -w yt
+  yt --config-location ~/.config/youtube-dl/config-music $argv
+end
+
+function ytmp3 -w yt
+  yt --config-location ~/.config/youtube-dl/config-mp3 $argv
+end
+
+function ytn -w yt
+  yt --format='bestvideo[height<=?1440]+bestaudio/best' $argv
+end
 
 ################################################################################
 # Keybindings
@@ -405,11 +471,17 @@ end
 set fish_greeting ""
 
 # Just use regular man pages instead of Fish's weird postprocessing.
-alias __fish_print_help man
+function __fish_print_help
+  man $argv
+end
 
 # Screen clearing that handles my newline-between-prompts setup better.
 bind \cl 'set fish_prompt_first 1; command clear -x; commandline -f repaint'
-alias clear 'set fish_prompt_first 1; command clear'
+
+function clear -w clear
+  set fish_prompt_first 1
+  command clear $argv
+end
 
 ################################################################################
 # Colours
