@@ -174,6 +174,7 @@ in
         "config/fish"
         "config/git"
         "config/irb"
+        "config/mpv"
         "config/nix"
         "config/nixpkgs"
         "config/nvim"
