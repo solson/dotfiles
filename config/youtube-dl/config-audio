@@ -1,0 +1,4 @@
+--output '[%(uploader)s] %(title)s [%(extractor)s.%(id)s].%(ext)s'
+--format bestaudio/best
+--add-metadata
+--extract-audio

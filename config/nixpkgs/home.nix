@@ -179,6 +179,7 @@ in
         "config/nixpkgs"
         "config/nvim"
         "config/readline"
+        "config/youtube-dl"
         "local/bin/format-duration"
         "local/bin/notify-run"
         "local/share/konsole/VSCode-WIP.colorscheme"

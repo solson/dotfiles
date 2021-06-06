@@ -1,0 +1,9 @@
+--output '[%(uploader)s] %(title)s [%(extractor)s.%(id)s].%(ext)s'
+--format bestvideo+bestaudio/best
+--merge-output-format mkv
+--add-metadata
+--xattrs
+--sub-lang en
+--convert-subs srt
+--embed-subs
+--external-downloader=aria2c

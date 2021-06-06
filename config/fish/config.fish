@@ -283,18 +283,19 @@ function yt -w youtube-dl
   youtube-dl $argv
 end
 
-function yta -w yt
-  yt --config-location ~/.config/youtube-dl/config-archival $argv
+function yt-archive -w yt
+  yt --config-location ~/.config/youtube-dl/config-archive $argv
 end
 
-function ytm -w yt
-  yt --config-location ~/.config/youtube-dl/config-music $argv
+function yt-audio -w yt
+  yt --config-location ~/.config/youtube-dl/config-audio $argv
 end
 
-function ytmp3 -w yt
+function yt-mp3 -w yt
   yt --config-location ~/.config/youtube-dl/config-mp3 $argv
 end
 
+# "n" for "native resolution"
 function ytn -w yt
   yt --format='bestvideo[height<=?1440]+bestaudio/best' $argv
 end
