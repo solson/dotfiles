@@ -33,7 +33,10 @@ in
 
     # GUI utilities
     # TODO: move more stuff over from NixOS config if they work well in home-manager
+    keepassxc
     screenkey
+    syncthing
+    syncthingtray
 
     # CLI utilities
     # dijo # TODO: try it out
@@ -203,14 +206,8 @@ in
       Version = "1.5";
       Type = "Application";
       Name = "KeePassXC";
-      GenericName = "Password Manager";
-      Exec = "keepassxc";
-      TryExec = "keepassxc";
+      Exec = "${pkgs.keepassxc}/bin/keepassxc";
       Icon = "keepassxc";
-      StartupWMClass = "keepassxc";
-      StartupNotify = true;
-      Terminal = false;
-      MimeType = "application/x-keepass2;";
       X-GNOME-Autostart-enabled = true;
     };
   };
@@ -220,11 +217,8 @@ in
       Version = "1.5";
       Type = "Application";
       Name = "Syncthing Tray";
-      Comment = "Tray application for Syncthing";
-      Exec = "syncthingtray";
-      TryExec = "syncthingtray";
+      Exec = "${pkgs.syncthingtray}/bin/syncthingtray";
       Icon = "syncthingtray";
-      Terminal = false;
       X-GNOME-Autostart-enabled = true;
     };
   };
