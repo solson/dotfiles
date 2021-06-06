@@ -148,7 +148,7 @@ function nr -w 'nix repl'
 end
 
 function nrc -w nr
-  nr '<nixpkgs/nixos>' # access to `config`, my NixOS configuration $argv
+  nr '<nixpkgs/nixos>' $argv # access to `config`, my NixOS configuration
 end
 
 function nrh -w nr
