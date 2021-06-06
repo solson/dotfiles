@@ -2,8 +2,9 @@
 
 let
   inherit (builtins) listToAttrs;
-  inherit (lib) nameValuePair;
   inherit (config.lib.file) mkOutOfStoreSymlink;
+  inherit (lib) nameValuePair;
+  inherit (lib.generators) toINI;
 
   # TODO: Move home.nix to the repository root.
   dotfilesRoot = toString ../..;
@@ -192,6 +193,37 @@ in
       };
     in
       symlinks // mutSymlinks;
+
+  xdg.configFile."autostart/keepassxc.desktop".text = toINI {} {
+    "Desktop Entry" = {
+      Version = "1.5";
+      Type = "Application";
+      Name = "KeePassXC";
+      GenericName = "Password Manager";
+      Exec = "keepassxc";
+      TryExec = "keepassxc";
+      Icon = "keepassxc";
+      StartupWMClass = "keepassxc";
+      StartupNotify = true;
+      Terminal = false;
+      MimeType = "application/x-keepass2;";
+      X-GNOME-Autostart-enabled = true;
+    };
+  };
+
+  xdg.configFile."autostart/syncthingtray.desktop".text = toINI {} {
+    "Desktop Entry" = {
+      Version = "1.5";
+      Type = "Application";
+      Name = "Syncthing Tray";
+      Comment = "Tray application for Syncthing";
+      Exec = "syncthingtray";
+      TryExec = "syncthingtray";
+      Icon = "syncthingtray";
+      Terminal = false;
+      X-GNOME-Autostart-enabled = true;
+    };
+  };
 
   programs.man = {
     enable = true;
