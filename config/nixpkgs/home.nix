@@ -194,6 +194,8 @@ in
     in
       symlinks // mutSymlinks;
 
+  # TODO: I should generate one-shot systemd user units instead of XDG Autostart
+  # files that get turned into units by systemd-xdg-autostart-generator.
   xdg.configFile."autostart/keepassxc.desktop".text = toINI {} {
     "Desktop Entry" = {
       Version = "1.5";
