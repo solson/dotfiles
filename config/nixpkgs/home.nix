@@ -68,6 +68,7 @@ in
     ncdu
     neovim
     noti # TODO: try it out
+    pax-utils # lddtree, symtree
     pstree
     renameutils # imv, icp
     rink
