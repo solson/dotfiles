@@ -71,6 +71,7 @@ in
     pax-utils # lddtree, symtree
     pstree
     renameutils # imv, icp
+    restic
     rink
     ripgrep
     rlwrap
