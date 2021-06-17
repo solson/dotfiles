@@ -105,9 +105,6 @@ in
 
     # Git
     # delta # TODO: try it out, replace diff-so-fancy
-    # git-annex # TODO: try it out
-    # git-annex-remote-rclone
-    # git-annex-utils
     # gitui/lazygit # TODO: try them out
     (diff-so-fancy.overrideAttrs (old: rec {
       # TODO: Remove after v1.4.2 is released and hits nixpkgs. See the original
@@ -123,6 +120,10 @@ in
     gh
     gist
     git-absorb
+    git-annex
+    git-annex-remote-b2
+    git-annex-remote-rclone
+    git-annex-utils
     git-quick-stats
     git-revise
     gitFull
