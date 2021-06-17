@@ -107,13 +107,12 @@ in
     # delta # TODO: try it out, replace diff-so-fancy
     # gitui/lazygit # TODO: try them out
     (diff-so-fancy.overrideAttrs (old: rec {
-      # TODO: Remove after v1.4.2 is released and hits nixpkgs. See the original
-      # issue at https://github.com/so-fancy/diff-so-fancy/issues/411.
+      # TODO: Remove after https://nixpk.gs/pr-tracker.html?pr=126887
       version = "next";
       src = fetchFromGitHub {
         owner = "so-fancy";
         repo = "diff-so-fancy";
-        rev = "3a0ec6409d1e7d0efc660d0638be427d26535485";
+        rev = "v1.4.2";
         sha256 = "010jr3gyvnhichxf29vsckdqh4p39m970xfxzan2zzqh3na780sn";
       };
     }))
