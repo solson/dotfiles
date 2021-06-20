@@ -106,16 +106,7 @@ in
     # Git
     # delta # TODO: try it out, replace diff-so-fancy
     # gitui/lazygit # TODO: try them out
-    (diff-so-fancy.overrideAttrs (old: rec {
-      # TODO: Remove after https://nixpk.gs/pr-tracker.html?pr=126887
-      version = "next";
-      src = fetchFromGitHub {
-        owner = "so-fancy";
-        repo = "diff-so-fancy";
-        rev = "v1.4.2";
-        sha256 = "010jr3gyvnhichxf29vsckdqh4p39m970xfxzan2zzqh3na780sn";
-      };
-    }))
+    diff-so-fancy
     gh
     gist
     git-absorb
