@@ -1,4 +1,15 @@
 ################################################################################
+# PATH
+################################################################################
+
+# Filter out non-existent paths added by the system-wide NixOS shell config.
+set -l existing_paths
+for path in $PATH
+  test -d $path && set -a existing_paths $path
+end
+set PATH $existing_paths
+
+################################################################################
 # Misc functions
 ################################################################################
 
