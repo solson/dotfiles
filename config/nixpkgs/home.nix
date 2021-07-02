@@ -62,6 +62,7 @@ in
     fzf
     hexyl
     htop
+    hwinfo
     hyperfine
     jq
     litecli # for sqlite
