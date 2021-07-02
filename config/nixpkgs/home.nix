@@ -219,6 +219,68 @@ in
     };
   };
 
+  home.activation = {
+    # customActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    #   echo hello world
+    # '';
+  };
+
+  # Extra directories to add to PATH.
+  home.sessionPath = [];
+
+  # Environment variables to always set at login.
+  #
+  # The values may refer to other environment variables using POSIX.2 style
+  # variable references. For example, a variable parameter may be referenced as
+  # $parameter or ${parameter}. A default value foo may be given as per
+  # ${parameter:-foo} and, similarly, an alternate value bar can be given as per
+  # ${parameter:+bar}.
+  home.sessionVariables = {};
+
+  # programs.aria2
+  # programs.autojump.enable
+  # programs.autojump.enableFishIntegration
+  # programs.bash
+  # programs.bat.enable
+  # programs.bat.themes
+  # programs.beets.enable
+  # programs.beets.package
+  # programs.beets.settings
+  # programs.broot.enable
+  # programs.broot.enableFishIntegration
+  # programs.command-not-found
+  # programs.dircolors
+  # programs.direnv
+  # programs.emacs
+  # programs.firefox.profiles.<name>.userChrome
+  # programs.fish
+  # programs.fzf.*
+  # programs.fzf.enable
+  # programs.fzf.enableFishIntegration
+  # programs.git
+  # programs.go
+  # programs.htop
+  # programs.jq
+  # programs.mpv
+  # programs.neovim
+  # programs.noti
+  # programs.obs-studio
+  # programs.readline
+  # programs.ssh
+  # programs.vscode
+
+  # services.dropbox
+  # services.gammastep
+  # services.kdeconnect
+  # services.lorri
+  # services.playerctld
+  # services.rsibreak
+  # services.syncthing.enable
+  # services.syncthing.tray.enable
+
+  # systemd.user.*
+  # xdg.*
+
   programs.man = {
     enable = true;
     generateCaches = true;

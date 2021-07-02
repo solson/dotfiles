@@ -1,0 +1,16 @@
+idea: automatic periodic `git fetch` in all my `~/Projects` git repos
+idea: automatic warning message in shell when I have uncommitted changes to my dotfiles
+
+~/.local/share/plasma/plasmoids/org.kde.netspeedWidget
+~/.local/share/plasma/plasmoids/org.kde.weatherWidget
+  - can we manage these from home-manager? fetch from github & build?
+  - https://github.com/dfaust/plasma-applet-netspeed-widget
+  - https://github.com/kotelnik/plasma-applet-weather-widget
+
+~/.config/spacemacs
+~/.config/emacs
+~/.config/beets
+
+~/.elvish
+  - config but not db
+  - perhaps avoid using Elvish heavily until they use XDG directory spec
