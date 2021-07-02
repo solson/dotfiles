@@ -466,6 +466,7 @@ set __fish_git_prompt_color_untrackedfiles red
 set __fish_git_prompt_color_upstream white
 
 function fish_title
+  set -q SSH_TTY && echo -n '['(prompt_hostname)'] '
   echo (solson_prompt_pwd)" : $_"
 end
 
