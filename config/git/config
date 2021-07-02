@@ -8,6 +8,7 @@ name = Scott Olson
 email = scott@solson.me
 
 [alias]
+a = add --patch
 br = branch -vv
 clone1 = clone --depth=1
 cm = commit
