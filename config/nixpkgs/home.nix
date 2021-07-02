@@ -34,6 +34,7 @@ in
     # GUI utilities
     # TODO: move more stuff over from NixOS config if they work well in home-manager
     keepassxc
+    plex-media-player
     screenkey
     syncthing
     syncthingtray
