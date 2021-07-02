@@ -40,6 +40,7 @@ in
     syncthingtray
 
     # CLI utilities
+    # choose # TODO: try it out
     # dijo # TODO: try it out
     # just # TODO: try replacing ~/Projects/etc-nixos/shannon scripts with this
     # procs # TODO: try it out
