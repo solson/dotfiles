@@ -286,6 +286,7 @@ in
     generateCaches = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
   home.username = "scott";
   home.homeDirectory = "/home/scott";
