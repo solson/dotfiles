@@ -93,7 +93,7 @@ function _v -w nvim
     echo "bad path '$argv[1]', expected <path>[:<line>[:<col>]]"
     return 1
   end
-  nvim '+normal '$line'gg'$col'|' $path $argv[2..]
+  nvim "+normal $line""gg$col|" $path $argv[2..]
 end
 
 function m
