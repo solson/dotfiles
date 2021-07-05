@@ -290,5 +290,5 @@ in
   programs.home-manager.enable = true;
   home.username = "scott";
   home.homeDirectory = "/home/scott";
-  home.stateVersion = "21.05";
+  home.stateVersion = "21.11";
 }
